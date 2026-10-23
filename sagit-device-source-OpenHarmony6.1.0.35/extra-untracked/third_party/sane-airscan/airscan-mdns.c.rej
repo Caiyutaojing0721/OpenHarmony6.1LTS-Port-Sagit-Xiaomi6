@@ -1,0 +1,15 @@
+--- airscan-mdns.c
++++ airscan-mdns.c
+@@ -11,10 +11,12 @@
+ #include <arpa/inet.h>
+ #include <net/if.h>
+ 
++#ifndef OH_AIRSCAN
+ #include <avahi-client/client.h>
+ #include <avahi-client/lookup.h>
+ #include <avahi-common/domain.h>
+ #include <avahi-common/error.h>
++#endif // OH_AIRSCAN
+ 
+ #include <fnmatch.h>
+ #include <string.h>

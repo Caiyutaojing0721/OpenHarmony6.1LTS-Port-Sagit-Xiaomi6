@@ -1,0 +1,74 @@
+--- airscan-init.c
++++ airscan-init.c
+@@ -18,7 +18,6 @@ SANE_Status
+ airscan_init (AIRSCAN_INIT_FLAGS flags, const char *log_msg)
+ {
+     SANE_Status status;
+-
+     /* Save init flags */
+     airscan_init_flags = flags;
+ 
+@@ -28,11 +27,11 @@ airscan_init (AIRSCAN_INIT_FLAGS flags, const char *log_msg)
+     if (log_msg != NULL) {
+         log_debug(NULL, "%s", log_msg);
+     }
+-
++#ifndef OH_AIRSCAN
+     if ((flags & AIRSCAN_INIT_NO_CONF) == 0) {
+         conf_load();
+     }
+-
++#endif // OH_AIRSCAN
+     log_configure(); /* As soon, as configuration is available */
+ 
+     /* Initialize all parts */
+@@ -43,19 +42,22 @@ airscan_init (AIRSCAN_INIT_FLAGS flags, const char *log_msg)
+     if (status == SANE_STATUS_GOOD) {
+         status = http_init();
+     }
++#ifndef OH_AIRSCAN
+     if (status == SANE_STATUS_GOOD) {
+         status = netif_init();
+     }
++#endif // OH_AIRSCAN
+     if (status == SANE_STATUS_GOOD) {
+         status = zeroconf_init();
+     }
++#ifndef OH_AIRSCAN
+     if (status == SANE_STATUS_GOOD) {
+         status = mdns_init();
+     }
+     if (status == SANE_STATUS_GOOD) {
+         status = wsdd_init();
+     }
+-
++#endif // OH_AIRSCAN
+     if (status != SANE_STATUS_GOOD) {
+         airscan_cleanup(NULL);
+     } else if ((flags & AIRSCAN_INIT_NO_THREAD) == 0) {
+@@ -71,10 +73,14 @@ airscan_init (AIRSCAN_INIT_FLAGS flags, const char *log_msg)
+ void
+ airscan_cleanup (const char *log_msg)
+ {
++#ifndef OH_AIRSCAN
+     mdns_cleanup();
+     wsdd_cleanup();
++#endif // OH_AIRSCAN
+     zeroconf_cleanup();
++#ifndef OH_AIRSCAN
+     netif_cleanup();
++#endif // OH_AIRSCAN
+     http_cleanup();
+     rand_cleanup();
+     eloop_cleanup();
+@@ -82,8 +88,9 @@ airscan_cleanup (const char *log_msg)
+     if (log_msg != NULL) {
+         log_debug(NULL, "%s", log_msg);
+     }
+-
++#ifndef OH_AIRSCAN
+     conf_unload();
++#endif // OH_AIRSCAN
+     trace_cleanup();
+     log_cleanup(); /* Must be the last thing to do */
+ }

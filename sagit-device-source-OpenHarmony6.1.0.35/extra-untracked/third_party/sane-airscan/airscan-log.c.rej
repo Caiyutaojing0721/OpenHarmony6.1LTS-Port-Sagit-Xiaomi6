@@ -1,0 +1,71 @@
+--- airscan-log.c
++++ airscan-log.c
+@@ -14,6 +14,10 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ 
++#ifdef OH_AIRSCAN
++#include "hilog/log.h"
++#endif // OH_AIRSCAN
++
+ /* Static variables */
+ static char *log_buffer;
+ static bool log_configured;
+@@ -83,6 +87,7 @@ log_configure (void)
+     }
+ }
+ 
++#ifndef OH_AIRSCAN
+ /* Format time elapsed since logging began
+  */
+ static void
+@@ -100,6 +105,7 @@ log_fmt_time (char *buf, size_t size)
+ 
+     snprintf(buf, size, "%2.2d:%2.2d:%2.2d.%3.3d", hour, min, sec, msec);
+ }
++#endif // OH_AIRSCAN
+ 
+ /* log_ctx represents logging context
+  */
+@@ -152,18 +158,20 @@ static void
+ log_message (log_ctx *log, bool trace_only, bool force,
+         const char *fmt, va_list ap)
+ {
++#ifndef OH_AIRSCAN
+     trace *t = log ? log->trace : NULL;
++#endif // OH_AIRSCAN
+     char  msg[4096];
+     int   len = 0, namelen = 0, required_bytes = 0;
++#ifndef OH_AIRSCAN
+     bool  dont_log = trace_only ||
+                      (log_configured && !conf.dbg_enabled && !force);
+-
+     /* If logs suppressed and trace not in use, we have nothing
+      * to do */
+     if ((t == NULL) && dont_log) {
+         return;
+     }
+-
++#endif // OH_AIRSCAN
+     /* Format a log message */
+     if (log != NULL) {
+         len += sprintf(msg, "%.64s: ", log->name);
+@@ -188,7 +196,7 @@ log_message (log_ctx *log, bool trace_only, bool force,
+     }
+ 
+     msg[len] = '\0';
+-
++#ifndef OH_AIRSCAN
+     /* Write to log */
+     if (!dont_log) {
+         pthread_mutex_lock(&log_mutex);
+@@ -213,6 +221,9 @@ log_message (log_ctx *log, bool trace_only, bool force,
+             trace_printf(t, "");
+         }
+     }
++#else 
++    HiLogPrint(LOG_APP, LOG_INFO, 0, "sanekit", "%s", msg);
++#endif // OH_AIRSCAN
+ }
+ 
+ /* Write a debug message.

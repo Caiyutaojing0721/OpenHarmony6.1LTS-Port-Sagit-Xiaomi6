@@ -1,0 +1,1679 @@
+### ide/tools/previewer
+### developtools/smartperf_host
+### developtools/hapsigner
+### developtools/ace_js2bundle
+ M ace-loader/package-lock.json
+### developtools/integration_verification
+### developtools/hdc
+### developtools/hiperf
+### developtools/syscap_codec
+### developtools/packing_tool
+?? out/
+### developtools/ace_ets2bundle
+### developtools/global_resource_tool
+### developtools/profiler
+ M device/plugins/hiebpf_plugin/tools/include/ebpf_std_type.h
+### docs
+### third_party/openSLES
+### third_party/cangjie_runtime
+### third_party/benchmark
+### third_party/freetype
+?? include/
+### third_party/sqlite
+### third_party/alsa-utils
+### third_party/libjpeg-turbo
+### third_party/libnl
+?? libnl/
+?? test.lock
+### third_party/noto-cjk
+### third_party/musl
+### third_party/elfio
+### third_party/libfuse
+### third_party/python
+### third_party/notofonts
+### third_party/astc-encoder
+### third_party/meshoptimizer
+### third_party/NuttX
+### third_party/littlefs
+### third_party/libexif
+### third_party/libabigail
+### third_party/ffmpeg
+### third_party/optimized-routines
+### third_party/jsoncpp
+### third_party/openmax
+### third_party/vk-gl-cts
+### third_party/backends
+### third_party/libuv
+### third_party/PyYAML
+### third_party/dav1d
+### third_party/mbedtls
+### third_party/libcoap
+### third_party/lzma
+### third_party/flatbuffers
+### third_party/abseil-cpp
+### third_party/cares
+### third_party/css-what
+### third_party/selinux
+### third_party/node
+### third_party/exfatprogs
+### third_party/libusb
+### third_party/rust/rust
+### third_party/brotli
+### third_party/bounds_checking_function
+### third_party/gn
+### third_party/ntfs-3g
+### third_party/libinput
+### third_party/wpa_supplicant
+### third_party/f2fs-tools
+### third_party/spirv-tools
+### third_party/alsa-lib
+### third_party/ninja
+### third_party/typescript
+### third_party/vixl
+### third_party/FreeBSD
+### third_party/json
+### third_party/lwip
+### third_party/qrcodegen
+### third_party/glslang
+### third_party/bzip2
+### third_party/pcre2
+ M pcre2/src/pcre2_newline.c
+?? pcre2/src/pcre2_newline_patched.stamp
+### third_party/fsverity-utils
+### third_party/mksh
+### third_party/markupsafe
+### third_party/tzdata
+### third_party/toybox
+ M toys/pending/mdev.c
+### third_party/spirv-headers
+### third_party/libunwind
+### third_party/libbpf
+### third_party/parse5
+### third_party/jerryscript
+### third_party/tex-hyphen
+### third_party/libtiff
+### third_party/mtdev
+### third_party/mindspore
+### third_party/elfutils
+### third_party/vulkan-loader
+### third_party/sane-airscan
+ M airscan-conf.c
+ M airscan-device.c
+ M airscan-devops.c
+ M airscan-eloop.c
+ M airscan-http.c
+ M airscan-init.c
+ M airscan-log.c
+ M airscan-mdns.c
+ M airscan-tiff.c
+ M airscan-wsd.c
+ M airscan-zeroconf.c
+ M airscan.c
+ M airscan.h
+?? airscan-conf.c.rej
+?? airscan-device.c.rej
+?? airscan-devops.c.rej
+?? airscan-eloop.c.rej
+?? airscan-http.c.rej
+?? airscan-init.c.rej
+?? airscan-log.c.rej
+?? airscan-mdns.c.rej
+?? airscan-tiff.c.rej
+?? airscan-wsd.c.rej
+?? airscan-zeroconf.c.rej
+?? airscan.c.rej
+?? airscan.h.rej
+### third_party/EGL
+### third_party/sonic
+### third_party/pulseaudio
+### third_party/mesa3d
+### third_party/weex-loader
+### third_party/iptables
+ M extensions/libipt_CLUSTERIP.c
+ M extensions/libipt_realm.c
+ M extensions/libxt_mac.c
+### third_party/cangjie_compiler
+### third_party/popt
+### third_party/openhitls
+### third_party/nghttp2
+### third_party/cangjie_tools
+### third_party/decimal.js
+### third_party/FatFs
+### third_party/e2fsprogs
+### third_party/ltp
+### third_party/cups-filters
+ M backend/beh.c
+ M cupsfilters/image-tiff.c
+ M filter/pdf.cxx
+ M filter/pdftopdf/pdftopdf.cc
+ M filter/pdftopdf/qpdf_pdftopdf_processor.cc
+ M filter/pdftopdf/qpdf_xobject.cc
+ M filter/pdftoraster.cxx
+ M filter/rastertopdf.cpp
+ M filter/urftopdf.cpp
+ M mime/cupsfilters-ghostscript.convs
+### third_party/opencl-headers
+### third_party/vulkan-headers
+### third_party/grpc
+### third_party/lz4
+### third_party/re2
+### third_party/cmsis
+### third_party/libxml2
+### third_party/libedit
+### third_party/libdrm
+### third_party/skia
+### third_party/curl
+### third_party/liburing
+### third_party/openGLES
+### third_party/jsframework
+### third_party/libvpx
+### third_party/googletest
+### third_party/cJSON
+### third_party/libpng
+### third_party/protobuf
+### third_party/icu
+ M icu4c/source/ohos/lunar_calendar.h
+M  tools/multi/proj/icu4cscan/old-xmls.tar.bz2
+### third_party/libwebsockets
+### third_party/zlib
+### third_party/openssl
+### third_party/cups
+### third_party/jinja2
+### third_party/libphonenumber
+ M cpp/src/phonenumbers/alternate_format.cc
+ M cpp/src/phonenumbers/asyoutypeformatter.cc
+ M cpp/src/phonenumbers/base/strings/string_piece.cc
+ M cpp/src/phonenumbers/default_logger.cc
+ M cpp/src/phonenumbers/geocoding/area_code_map.cc
+ M cpp/src/phonenumbers/geocoding/default_map_storage.cc
+ M cpp/src/phonenumbers/geocoding/geocoding_warpper.cc
+ M cpp/src/phonenumbers/geocoding/mapping_file_provider.cc
+ M cpp/src/phonenumbers/geocoding/phonenumber_offline_geocoder.cc
+ M cpp/src/phonenumbers/lite_metadata.cc
+ M cpp/src/phonenumbers/logger.cc
+ M cpp/src/phonenumbers/metadata.cc
+ M cpp/src/phonenumbers/ohos/geocoding_data.pb.cc
+ M cpp/src/phonenumbers/ohos/update_geocoding.cc
+ M cpp/src/phonenumbers/ohos/update_libgeocoding.cc
+ M cpp/src/phonenumbers/ohos/update_libphonenumber.cc
+ M cpp/src/phonenumbers/ohos/update_metadata.cc
+ M cpp/src/phonenumbers/phonemetadata.pb.cc
+ M cpp/src/phonenumbers/phonenumber.cc
+ M cpp/src/phonenumbers/phonenumber.pb.cc
+ M cpp/src/phonenumbers/phonenumbermatch.cc
+ M cpp/src/phonenumbers/phonenumbermatcher.cc
+ M cpp/src/phonenumbers/phonenumberutil.cc
+ M cpp/src/phonenumbers/regex_based_matcher.cc
+ M cpp/src/phonenumbers/regexp_adapter_icu.cc
+ M cpp/src/phonenumbers/regexp_adapter_re2.cc
+ M cpp/src/phonenumbers/regexp_cache.cc
+ M cpp/src/phonenumbers/short_metadata.cc
+ M cpp/src/phonenumbers/shortnumberinfo.cc
+ M cpp/src/phonenumbers/string_byte_sink.cc
+ M cpp/src/phonenumbers/stringutil.cc
+ M cpp/src/phonenumbers/test_metadata.cc
+ M cpp/src/phonenumbers/unicodestring.cc
+ M cpp/src/phonenumbers/utf/unicodetext.cc
+ M cpp/src/phonenumbers/utf/unilib.cc
+ M cpp/test/phonenumbers/asyoutypeformatter_test.cc
+ M cpp/test/phonenumbers/fuzz_phone.cc
+ M cpp/test/phonenumbers/geocoding/area_code_map_test.cc
+ M cpp/test/phonenumbers/geocoding/geocoding_data_test.cc
+ M cpp/test/phonenumbers/geocoding/geocoding_test_program.cc
+ M cpp/test/phonenumbers/geocoding/mapping_file_provider_test.cc
+ M cpp/test/phonenumbers/geocoding/phonenumber_offline_geocoder_test.cc
+ M cpp/test/phonenumbers/logger_test.cc
+ M cpp/test/phonenumbers/matcher_test.cc
+ M cpp/test/phonenumbers/phonenumbermatch_test.cc
+ M cpp/test/phonenumbers/phonenumbermatcher_test.cc
+ M cpp/test/phonenumbers/phonenumberutil_test.cc
+ M cpp/test/phonenumbers/regexp_adapter_test.cc
+ M cpp/test/phonenumbers/regexp_cache_test.cc
+ M cpp/test/phonenumbers/run_tests.cc
+ M cpp/test/phonenumbers/shortnumberinfo_test.cc
+ M cpp/test/phonenumbers/stringutil_test.cc
+ M cpp/test/phonenumbers/test_util.cc
+ M cpp/test/phonenumbers/unicodestring_test.cc
+ M cpp/test/phonenumbers/utf/unicodetext_test.cc
+ M tools/cpp/src/cpp-build/generate_geocoding_data.cc
+ M tools/cpp/src/cpp-build/generate_geocoding_data_main.cc
+ M tools/cpp/test/cpp-build/generate_geocoding_data_test.cc
+ M tools/cpp/test/cpp-build/run_tests.cc
+### third_party/glfw
+### third_party/gptfdisk
+### third_party/libevdev
+### third_party/harfbuzz
+### third_party/lame
+### third_party/unity
+### third_party/ncurses
+### base/update/sys_installer
+### base/update/updater
+### base/update/packaging_tools
+### base/update/sys_installer_lite
+### base/update/update_app
+### base/update/updateservice
+### base/powermgr/display_manager
+### base/powermgr/battery_manager
+### base/powermgr/powermgr_cangjie_wrapper
+### base/powermgr/battery_statistics
+### base/powermgr/power_manager
+?? power_dialog/.hvigor/
+?? power_dialog/build/
+?? power_dialog/entry/build/
+?? power_dialog/local.properties
+?? power_dialog/oh-package-lock.json5
+?? power_dialog/oh_modules/
+### base/powermgr/powermgr_lite
+### base/powermgr/thermal_manager
+### base/powermgr/battery_lite
+### base/location/location
+### base/location/location_cangjie_wrapper
+### base/msdp/device_status
+### base/request/request
+### base/request/request_cangjie_wrapper
+### base/customization/enterprise_device_management
+### base/customization/config_policy
+### base/time/time_service
+### base/time/time_cangjie_wrapper
+### base/useriam/fingerprint_auth
+### base/useriam/companion_device_auth
+### base/useriam/pin_auth
+### base/useriam/face_auth
+### base/useriam/user_auth_framework
+### base/theme/wallpaper_mgr
+### base/theme/screenlock_mgr
+### base/tee/tee_os_kernel
+### base/tee/tee_client
+### base/tee/tee_os_framework
+### base/tee/tee_dev_kit
+### base/global/i18n_lite
+### base/global/resource_management
+### base/global/system_resources
+### base/global/font_manager
+### base/global/global_cangjie_wrapper
+### base/global/i18n
+### base/global/resource_management_lite
+### base/global/timezone
+### base/iothardware/peripheral
+### base/telephony/state_registry
+### base/telephony/core_service
+### base/telephony/cellular_call
+### base/telephony/ril_adapter
+### base/telephony/telephony_cangjie_wrapper
+### base/telephony/cellular_data
+### base/telephony/call_manager
+### base/telephony/telephony_data
+ M hvigorw
+### base/telephony/sms_mms
+### base/notification/common_event_service
+### base/notification/notification_cangjie_wrapper
+### base/notification/eventhandler
+### base/notification/distributed_notification_service
+### base/usb/usb_manager
+### base/security/permission_lite
+### base/security/crypto_framework
+### base/security/code_signature
+### base/security/huks
+### base/security/device_auth
+### base/security/access_token
+### base/security/security_component_manager
+### base/security/dlp_permission_service
+### base/security/security_cangjie_wrapper
+### base/security/asset
+### base/security/appverify
+### base/security/dataclassification
+### base/security/device_security_level
+### base/security/certificate_manager
+### base/security/certificate_framework
+### base/security/selinux_adapter
+### base/security/security_guard
+### base/print/print_fwk
+### base/inputmethod/imf
+### base/startup/bootstrap_lite
+### base/startup/appspawn
+ M modules/common/appspawn_adapter.cpp
+### base/startup/hvb
+### base/startup/init
+### base/startup/startup_cangjie_wrapper
+### base/web/arkweb_cangjie_wrapper
+### base/web/webview
+ M ohos_adapter/BUILD.gn
+### base/accesscontrol/sandbox_manager
+### base/accesscontrol/accesscontrol_cangjie_wrapper
+### base/account/os_account
+### base/hiviewdfx/hichecker
+### base/hiviewdfx/hilog_lite
+### base/hiviewdfx/hievent_lite
+### base/hiviewdfx/hidumper_lite
+### base/hiviewdfx/blackbox_lite
+### base/hiviewdfx/hisysevent
+### base/hiviewdfx/hiviewdfx_cangjie_wrapper
+### base/hiviewdfx/hiappevent
+### base/hiviewdfx/hicollie
+### base/hiviewdfx/hiview_lite
+### base/hiviewdfx/hiview
+### base/hiviewdfx/hidumper
+### base/hiviewdfx/hitrace
+### base/hiviewdfx/hilog
+### base/hiviewdfx/faultloggerd
+### base/sensors/sensors_cangjie_wrapper
+### base/sensors/sensor_lite
+### base/sensors/medical_sensor
+### base/sensors/sensor
+### base/sensors/miscdevice_lite
+### base/sensors/start
+### base/sensors/miscdevice
+### docs_cangjie
+### device/soc/unisoc
+### device/soc/rockchip
+### device/soc/hisilicon
+### device/soc/qualcomm
+ D LICENSE
+ D OAT.xml
+ D README_zh.md
+ D sdm845/NOTICE
+ D sdm845/hardware/BUILD.gn
+ D sdm845/hardware/display/BUILD.gn
+ D sdm845/hardware/display/include/display_common.h
+ D sdm845/hardware/display/include/display_gfx_private.h
+ D sdm845/hardware/display/include/display_gralloc_private.h
+ D sdm845/hardware/display/src/display_device/display_composer_vdi_impl.cpp
+ D sdm845/hardware/display/src/display_device/display_composer_vdi_impl.h
+ D sdm845/hardware/display/src/display_device/display_gfx.h
+ D sdm845/hardware/display/src/display_device/drm_connector.cpp
+ D sdm845/hardware/display/src/display_device/drm_connector.h
+ D sdm845/hardware/display/src/display_device/drm_crtc.cpp
+ D sdm845/hardware/display/src/display_device/drm_crtc.h
+ D sdm845/hardware/display/src/display_device/drm_device.cpp
+ D sdm845/hardware/display/src/display_device/drm_device.h
+ D sdm845/hardware/display/src/display_device/drm_display.cpp
+ D sdm845/hardware/display/src/display_device/drm_display.h
+ D sdm845/hardware/display/src/display_device/drm_encoder.cpp
+ D sdm845/hardware/display/src/display_device/drm_encoder.h
+ D sdm845/hardware/display/src/display_device/drm_plane.cpp
+ D sdm845/hardware/display/src/display_device/drm_plane.h
+ D sdm845/hardware/display/src/display_device/drm_vsync_worker.cpp
+ D sdm845/hardware/display/src/display_device/drm_vsync_worker.h
+ D sdm845/hardware/display/src/display_device/fb_composition.cpp
+ D sdm845/hardware/display/src/display_device/fb_composition.h
+ D sdm845/hardware/display/src/display_device/fb_device.cpp
+ D sdm845/hardware/display/src/display_device/fb_device.h
+ D sdm845/hardware/display/src/display_device/fb_display.cpp
+ D sdm845/hardware/display/src/display_device/fb_display.h
+ D sdm845/hardware/display/src/display_device/hdi_composer.cpp
+ D sdm845/hardware/display/src/display_device/hdi_composer.h
+ D sdm845/hardware/display/src/display_device/hdi_device_common.h
+ D sdm845/hardware/display/src/display_device/hdi_device_interface.cpp
+ D sdm845/hardware/display/src/display_device/hdi_device_interface.h
+ D sdm845/hardware/display/src/display_device/hdi_display.cpp
+ D sdm845/hardware/display/src/display_device/hdi_display.h
+ D sdm845/hardware/display/src/display_device/hdi_drm_composition.cpp
+ D sdm845/hardware/display/src/display_device/hdi_drm_composition.h
+ D sdm845/hardware/display/src/display_device/hdi_drm_layer.cpp
+ D sdm845/hardware/display/src/display_device/hdi_drm_layer.h
+ D sdm845/hardware/display/src/display_device/hdi_fd.h
+ D sdm845/hardware/display/src/display_device/hdi_gfx_composition.cpp
+ D sdm845/hardware/display/src/display_device/hdi_gfx_composition.h
+ D sdm845/hardware/display/src/display_device/hdi_layer.cpp
+ D sdm845/hardware/display/src/display_device/hdi_layer.h
+ D sdm845/hardware/display/src/display_device/hdi_netlink_monitor.cpp
+ D sdm845/hardware/display/src/display_device/hdi_netlink_monitor.h
+ D sdm845/hardware/display/src/display_device/hdi_session.cpp
+ D sdm845/hardware/display/src/display_device/hdi_session.h
+ D sdm845/hardware/display/src/display_device/hdi_video_composition.cpp
+ D sdm845/hardware/display/src/display_device/hdi_video_composition.h
+ D sdm845/hardware/display/src/display_device/sorft_vsync.cpp
+ D sdm845/hardware/display/src/display_device/sorft_vsync.h
+ D sdm845/hardware/display/src/display_gfx/display_gfx.c
+ D sdm845/hardware/display/src/display_gralloc/display_buffer_vdi_impl.cpp
+ D sdm845/hardware/display/src/display_gralloc/display_buffer_vdi_impl.h
+ D sdm845/hardware/display/src/display_gralloc/display_gralloc.c
+ D sdm845/hardware/display/src/display_gralloc/display_gralloc_gbm.cpp
+ D sdm845/hardware/display/src/display_gralloc/display_gralloc_gbm.h
+ D sdm845/hardware/display/src/display_gralloc/hi_gbm.cpp
+ D sdm845/hardware/display/src/display_gralloc/hi_gbm.h
+ D sdm845/hardware/display/src/display_gralloc/hi_gbm_internal.h
+ D sdm845/hardware/display/src/utils/display_adapter.cpp
+ D sdm845/hardware/display/src/utils/display_adapter.h
+ D sdm845/hardware/display/src/utils/display_module_loader.h
+ D sdm845/hardware/firmware/BUILD.gn
+ D sdm845/hardware/firmware/ath10k/WCN3990/hw1.0/board-2.bin
+ D sdm845/hardware/firmware/ath10k/WCN3990/hw1.0/firmware-5.bin
+ D sdm845/hardware/firmware/qca/crbtfw21.tlv
+ D sdm845/hardware/firmware/qca/oneplus6/crnv21.bin
+ D sdm845/hardware/firmware/qcom/a630_gmu.bin
+ D sdm845/hardware/firmware/qcom/a630_sqe.fw
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/a630_zap.mbn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/adsp.mbn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/adspr.jsn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/adspua.jsn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/cdsp.mbn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/cdspr.jsn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/ipa_fws.mbn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/mba.mbn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/modem.mbn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/modemr.jsn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/modemuw.jsn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/slpi.mbn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/slpir.jsn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/slpius.jsn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/venus.mbn
+ D sdm845/hardware/firmware/qcom/sdm845/oneplus6/wlanmdsp.mbn
+ D sdm845/hardware/firmware/tfa98xx.cnt
+ D sdm845/hardware/gpu/BUILD.gn
+ D sdm845/hardware/gpu/lib64/README.md
+ D sdm845/hardware/gpu/lib64/libEGL.so.1
+ D sdm845/hardware/gpu/lib64/libGLESv1_CM.so.1
+ D sdm845/hardware/gpu/lib64/libGLESv2.so.2
+ D sdm845/hardware/gpu/lib64/libgallium_dri.so
+ D sdm845/hardware/gpu/lib64/libgbm.so.1
+ D sdm845/hardware/gpu/lib64/libglapi.so.0
+ D sdm845/soc.gni
+ D sdm845/soc/Kconfig
+ D sdm845/soc/Makefile
+ D sdm845/soc/arch/arm64/Makefile
+ D sdm845/soc/arch/arm64/boot/Makefile
+ D sdm845/soc/arch/arm64/boot/dts/Makefile
+ D sdm845/soc/arch/arm64/boot/dts/qcom/Makefile
+ D sdm845/soc/arch/arm64/boot/dts/qcom/msm8996-xiaomi-common.dtsi
+ D sdm845/soc/arch/arm64/boot/dts/qcom/msm8996-xiaomi-gemini.dts
+ D sdm845/soc/arch/arm64/boot/dts/qcom/msm8998-oneplus-cheeseburger.dts
+ D sdm845/soc/arch/arm64/boot/dts/qcom/msm8998-oneplus-common.dtsi
+ D sdm845/soc/arch/arm64/boot/dts/qcom/msm8998-oneplus-dumpling.dts
+ D sdm845/soc/arch/arm64/boot/dts/qcom/msm8998-xiaomi-sagit.dts
+ D sdm845/soc/arch/arm64/boot/dts/qcom/msm8998.dtsi
+ D sdm845/soc/arch/arm64/boot/dts/qcom/pm8005.dtsi
+ D sdm845/soc/arch/arm64/boot/dts/qcom/pm8998.dtsi
+ D sdm845/soc/arch/arm64/boot/dts/qcom/pmi8996.dtsi
+ D sdm845/soc/arch/arm64/boot/dts/qcom/pmi8998.dtsi
+ D sdm845/soc/arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi
+ D sdm845/soc/arch/arm64/boot/dts/qcom/sdm845-oneplus-enchilada.dts
+ D sdm845/soc/arch/arm64/boot/dts/qcom/sdm845-oneplus-fajita.dts
+ D sdm845/soc/arch/arm64/boot/dts/qcom/sdm845.dtsi
+ D sdm845/soc/include/linux/qcom/.gitkeep
+ D sdm845/soc/qualcomm/Kconfig
+ D sdm845/soc/qualcomm/Makefile
+ D sdm845/soc/qualcomm/reboot/Kconfig
+ D sdm845/soc/qualcomm/reboot/Makefile
+ D sdm845/soc/qualcomm/reboot/reboot.c
+?? msm8998/
+### device/soc/phytium
+### device/qemu
+### device/board/hihope
+### device/board/hisilicon
+### device/board/qualcomm
+ D LICENSE
+ D OAT.xml
+ D README_zh.md
+ D oneplus_fajita/BUILD.gn
+ D oneplus_fajita/NOTICE
+ D oneplus_fajita/README_zh.md
+ D oneplus_fajita/audio_alsa/common.h
+ D oneplus_fajita/audio_alsa/vendor_capture.c
+ D oneplus_fajita/audio_alsa/vendor_render.c
+ D oneplus_fajita/cfg/BUILD.gn
+ D oneplus_fajita/cfg/distributedhardware/dinput_business_event_whitelist.cfg
+ D oneplus_fajita/cfg/distributedhardware/distributed_hardware_components_cfg.json
+ D oneplus_fajita/cfg/etc/alsa-ucm-oneplus/enchilada/HiFi.conf
+ D "oneplus_fajita/cfg/etc/alsa-ucm-oneplus/enchilada/OnePlus 6.conf"
+ D oneplus_fajita/cfg/etc/alsa-ucm-oneplus/enchilada/VoiceCall.conf
+ D oneplus_fajita/cfg/etc/alsa-ucm-oneplus/enchilada/enchilada.conf
+ D oneplus_fajita/cfg/etc/alsa-ucm-oneplus/fajita/HiFi.conf
+ D "oneplus_fajita/cfg/etc/alsa-ucm-oneplus/fajita/OnePlus 6T.conf"
+ D oneplus_fajita/cfg/etc/alsa-ucm-oneplus/fajita/VoiceCall.conf
+ D oneplus_fajita/cfg/etc/alsa-ucm-oneplus/fajita/fajita.conf
+ D oneplus_fajita/cfg/etc/bootanimation_custom_config.json
+ D oneplus_fajita/cfg/etc/bt_device_config.xml
+ D oneplus_fajita/cfg/etc/display_manager_config.xml
+ D oneplus_fajita/cfg/etc/param/hardware_oneplus_fajita.para
+ D oneplus_fajita/cfg/etc/param/ohos.para
+ D oneplus_fajita/cfg/etc/param/product_oneplus_fajita.para
+ D oneplus_fajita/cfg/etc/qcom/dbus-daemon.cfg
+ D oneplus_fajita/cfg/etc/qcom/modem-manager.cfg
+ D oneplus_fajita/cfg/etc/qcom/pd-mapper.cfg
+ D oneplus_fajita/cfg/etc/qcom/qmi-proxy.cfg
+ D oneplus_fajita/cfg/etc/qcom/qrtr-ns.cfg
+ D oneplus_fajita/cfg/etc/qcom/rmtfs.cfg
+ D oneplus_fajita/cfg/etc/qcom/tqftpserv.cfg
+ D oneplus_fajita/cfg/etc/window_manager_config.xml
+ D oneplus_fajita/cfg/fstab.SDM845
+ D oneplus_fajita/cfg/image/chip_prod_image_conf.txt
+ D oneplus_fajita/cfg/image/sys_prod_image_conf.txt
+ D oneplus_fajita/cfg/image/system_image_conf.txt
+ D oneplus_fajita/cfg/image/updater_image_conf.txt
+ D oneplus_fajita/cfg/image/userdata_image_conf.txt
+ D oneplus_fajita/cfg/image/vendor_image_conf.txt
+ D oneplus_fajita/cfg/init/init.SDM845.cfg
+ D oneplus_fajita/cfg/init/init.SDM845.sh
+ D oneplus_fajita/cfg/init/init.SDM845.usb.cfg
+ D oneplus_fajita/cfg/init/init.cfg
+ D oneplus_fajita/cfg/init/init.reboot.cfg
+ D oneplus_fajita/cfg/preinstall/install_list.json
+ D oneplus_fajita/cfg/preinstall/install_list_capability.json
+ D oneplus_fajita/cfg/preinstall/install_list_permissions.json
+ D oneplus_fajita/cfg/preinstall/uninstall_list.json
+ D oneplus_fajita/cfg/sdcard_mount.sh
+ D oneplus_fajita/cfg/selinux/config
+ D oneplus_fajita/cfg/udev/50-firmware.rules
+ D oneplus_fajita/cfg/udev/50-usb.rules
+ D oneplus_fajita/cfg/udev/77-mm-qcom-soc.rules
+ D oneplus_fajita/cfg/udev/77-mm-quectel-port-types.rules
+ D oneplus_fajita/cfg/udev/77-mm-sierra.rules
+ D oneplus_fajita/cfg/udev/80-mm-candidate.rules
+ D oneplus_fajita/cfg/udev/90-feedbackd.rules
+ D oneplus_fajita/cfg/udisk_mount.sh
+ D oneplus_fajita/common/BUILD.gn
+ D oneplus_fajita/common/hciconfig/BUILD.gn
+ D oneplus_fajita/common/hciconfig/include/bluetooth.h
+ D oneplus_fajita/common/hciconfig/include/hci.h
+ D oneplus_fajita/common/hciconfig/include/hci_lib.h
+ D oneplus_fajita/common/hciconfig/include/textfile.h
+ D oneplus_fajita/common/hciconfig/include/util.h
+ D oneplus_fajita/common/hciconfig/src/bluetooth.c
+ D oneplus_fajita/common/hciconfig/src/hci.c
+ D oneplus_fajita/common/hciconfig/src/hciconfig.c
+ D oneplus_fajita/common/hciconfig/src/textfile.c
+ D oneplus_fajita/common/hciconfig/src/util.c
+ D oneplus_fajita/common/modem/BUILD.gn
+ D oneplus_fajita/common/modem/bin64/ModemManager
+ D oneplus_fajita/common/modem/bin64/NetworkManager
+ D oneplus_fajita/common/modem/bin64/dbus-binding-tool
+ D oneplus_fajita/common/modem/bin64/dbus-cleanup-sockets
+ D oneplus_fajita/common/modem/bin64/dbus-daemon
+ D oneplus_fajita/common/modem/bin64/dbus-daemon.sh
+ D oneplus_fajita/common/modem/bin64/dbus-launch
+ D oneplus_fajita/common/modem/bin64/dbus-monitor
+ D oneplus_fajita/common/modem/bin64/dbus-run-session
+ D oneplus_fajita/common/modem/bin64/dbus-send
+ D oneplus_fajita/common/modem/bin64/dbus-test-tool
+ D oneplus_fajita/common/modem/bin64/dbus-update-activation-environment
+ D oneplus_fajita/common/modem/bin64/dbus-uuidgen
+ D oneplus_fajita/common/modem/bin64/mmcli
+ D oneplus_fajita/common/modem/bin64/msm-modem-uim-selection.sh
+ D oneplus_fajita/common/modem/bin64/nmcli
+ D oneplus_fajita/common/modem/bin64/qmi-firmware-update
+ D oneplus_fajita/common/modem/bin64/qmi-network
+ D oneplus_fajita/common/modem/bin64/qmi-proxy
+ D oneplus_fajita/common/modem/bin64/qmicli
+ D oneplus_fajita/common/modem/etc/dbus-1/session.conf
+ D oneplus_fajita/common/modem/etc/dbus-1/system.conf
+ D oneplus_fajita/common/modem/etc/dbus-1/system.d/net.hadess.SensorProxy.conf
+ D oneplus_fajita/common/modem/etc/machine-id
+ D oneplus_fajita/common/modem/etc/machine-info
+ D oneplus_fajita/common/modem/lib64/ld-musl-aarch64.so.1
+ D oneplus_fajita/common/modem/lib64/libacl.so.1
+ D oneplus_fajita/common/modem/lib64/libblkid.so.1
+ D oneplus_fajita/common/modem/lib64/libbrotlicommon.so.1
+ D oneplus_fajita/common/modem/lib64/libbrotlidec.so.1
+ D oneplus_fajita/common/modem/lib64/libc.musl-aarch64.so.1
+ D oneplus_fajita/common/modem/lib64/libcap.so.2
+ D oneplus_fajita/common/modem/lib64/libcrypto.so.3
+ D oneplus_fajita/common/modem/lib64/libcurl.so.4
+ D oneplus_fajita/common/modem/lib64/libdbus-1.so.3
+ D oneplus_fajita/common/modem/lib64/libelogind.so.0
+ D oneplus_fajita/common/modem/lib64/libexpat.so.1
+ D oneplus_fajita/common/modem/lib64/libffi.so.8
+ D oneplus_fajita/common/modem/lib64/libgio-2.0.so.0
+ D oneplus_fajita/common/modem/lib64/libglib-2.0.so.0
+ D oneplus_fajita/common/modem/lib64/libgmodule-2.0.so.0
+ D oneplus_fajita/common/modem/lib64/libgobject-2.0.so.0
+ D oneplus_fajita/common/modem/lib64/libgudev-1.0.so.0
+ D oneplus_fajita/common/modem/lib64/libidn2.so.0
+ D oneplus_fajita/common/modem/lib64/libintl.so.8
+ D oneplus_fajita/common/modem/lib64/libmbim-glib.so.4
+ D oneplus_fajita/common/modem/lib64/libmm-glib.so.0
+ D oneplus_fajita/common/modem/lib64/libmount.so.1
+ D oneplus_fajita/common/modem/lib64/libncursesw.so.6
+ D oneplus_fajita/common/modem/lib64/libndp.so.0
+ D oneplus_fajita/common/modem/lib64/libnghttp2.so.14
+ D oneplus_fajita/common/modem/lib64/libnl-3.so.200
+ D oneplus_fajita/common/modem/lib64/libnl-genl-3.so.200
+ D oneplus_fajita/common/modem/lib64/libnm.so.0
+ D oneplus_fajita/common/modem/lib64/libnspr4.so
+ D oneplus_fajita/common/modem/lib64/libnss3.so
+ D oneplus_fajita/common/modem/lib64/libnssutil3.so
+ D oneplus_fajita/common/modem/lib64/libpam.so.0
+ D oneplus_fajita/common/modem/lib64/libpcre2-8.so.0
+ D oneplus_fajita/common/modem/lib64/libpcsclite.so.1
+ D oneplus_fajita/common/modem/lib64/libplc4.so
+ D oneplus_fajita/common/modem/lib64/libplds4.so
+ D oneplus_fajita/common/modem/lib64/libpolkit-gobject-1.so.0
+ D oneplus_fajita/common/modem/lib64/libpsl.so.5
+ D oneplus_fajita/common/modem/lib64/libqmi-glib.so.5
+ D oneplus_fajita/common/modem/lib64/libqrtr-glib.so.0
+ D oneplus_fajita/common/modem/lib64/libqrtr.so.1
+ D oneplus_fajita/common/modem/lib64/libreadline.so.8
+ D oneplus_fajita/common/modem/lib64/libsmime3.so
+ D oneplus_fajita/common/modem/lib64/libssl.so.3
+ D oneplus_fajita/common/modem/lib64/libudev.so.1
+ D oneplus_fajita/common/modem/lib64/libunistring.so.5
+ D oneplus_fajita/common/modem/lib64/libz.so.1
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-altair-lte.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-anydata.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-broadmobi.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-cinterion.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-dell.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-dlink.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-ericsson-mbm.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-fibocom.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-foxconn.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-generic.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-gosuncn.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-haier.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-huawei.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-intel.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-iridium.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-linktop.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-longcheer.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-motorola.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-mtk.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-nokia-icera.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-nokia.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-novatel-lte.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-novatel.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-option-hso.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-option.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-pantech.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-qcom-soc.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-quectel.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-samsung.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-sierra-legacy.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-sierra.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-simtech.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-telit.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-thuraya.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-tplink.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-ublox.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-via.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-wavecom.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-x22x.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-plugin-zte.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-shared-fibocom.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-shared-foxconn.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-shared-icera.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-shared-novatel.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-shared-option.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-shared-sierra.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-shared-telit.so
+ D oneplus_fajita/common/modem/usr/lib/ModemManager/libmm-shared-xmm.so
+ D oneplus_fajita/common/modem/usr/share/dbus-1/accessibility-services/org.a11y.atspi.Registry.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/dev.cogitri.apkPolkit2.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.Accounts.User.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.Accounts.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ColorHelper.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ColorManager.Device.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ColorManager.Profile.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ColorManager.Sensor.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ColorManager.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.GeoClue2.Agent.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.GeoClue2.Client.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.GeoClue2.Location.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.GeoClue2.Manager.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.GeoClue2.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Bearer.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Call.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Firmware.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Location.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Messaging.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Modem3gpp.ProfileManager.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Modem3gpp.Ussd.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Modem3gpp.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.ModemCdma.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Oma.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Sar.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Signal.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Simple.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Time.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Voice.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Sim.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Sms.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.UPower.Device.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.UPower.KbdBacklight.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.UPower.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.fwupd.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.hostname1.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Access.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Account.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.AppChooser.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Background.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.DynamicLauncher.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Email.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.FileChooser.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.GlobalShortcuts.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Inhibit.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Lockdown.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Notification.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.PermissionStore.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Print.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.RemoteDesktop.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Request.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.ScreenCast.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Screenshot.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Secret.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Session.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Settings.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Wallpaper.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.locale1.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Account.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Background.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Camera.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Device.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Documents.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.DynamicLauncher.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Email.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.FileChooser.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.FileTransfer.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.GameMode.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.GlobalShortcuts.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Inhibit.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Location.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.MemoryMonitor.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.NetworkMonitor.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Notification.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.OpenURI.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.PowerProfileMonitor.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Print.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.ProxyResolver.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Realtime.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.RemoteDesktop.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Request.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.ScreenCast.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Screenshot.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Secret.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Session.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Settings.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Trash.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.portal.Wallpaper.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.freedesktop.timedate1.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.mobian_project.CallAudio.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/interfaces/org.sigxcpu.Feedback.xml
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/ca.desrt.dconf.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/dev.tchx84.Portfolio.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.a11y.Bus.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.bluez.obex.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.freedesktop.ColorHelper.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.freedesktop.IBus.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.freedesktop.impl.portal.PermissionStore.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.freedesktop.impl.portal.Secret.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.gnome.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.gtk.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.freedesktop.portal.Desktop.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.freedesktop.portal.Documents.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.freedesktop.portal.IBus.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.freedesktop.secrets.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.Calculator.SearchProvider.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.Calls.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.Console.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.Contacts.SearchProvider.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.Contacts.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.Identity.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.Lollypop.SearchProvider.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.OnlineAccounts.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.Settings.SearchProvider.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.Settings.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.Software.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.TextEditor.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.clocks.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.evolution.dataserver.AddressBook10.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.evolution.dataserver.Calendar8.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.evolution.dataserver.Sources5.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.evolution.dataserver.UserPrompter0.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.keyring.PrivatePrompter.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.keyring.SystemPrompter.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gnome.keyring.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.gtk.GLib.PACRunner.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.mobian_project.CallAudio.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/org.sigxcpu.Feedback.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/services/sm.puri.Phosh.CalendarServer.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/session.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/dev.Cogitri.apkPolkit2.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/fi.w1.wpa_supplicant1.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/org.freedesktop.Accounts.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/org.freedesktop.ColorManager.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/org.freedesktop.GeoClue2.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/org.freedesktop.PolicyKit1.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/org.freedesktop.UDisks2.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/org.freedesktop.UPower.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/org.freedesktop.fwupd.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/org.freedesktop.hostname1.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/org.freedesktop.locale1.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/org.freedesktop.login1.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/org.freedesktop.nm_dispatcher.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/org.freedesktop.nm_priv_helper.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/org.freedesktop.timedate1.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system-services/org.opensuse.CupsPkHelper.Mechanism.service
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/bluetooth-mesh.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/bluetooth.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/de.seath.Waked.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/dev.Cogitri.apkPolkit2.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/nm-dispatcher.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/nm-priv-helper.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/openrc-settingsd.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/org.freedesktop.Accounts.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/org.freedesktop.ColorManager.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/org.freedesktop.GeoClue2.Agent.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/org.freedesktop.GeoClue2.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/org.freedesktop.ModemManager1.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/org.freedesktop.NetworkManager.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/org.freedesktop.PolicyKit1.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/org.freedesktop.UDisks2.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/org.freedesktop.UPower.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/org.freedesktop.fwupd.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/org.freedesktop.login1.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/org.opensuse.CupsPkHelper.Mechanism.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/pulseaudio-system.conf
+ D oneplus_fajita/common/modem/usr/share/dbus-1/system.d/wpa_supplicant.conf
+ D oneplus_fajita/common/q6voiced/BUILD.gn
+ D oneplus_fajita/common/q6voiced/bin64/q6voiced
+ D oneplus_fajita/common/q6voiced/etc/asound.state
+ D oneplus_fajita/common/q6voiced/etc/conf.d/q6voiced
+ D oneplus_fajita/common/q6voiced/lib64/libtinyalsa.so.2
+ D oneplus_fajita/common/q6voiced/q6voiced.c
+ D oneplus_fajita/common/reboot/BUILD.gn
+ D oneplus_fajita/common/reboot/reboot_mode.c
+ D oneplus_fajita/common/swclock/BUILD.gn
+ D oneplus_fajita/common/swclock/swclock-offset-boot.sh
+ D oneplus_fajita/common/swclock/swclock-offset-shutdown.sh
+ D oneplus_fajita/common/tinyalsa/BUILD.gn
+ D oneplus_fajita/common/tinyalsa/include/tinyalsa/asoundlib.h
+ D oneplus_fajita/common/tinyalsa/mixer.c
+ D oneplus_fajita/common/tinyalsa/pcm.c
+ D oneplus_fajita/common/tinyalsa/tinycap.c
+ D oneplus_fajita/common/tinyalsa/tinyhostless.c
+ D oneplus_fajita/common/tinyalsa/tinymix.c
+ D oneplus_fajita/common/tinyalsa/tinypcminfo.c
+ D oneplus_fajita/common/tinyalsa/tinyplay.c
+ D oneplus_fajita/common/tools/linux/LICENSE
+ D oneplus_fajita/common/tools/linux/abootimg
+ D oneplus_fajita/common/tools/linux/img2simg
+ D oneplus_fajita/common/tools/linux/mkbootimg
+ D oneplus_fajita/common/tools/packer-kernel.sh
+ D oneplus_fajita/common/tools/packer-oneplus_fajita.sh
+ D oneplus_fajita/common/v4l2-ctl/BUILD.gn
+ D oneplus_fajita/common/v4l2-ctl/codec-fwht.c
+ D oneplus_fajita/common/v4l2-ctl/codec-v4l2-fwht.c
+ D oneplus_fajita/common/v4l2-ctl/common/cec-htng-funcs.h
+ D oneplus_fajita/common/v4l2-ctl/common/cec-htng.h
+ D oneplus_fajita/common/v4l2-ctl/common/cec-info.cpp
+ D oneplus_fajita/common/v4l2-ctl/common/cec-info.h
+ D oneplus_fajita/common/v4l2-ctl/common/cec-log.cpp
+ D oneplus_fajita/common/v4l2-ctl/common/codec-fwht.c
+ D oneplus_fajita/common/v4l2-ctl/common/codec-fwht.h
+ D oneplus_fajita/common/v4l2-ctl/common/codec-fwht.patch
+ D oneplus_fajita/common/v4l2-ctl/common/codec-v4l2-fwht.c
+ D oneplus_fajita/common/v4l2-ctl/common/codec-v4l2-fwht.h
+ D oneplus_fajita/common/v4l2-ctl/common/cv4l-helpers.h
+ D oneplus_fajita/common/v4l2-ctl/common/ir-encode.c
+ D oneplus_fajita/common/v4l2-ctl/common/ir-encode.h
+ D oneplus_fajita/common/v4l2-ctl/common/media-info.cpp
+ D oneplus_fajita/common/v4l2-ctl/common/media-info.h
+ D oneplus_fajita/common/v4l2-ctl/common/v4l-helpers.h
+ D oneplus_fajita/common/v4l2-ctl/common/v4l-stream.c
+ D oneplus_fajita/common/v4l2-ctl/common/v4l-stream.h
+ D oneplus_fajita/common/v4l2-ctl/common/v4l2-info.cpp
+ D oneplus_fajita/common/v4l2-ctl/common/v4l2-info.h
+ D oneplus_fajita/common/v4l2-ctl/common/v4l2-pix-formats.h
+ D oneplus_fajita/common/v4l2-ctl/common/v4l2-tpg-colors.c
+ D oneplus_fajita/common/v4l2-ctl/common/v4l2-tpg-colors.h
+ D oneplus_fajita/common/v4l2-ctl/common/v4l2-tpg-core.c
+ D oneplus_fajita/common/v4l2-ctl/common/v4l2-tpg.h
+ D oneplus_fajita/common/v4l2-ctl/common/v4l2-tpg.patch
+ D oneplus_fajita/common/v4l2-ctl/config.h
+ D oneplus_fajita/common/v4l2-ctl/media-bus-format-names.h
+ D oneplus_fajita/common/v4l2-ctl/media-info.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l-stream.c
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-common.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-edid.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-io.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-meta.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-misc.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-modes.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-overlay.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-sdr.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-selection.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-stds.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-streaming.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-subdev.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-tuner.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-vbi.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-vidcap.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl-vidout.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-ctl.h
+ D oneplus_fajita/common/v4l2-ctl/v4l2-info.cpp
+ D oneplus_fajita/common/v4l2-ctl/v4l2-tpg-colors.c
+ D oneplus_fajita/common/v4l2-ctl/v4l2-tpg-core.c
+ D oneplus_fajita/device.gni
+ D oneplus_fajita/hardware/BUILD.gn
+ D oneplus_fajita/hardware/audio/BUILD.gn
+ D oneplus_fajita/hardware/audio/alsa_adapter/include/alsa_lib_capture.h
+ D oneplus_fajita/hardware/audio/alsa_adapter/include/alsa_lib_common.h
+ D oneplus_fajita/hardware/audio/alsa_adapter/include/alsa_lib_render.h
+ D oneplus_fajita/hardware/audio/alsa_adapter/src/alsa_lib_capture.c
+ D oneplus_fajita/hardware/audio/alsa_adapter/src/alsa_lib_common.c
+ D oneplus_fajita/hardware/audio/alsa_adapter/src/alsa_lib_render.c
+ D oneplus_fajita/hardware/bluetooth/BUILD.gn
+ D oneplus_fajita/hardware/bluetooth/bt_vendor/include/bt_hci_bdroid.h
+ D oneplus_fajita/hardware/bluetooth/bt_vendor/include/bt_vendor_qcom.h
+ D oneplus_fajita/hardware/bluetooth/bt_vendor/include/esco_parameters.h
+ D oneplus_fajita/hardware/bluetooth/bt_vendor/include/hci_uart.h
+ D oneplus_fajita/hardware/bluetooth/bt_vendor/include/uipc_msg.h
+ D oneplus_fajita/hardware/bluetooth/bt_vendor/include/upio.h
+ D oneplus_fajita/hardware/bluetooth/bt_vendor/include/userial.h
+ D oneplus_fajita/hardware/bluetooth/bt_vendor/include/utils/Log.h
+ D oneplus_fajita/hardware/bluetooth/bt_vendor/src/bt_vendor_qcom.c
+ D oneplus_fajita/hardware/bluetooth/bt_vendor/src/hardware.c
+ D oneplus_fajita/hardware/bluetooth/bt_vendor/src/hci_uart.c
+ D oneplus_fajita/hardware/bluetooth/bt_vendor/src/upio.c
+ D oneplus_fajita/hardware/bluetooth/services/cutils/socket_local_client_unix.cpp
+ D oneplus_fajita/hardware/bluetooth/services/cutils/socket_local_server_unix.cpp
+ D oneplus_fajita/hardware/bluetooth/services/cutils/socket_local_unix.h
+ D oneplus_fajita/hardware/bluetooth/services/cutils/socket_network_client_unix.cpp
+ D oneplus_fajita/hardware/bluetooth/services/cutils/sockets.cpp
+ D oneplus_fajita/hardware/bluetooth/services/cutils/sockets.h
+ D oneplus_fajita/hardware/bluetooth/services/cutils/sockets_unix.cpp
+ D oneplus_fajita/hardware/bluetooth/services/etc/bluetooth_hci.cfg
+ D oneplus_fajita/hardware/bluetooth/services/init/bluetooth_hci_service.cpp
+ D oneplus_fajita/hardware/camera/BUILD.gn
+ D oneplus_fajita/hardware/camera/demo/include/project_camera_demo.h
+ D oneplus_fajita/hardware/camera/device_manager/BUILD.gn
+ D oneplus_fajita/hardware/camera/device_manager/include/imx219.h
+ D oneplus_fajita/hardware/camera/device_manager/include/project_hardware.h
+ D oneplus_fajita/hardware/camera/device_manager/src/imx219.cpp
+ D oneplus_fajita/hardware/camera/driver_adapter/BUILD.gn
+ D oneplus_fajita/hardware/camera/driver_adapter/include/v4l2_buffer.h
+ D oneplus_fajita/hardware/camera/driver_adapter/include/v4l2_common.h
+ D oneplus_fajita/hardware/camera/driver_adapter/include/v4l2_control.h
+ D oneplus_fajita/hardware/camera/driver_adapter/include/v4l2_dev.h
+ D oneplus_fajita/hardware/camera/driver_adapter/include/v4l2_fileformat.h
+ D oneplus_fajita/hardware/camera/driver_adapter/include/v4l2_stream.h
+ D oneplus_fajita/hardware/camera/driver_adapter/include/v4l2_temp.h
+ D oneplus_fajita/hardware/camera/driver_adapter/include/v4l2_uvc.h
+ D oneplus_fajita/hardware/camera/driver_adapter/src/v4l2_buffer.cpp
+ D oneplus_fajita/hardware/camera/driver_adapter/src/v4l2_control.cpp
+ D oneplus_fajita/hardware/camera/driver_adapter/src/v4l2_dev.cpp
+ D oneplus_fajita/hardware/camera/driver_adapter/src/v4l2_fileformat.cpp
+ D oneplus_fajita/hardware/camera/driver_adapter/src/v4l2_stream.cpp
+ D oneplus_fajita/hardware/camera/driver_adapter/src/v4l2_uvc.cpp
+ D oneplus_fajita/hardware/camera/driver_adapter/test/BUILD.gn
+ D oneplus_fajita/hardware/camera/driver_adapter/test/unittest/include/utest_v4l2.h
+ D oneplus_fajita/hardware/camera/driver_adapter/test/unittest/utest_v4l2.cpp
+ D oneplus_fajita/hardware/camera/driver_adapter/test/v4l2_test/BUILD.gn
+ D oneplus_fajita/hardware/camera/driver_adapter/test/v4l2_test/project_v4l2_main.h
+ D oneplus_fajita/hardware/camera/driver_adapter/test/v4l2_test/v4l2_main.cpp
+ D oneplus_fajita/hardware/camera/pipeline_core/BUILD.gn
+ D oneplus_fajita/hardware/camera/pipeline_core/src/ipp_algo_example/ipp_algo_example.c
+ D oneplus_fajita/hardware/camera/pipeline_core/src/node/aml_codec_node.cpp
+ D oneplus_fajita/hardware/camera/pipeline_core/src/node/aml_codec_node.h
+ D oneplus_fajita/kernel/BUILD.gn
+ D oneplus_fajita/kernel/boot/boot.debug.img
+ D oneplus_fajita/kernel/boot/boot.img
+ D oneplus_fajita/kernel/boot/bootimg.cfg
+ D oneplus_fajita/kernel/boot/bootimg.cfg.debug
+ D oneplus_fajita/kernel/build/BUILD.gn
+ D oneplus_fajita/kernel/build/build_kernel.sh
+ D oneplus_fajita/kernel/build/kernel.mk
+ D oneplus_fajita/kernel/build/patch_hdf.sh
+ D oneplus_fajita/kernel/build/rebuild_kernel.sh
+ D oneplus_fajita/kernel/build/rekernel.mk
+ D oneplus_fajita/kernel/config/oneplus_fajita_standard_defconfig
+ D oneplus_fajita/kernel/config/oneplus_fajita_standard_defconfig.debug
+ D oneplus_fajita/kernel/drivers/Kconfig
+ D oneplus_fajita/kernel/drivers/LICENSE
+ D oneplus_fajita/kernel/drivers/Makefile
+ D oneplus_fajita/kernel/drivers/battery/Kconfig
+ D oneplus_fajita/kernel/drivers/battery/Makefile
+ D oneplus_fajita/kernel/drivers/battery/battery.c
+ D oneplus_fajita/kernel/drivers/bluetooth/Kconfig
+ D oneplus_fajita/kernel/drivers/bluetooth/Makefile
+ D oneplus_fajita/kernel/drivers/bluetooth/bt_device.c
+ D oneplus_fajita/kernel/drivers/input/rmi4/rmi_driver.c
+ D oneplus_fajita/kernel/drivers/input/rmi4/rmi_driver.h
+ D oneplus_fajita/kernel/drivers/panel/Kconfig
+ D oneplus_fajita/kernel/drivers/panel/Makefile
+ D oneplus_fajita/kernel/drivers/panel/panel-chipone-icn6211.c
+ D oneplus_fajita/kernel/drivers/wifi/Kconfig
+ D oneplus_fajita/kernel/drivers/wifi/Makefile
+ D oneplus_fajita/kernel/drivers/wifi/dhd_static_buf.c
+ D oneplus_fajita/kernel/drivers/wifi/dhd_static_buf.h
+ D oneplus_fajita/kernel/drivers/wifi/wifi_dt.c
+ D oneplus_fajita/kernel/drivers/wifi/wifi_dt.h
+ D oneplus_fajita/kernel/hdf/audio/codec/soc_codec/sdm845_codec_adapter.c
+ D oneplus_fajita/kernel/hdf/audio/codec/soc_codec/sdm845_codec_ops.c
+ D oneplus_fajita/kernel/hdf/audio/codec/soc_codec/sdm845_codec_ops.h
+ D oneplus_fajita/kernel/hdf/audio/dai/sdm845_dai_adapter.c
+ D oneplus_fajita/kernel/hdf/audio/dai/sdm845_dai_ops.c
+ D oneplus_fajita/kernel/hdf/audio/dai/sdm845_dai_ops.h
+ D oneplus_fajita/kernel/hdf/audio/dsp/sdm845_dsp_adapter.c
+ D oneplus_fajita/kernel/hdf/audio/dsp/sdm845_dsp_ops.c
+ D oneplus_fajita/kernel/hdf/audio/dsp/sdm845_dsp_ops.h
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/include/axg_common.h
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/include/axg_fifo.h
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/include/axg_snd_card.h
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/include/axg_tdm_interface.h
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/include/g12a_toacodec.h
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/include/g12a_tohdmitx.h
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/include/meson_t9015.h
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/include/nau8540.h
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/src/axg_fifo.c
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/src/axg_fifo_drv.c
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/src/axg_snd_card.c
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/src/axg_tdm.h
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/src/axg_tdm_formatter.c
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/src/axg_tdm_formatter.h
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/src/axg_tdm_interface.c
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/src/axg_tdmin.c
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/src/axg_tdmout.c
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/src/g12a_toacodec.c
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/src/g12a_tohdmitx.c
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/src/meson_t9015.c
+ D oneplus_fajita/kernel/hdf/audio/linux_drv/src/nau8540.c
+ D oneplus_fajita/kernel/hdf/audio/soc/sdm845_dma_adapter.c
+ D oneplus_fajita/kernel/hdf/audio/soc/sdm845_dma_ops.c
+ D oneplus_fajita/kernel/hdf/audio/soc/sdm845_dma_ops.h
+ D oneplus_fajita/modules/BUILD.gn
+ D oneplus_fajita/modules/modules_path.gni
+ D oneplus_fajita/ohos.build
+ D oneplus_fajita/resource/BUILD.gn
+ D oneplus_fajita/resource/hap/Browser.hap
+ D oneplus_fajita/resource/hap/DistributedScreen.hap
+ D oneplus_fajita/resource/hap/FileManager.hap
+ D oneplus_fajita/resource/hap/Hap.md
+ D oneplus_fajita/resource/hap/HwWeather.hap
+ D oneplus_fajita/resource/hap/Launcher.bat
+ D oneplus_fajita/resource/hap/Launcher.hap
+ D oneplus_fajita/resource/hap/Launcher_Settings.hap
+ D oneplus_fajita/resource/hap/Light.hap
+ D oneplus_fajita/resource/hap/OneKeyLock.hap
+ D oneplus_fajita/resource/hap/PDF.hap
+ D oneplus_fajita/resource/hap/PowerMGT.hap
+ D oneplus_fajita/resource/hap/Recorder.hap
+ D oneplus_fajita/resource/hap/Settings.hap
+ D oneplus_fajita/resource/hap/SystemUI/SystemUI-DropdownPanel.hap
+ D oneplus_fajita/resource/hap/SystemUI/SystemUI-NavigationBar.hap
+ D oneplus_fajita/resource/hap/SystemUI/SystemUI-NotificationManagement.hap
+ D oneplus_fajita/resource/hap/SystemUI/SystemUI-ScreenLock.hap
+ D oneplus_fajita/resource/hap/SystemUI/SystemUI-StatusBar.hap
+ D oneplus_fajita/resource/hap/SystemUI/SystemUI-SystemDialog.hap
+ D oneplus_fajita/resource/hap/SystemUI/SystemUI-VolumePanel.hap
+ D oneplus_fajita/resource/hap/SystemUI/SystemUI.hap
+ D oneplus_fajita/resource/hap/cn.lalawangluo.clockhm.hap
+ D oneplus_fajita/resource/hap/com.kugou.hmmusic.hap
+ D oneplus_fajita/resource/hap/kikaInput.hap
+ D oneplus_fajita/resource/manifest/OpenHarmony-6.0-Release.xml
+ D oneplus_fajita/resource/manifest/README.md
+ D oneplus_fajita/resource/manifest/figures/V1.png
+ D oneplus_fajita/resource/patch/graphic_2d.patch
+ D oneplus_fajita/resource/tools/bin/bash
+ D oneplus_fajita/resource/tools/bin/busybox
+ D oneplus_fajita/resource/tools/bin/modetest
+ D oneplus_fajita/updater/BUILD.gn
+ D oneplus_fajita/updater/fstab.updater
+ D oneplus_fajita/updater/init.cfg
+ D oneplus_fajita/updater/init.usb.cfg
+ D oneplus_fajita/updater/init.usb.configfs.cfg
+ D oneplus_fajita/updater/signing_cert.crt
+ D oneplus_fajita/updater/updater_ramdisk_resource_config.ini
+?? xiaomi_sagit/
+### device/board/revoview
+### device/board/bearkey
+### interface/sdk_cangjie
+### interface/sdk_c
+### interface/sdk-js
+### domains/advertising/advertising
+### domains/advertising/oaid
+### domains/game/game_controller_framework
+### build
+ M compile_standard_whitelist.json
+ M templates/common/check_build_target.py
+### arkcompiler/ets_frontend
+ D ets2panda/bindings/package-lock.json
+ M ets2panda/linter/package-lock.json
+ M legacy_bin/api8/package-lock.json
+?? legacy_bin/api8/node_modules/
+### arkcompiler/runtime_core
+ M static_core/plugins/ets/stdlib/stdconfig.json
+### arkcompiler/jsvm
+### arkcompiler/toolchain
+### arkcompiler/cangjie_ark_interop
+### arkcompiler/ets_runtime
+ M ecmascript/compiler/codegen/maple/maple_util/include/mpl_logging.h
+ M ecmascript/compiler/codegen/maple/maple_util/include/namemangler.h
+ M ecmascript/compiler/codegen/maple/maple_util/include/utils.h
+### napi_generator
+### applications/sample/camera
+### applications/sample/wifi-iot
+### applications/standard/launcher
+### applications/standard/contacts
+### applications/standard/dlp_manager
+ M hvigorw
+?? oh-package-lock.json5
+### applications/standard/camera
+### applications/standard/call
+### applications/standard/notes
+### applications/standard/security_privacy_center
+### applications/standard/calendardata
+### applications/standard/systemui
+### applications/standard/window_scene_board
+### applications/standard/permission_manager
+ M hvigorw
+ M oh-package-lock.json5
+### applications/standard/user_certificate_manager
+?? .hvigor/
+?? build/
+?? local.properties
+?? oh-package-lock.json5
+?? oh_modules/
+### applications/standard/theme
+### applications/standard/admin_provisioning
+### applications/standard/hap
+### applications/standard/filepicker
+### applications/standard/screenshot
+### applications/standard/printspooler
+### applications/standard/contacts_data
+ M hvigorw
+### applications/standard/settings_data
+### applications/standard/app_samples
+M  code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/resources/rawfile/allAux.jpg
+M  code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/resources/rawfile/test.gif
+### applications/standard/mms
+### applications/standard/auth_widget
+### applications/standard/applications_cangjie_wrapper
+### applications/standard/settings
+### applications/standard/photos
+### applications/standard/screenlock
+### test/xts/device_attest_lite
+### test/xts/tools
+### test/xts/device_attest
+### test/xts/hats
+### test/xts/dcts
+### test/xts/acts
+M  multimedia/audio/audio_js_standard/AudioCapturer/entry/src/main/resources/rawfile/pcm_48ksr_32kbr_2ch.wav
+M  multimedia/audio/audio_js_standard/AudioCapturer/entry/src/ohosTest/resources/rawfile/pcm_48ksr_32kbr_2ch.wav
+M  multimedia/image/image_ets_standard/imageGetMimeType/entry/src/main/resources/rawfile/wrong_suffix_dng.jpg
+M  multimedia/image/image_ets_standard/imageXts/entry/src/main/resources/rawfile/AllAuxiliaryPictures.jpg
+M  multimedia/image/image_ets_standard/imageXts/entry/src/main/resources/rawfile/CUVAHdrMulti.jpg
+M  multimedia/image/image_js_standard/imagePackToFile/entry/src/ohosTest/resources/rawfile/test.png
+M  multimedia/image/image_js_standard/imagePackToFileStatic/entry/src/main/resources/rawfile/test.png
+M  multimedia/image/image_js_standard/imagePacking/entry/src/ohosTest/resources/rawfile/test.png
+M  multimedia/image/image_js_standard/imagePackingNDK/AppScope/resources/rawfile/test.png
+M  multimedia/image/image_js_standard/imagePackingNDK/entry/src/ohosTest/resources/rawfile/test.png
+M  multimedia/image/image_js_standard/imagePackingStatic/entry/src/main/resources/rawfile/test.png
+M  multimedia/photoAccess/photoAccess_ets_standard/photoAccessXts/entry/src/main/resources/rawfile/CUVAHdrMulti.jpg
+### test/ostest/wukong
+### test/testfwk/arkxtest
+### test/testfwk/developer_test
+### test/testfwk/testfwk_cangjie_wrapper
+### test/testfwk/xdevice
+### foundation/multimodalinput/input
+### foundation/barrierfree/accessibility
+### foundation/window/window_manager_lite
+### foundation/window/window_manager
+ M interfaces/kits/napi/environmental/package.json
+?? interfaces/kits/napi/environmental/package-lock.json
+### foundation/window/window_cangjie_wrapper
+### foundation/filemanagement/file_api
+### foundation/filemanagement/filemanagement_cangjie_wrapper
+### foundation/filemanagement/dfs_service
+### foundation/filemanagement/app_file_service
+### foundation/filemanagement/storage_service
+### foundation/filemanagement/user_file_service
+### foundation/communication/netstack
+### foundation/communication/nfc
+### foundation/communication/dsoftbus
+### foundation/communication/iot_connect
+### foundation/communication/wifi_lite
+### foundation/communication/netmanager_base
+### foundation/communication/dhcp
+### foundation/communication/communication_cangjie_wrapper
+### foundation/communication/bluetooth
+### foundation/communication/netmanager_cangjie_wrapper
+### foundation/communication/wifi_aware
+### foundation/communication/bluetooth_service
+### foundation/communication/netmanager_ext
+### foundation/communication/connectivity_cangjie_wrapper
+### foundation/communication/connected_nfc_tag
+### foundation/communication/t2stack
+### foundation/communication/wifi
+ M wifi/application/portal_login/hvigorw
+### foundation/communication/ipc
+### foundation/communication/fusion_connectivity
+### foundation/resourceschedule/work_scheduler
+### foundation/resourceschedule/memmgr
+### foundation/resourceschedule/device_standby
+### foundation/resourceschedule/resource_schedule_service
+### foundation/resourceschedule/qos_manager
+### foundation/resourceschedule/frame_aware_sched
+### foundation/resourceschedule/device_usage_statistics
+### foundation/resourceschedule/ffrt
+### foundation/resourceschedule/soc_perf
+### foundation/resourceschedule/background_task_mgr
+### foundation/CastEngine/castengine_cast_plus_stream
+### foundation/CastEngine/castengine_cast_framework
+### foundation/CastEngine/castengine_wifi_display
+### foundation/graphic/graphics_effect
+### foundation/graphic/graphic_3d
+### foundation/graphic/surface_lite
+### foundation/graphic/graphic_surface
+### foundation/graphic/graphic_cangjie_wrapper
+### foundation/graphic/graphic_utils_lite
+### foundation/graphic/graphic_2d
+### foundation/multimedia/image_effect
+### foundation/multimedia/ringtone_library
+### foundation/multimedia/midi_framework
+### foundation/multimedia/av_codec
+M  test/moduletest/resources/video_decoder/test_msvideo1.msvideo1
+M  test/unittest/resources/demuxer_res/aigc_str.m4v
+M  test/unittest/resources/demuxer_res/h264_fmp4.m4v
+M  test/unittest/resources/video_res/profile0_128x96.h263
+M  test/unittest/resources/video_res/profile0_1408x1152.h263
+M  test/unittest/resources/video_res/profile0_176x144.h263
+M  test/unittest/resources/video_res/profile0_352x288.h263
+M  test/unittest/resources/video_res/profile0_704x576.h263
+M  test/unittest/resources/video_res/profile2_04x04.h263
+M  test/unittest/resources/video_res/profile2_1280x720.h263
+M  test/unittest/resources/video_res/profile2_1920x1080.h263
+M  test/unittest/resources/video_res/profile2_2048x1152.h263
+M  test/unittest/resources/video_res/profile2_20x20.h263
+M  test/unittest/resources/video_res/profile2_480p_720p_1080p.h263
+M  test/unittest/resources/video_res/profile2_480x720.h263
+M  test/unittest/resources/video_res/profile2_720x480.h263
+M  test/unittest/resources/video_res/profile2_720x480_par10_11.h263
+M  test/unittest/resources/video_res/profile2_720x480_par16_11.h263
+M  test/unittest/resources/video_res/profile2_720x480_par23_31.h263
+M  test/unittest/resources/video_res/profile2_720x480_par31_23.h263
+M  test/unittest/resources/video_res/profile2_720x480_par40_33.h263
+M  test/unittest/resources/video_res/test_msvideo1_001.msvideo1
+### foundation/multimedia/video_processing_engine
+### foundation/multimedia/audio_lite
+### foundation/multimedia/multimedia_cangjie_wrapper
+### foundation/multimedia/media_utils_lite
+### foundation/multimedia/media_lite
+### foundation/multimedia/drm_framework
+### foundation/multimedia/media_library
+### foundation/multimedia/player_framework
+### foundation/multimedia/media_foundation
+### foundation/multimedia/av_session
+### foundation/multimedia/camera_framework
+### foundation/multimedia/camera_lite
+### foundation/multimedia/audio_framework
+### foundation/multimedia/image_framework
+M  test/resource/image/images/test_rfdatab_depthen.jpg
+M  test/resource/image/images/test_rfdatab_depthp.jpg
+M  test/resource/image/images/test_rfdatab_rfdatab.jpg
+### foundation/ai/neural_network_runtime
+### foundation/ai/ai_engine
+### foundation/ai/intelligent_voice_framework
+### foundation/distributedhardware/distributed_audio
+### foundation/distributedhardware/mechbody_controller
+### foundation/distributedhardware/distributed_hardware_fwk
+?? application/oh-package-lock.json5
+### foundation/distributedhardware/device_manager
+### foundation/distributedhardware/distributed_input
+### foundation/distributedhardware/distributed_screen
+### foundation/distributedhardware/distributed_camera
+### foundation/bundlemanager/app_domain_verify
+### foundation/bundlemanager/bundlemanager_cangjie_wrapper
+### foundation/bundlemanager/ecological_rule_manager
+### foundation/bundlemanager/bundle_framework
+### foundation/bundlemanager/bundle_tool
+### foundation/bundlemanager/bundle_framework_lite
+### foundation/bundlemanager/distributed_bundle_framework
+### foundation/deviceprofile/device_info_manager
+### foundation/distributeddatamgr/distributedfile
+### foundation/distributeddatamgr/pasteboard
+### foundation/distributeddatamgr/datamgr_service
+### foundation/distributeddatamgr/data_share
+### foundation/distributeddatamgr/distributeddatamgr_cangjie_wrapper
+### foundation/distributeddatamgr/data_object
+### foundation/distributeddatamgr/udmf
+### foundation/distributeddatamgr/relational_store
+### foundation/distributeddatamgr/preferences
+### foundation/distributeddatamgr/kv_store
+### foundation/ability/ability_lite
+### foundation/ability/dmsfwk_lite
+### foundation/ability/ability_cangjie_wrapper
+### foundation/ability/dmsfwk
+### foundation/ability/form_fwk
+### foundation/ability/ability_base
+### foundation/ability/idl_tool
+### foundation/ability/ability_runtime
+ M services/dialog_ui/ams_system_dialog/hvigorw
+?? services/dialog_ui/ams_system_dialog/.hvigor/
+?? services/dialog_ui/ams_system_dialog/build/
+?? services/dialog_ui/ams_system_dialog/entry/build/
+?? services/dialog_ui/ams_system_dialog/feature/build/
+?? services/dialog_ui/ams_system_dialog/local.properties
+### foundation/systemabilitymgr/selectionfwk
+### foundation/systemabilitymgr/safwk
+### foundation/systemabilitymgr/safwk_lite
+### foundation/systemabilitymgr/samgr
+### foundation/systemabilitymgr/samgr_lite
+### foundation/arkui/arkui_cangjie_wrapper
+### foundation/arkui/ace_engine
+### foundation/arkui/napi
+### foundation/arkui/ui_lite
+### foundation/arkui/ace_engine_lite
+### foundation/arkui/advanced_ui_component
+### foundation/arkui/ui_appearance
+### kernel/linux/linux-6.6
+### kernel/linux/linux-5.10
+### kernel/linux/common_modules
+### kernel/linux/config
+### kernel/linux/build
+### kernel/linux/patches
+### kernel/liteos_m
+### kernel/liteos_a
+### kernel/uniproton
+### vendor/hihope
+### vendor/ohemu
+### vendor/hisilicon
+### vendor/qualcomm
+ D LICENSE
+ D README.en.md
+ D README.md
+ D oneplus_fajita/audio/BUILD.gn
+ D oneplus_fajita/audio/audio_policy_config.xml
+ D oneplus_fajita/config.json
+ D oneplus_fajita/hals/audio/BUILD.gn
+ D oneplus_fajita/hals/audio/alsa.conf
+ D oneplus_fajita/hals/audio/alsa_adapter.json
+ D oneplus_fajita/hals/audio/alsa_paths.json
+ D oneplus_fajita/hals/audio/audio_adapter.json
+ D oneplus_fajita/hals/audio/audio_effect.json
+ D oneplus_fajita/hals/audio/audio_paths.json
+ D oneplus_fajita/hals/audio/config/audio_policy_config.xml
+ D oneplus_fajita/hals/audio/config/audio_policy_config_new.xml
+ D oneplus_fajita/hals/audio/product.gni
+ D oneplus_fajita/hals/wlan/product.gni
+ D oneplus_fajita/hdf_config/khdf/Makefile
+ D oneplus_fajita/hdf_config/khdf/audio/analog_headset_config.hcs
+ D oneplus_fajita/hdf_config/khdf/audio/audio_config.hcs
+ D oneplus_fajita/hdf_config/khdf/audio/codec_config.hcs
+ D oneplus_fajita/hdf_config/khdf/audio/dai_config.hcs
+ D oneplus_fajita/hdf_config/khdf/audio/dma_config.hcs
+ D oneplus_fajita/hdf_config/khdf/audio/dsp_config.hcs
+ D oneplus_fajita/hdf_config/khdf/device_info/device_info.hcs
+ D oneplus_fajita/hdf_config/khdf/hdf.hcs
+ D oneplus_fajita/hdf_config/khdf/hdf_hcs.hcb
+ D oneplus_fajita/hdf_config/khdf/hdf_test/Makefile
+ D oneplus_fajita/hdf_config/khdf/hdf_test/emmc_test_config.hcs
+ D oneplus_fajita/hdf_config/khdf/hdf_test/gpio_test_config.hcs
+ D oneplus_fajita/hdf_config/khdf/hdf_test/hdf.hcs
+ D oneplus_fajita/hdf_config/khdf/hdf_test/hdf_config_test.hcs
+ D oneplus_fajita/hdf_config/khdf/hdf_test/hdf_test_manager/device_info.hcs
+ D oneplus_fajita/hdf_config/khdf/hdf_test/i2c_test_config.hcs
+ D oneplus_fajita/hdf_config/khdf/hdf_test/pwm_test_config.hcs
+ D oneplus_fajita/hdf_config/khdf/hdf_test/sdio_test_config.hcs
+ D oneplus_fajita/hdf_config/khdf/hdf_test/spi_test_config.hcs
+ D oneplus_fajita/hdf_config/khdf/hdf_test/uart_test_config.hcs
+ D oneplus_fajita/hdf_config/khdf/input/input_config.hcs
+ D oneplus_fajita/hdf_config/khdf/lcd/lcd_config.hcs
+ D oneplus_fajita/hdf_config/khdf/light/light_config.hcs
+ D oneplus_fajita/hdf_config/khdf/platform/emmc_config.hcs
+ D oneplus_fajita/hdf_config/khdf/platform/i2c_config.hcs
+ D oneplus_fajita/hdf_config/khdf/platform/led_config_linux.hcs
+ D oneplus_fajita/hdf_config/khdf/platform/pwm_config.hcs
+ D oneplus_fajita/hdf_config/khdf/platform/sdio_config.hcs
+ D oneplus_fajita/hdf_config/khdf/platform/spi_config.hcs
+ D oneplus_fajita/hdf_config/khdf/platform/uart_config.hcs
+ D oneplus_fajita/hdf_config/khdf/platform/watchdog_config.hcs
+ D oneplus_fajita/hdf_config/khdf/sensor/accel/bmi160_config.hcs
+ D oneplus_fajita/hdf_config/khdf/sensor/accel/mxc6655xa_config.hcs
+ D oneplus_fajita/hdf_config/khdf/sensor/als/bh1745_config.hcs
+ D oneplus_fajita/hdf_config/khdf/sensor/magnetic/magnetic_lsm303_config.hcs
+ D oneplus_fajita/hdf_config/khdf/sensor/proximity/proximity_apds9960_config.hcs
+ D oneplus_fajita/hdf_config/khdf/sensor/sensor_common.hcs
+ D oneplus_fajita/hdf_config/khdf/sensor/sensor_config.hcs
+ D oneplus_fajita/hdf_config/khdf/vibrator/drv2605l_linear_vibrator_config.hcs
+ D oneplus_fajita/hdf_config/khdf/vibrator/linear_vibrator_config.hcs
+ D oneplus_fajita/hdf_config/khdf/vibrator/vibrator_config.hcs
+ D oneplus_fajita/hdf_config/khdf/wifi/wlan_chip_rtl8822cs.hcs
+ D oneplus_fajita/hdf_config/khdf/wifi/wlan_platform.hcs
+ D oneplus_fajita/hdf_config/uhdf/BUILD.gn
+ D oneplus_fajita/hdf_config/uhdf/camera/hdi_impl/camera_host_config.hcs
+ D oneplus_fajita/hdf_config/uhdf/camera/pipeline_core/config.hcs
+ D oneplus_fajita/hdf_config/uhdf/camera/pipeline_core/ipp_algo_config.hcs
+ D oneplus_fajita/hdf_config/uhdf/camera/pipeline_core/params.hcs
+ D oneplus_fajita/hdf_config/uhdf/device_info.hcs
+ D oneplus_fajita/hdf_config/uhdf/hdf.hcs
+ D oneplus_fajita/hdf_config/uhdf/hdf_peripheral.cfg
+ D oneplus_fajita/hdf_config/uhdf/media_codec/codec_adapter_capabilities.hcs
+ D oneplus_fajita/hdf_config/uhdf/media_codec/codec_component_capabilities.hcs
+ D oneplus_fajita/hdf_config/uhdf/media_codec/codec_hdi1.0_capabilities.hcs
+ D oneplus_fajita/hdf_config/uhdf/media_codec/image_codec_capabilities.hcs
+ D oneplus_fajita/hdf_config/uhdf/media_codec/media_codec_capabilities.hcs
+ D oneplus_fajita/hdf_config/uhdf/usb_ecm_acm.hcs
+ D oneplus_fajita/hdf_config/uhdf/usb_pnp_device.hcs
+ D oneplus_fajita/ohos.build
+ D oneplus_fajita/power_config/BUILD.gn
+ D oneplus_fajita/power_config/power_mode_config.xml
+ D oneplus_fajita/power_config/power_suspend.json
+ D oneplus_fajita/power_config/power_wakeup.json
+ D oneplus_fajita/product.gni
+ D oneplus_fajita/resourceschedule/BUILD.gn
+ D oneplus_fajita/resourceschedule/cgroup_sched/cgroup_action_config.json
+ D oneplus_fajita/resourceschedule/ressched/res_sched_config.xml
+ D oneplus_fajita/resourceschedule/ressched/res_sched_plugin_switch.xml
+ D oneplus_fajita/resourceschedule/soc_perf/socperf_boost_config.xml
+ D oneplus_fajita/resourceschedule/soc_perf/socperf_resource_config.xml
+ D oneplus_fajita/sample/BUILD.gn
+ D oneplus_fajita/sample/glmark2/BUILD.gn
+ D oneplus_fajita/sample/glmark2/data/models/asteroid-high.3ds
+ D oneplus_fajita/sample/glmark2/data/models/asteroid-low.3ds
+ D oneplus_fajita/sample/glmark2/data/models/bunny.obj
+ D oneplus_fajita/sample/glmark2/data/models/cat.3ds
+ D oneplus_fajita/sample/glmark2/data/models/cube.3ds
+ D oneplus_fajita/sample/glmark2/data/models/horse.3ds
+ D oneplus_fajita/sample/glmark2/data/models/jellyfish.jobj
+ D oneplus_fajita/sample/glmark2/data/shaders/README.shaders
+ D oneplus_fajita/sample/glmark2/data/shaders/buffer-wireframe.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/buffer-wireframe.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/bump-height.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/bump-height.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/bump-normals-tangent.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/bump-normals-tangent.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/bump-normals.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/bump-normals.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/bump-poly.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/bump-poly.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/conditionals-step-conditional.all
+ D oneplus_fajita/sample/glmark2/data/shaders/conditionals-step-simple.all
+ D oneplus_fajita/sample/glmark2/data/shaders/conditionals.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/conditionals.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/depth.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/depth.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/desktop-blur.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/desktop.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/desktop.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/effect-2d-convolution.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/effect-2d.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/function-call.all
+ D oneplus_fajita/sample/glmark2/data/shaders/function-step-low.all
+ D oneplus_fajita/sample/glmark2/data/shaders/function-step-medium.all
+ D oneplus_fajita/sample/glmark2/data/shaders/function.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/function.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/gradient.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/gradient.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-lamp-lit.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-lamp-lit.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-lamp-unlit.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-lamp-unlit.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-logo-flat.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-logo-flat.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-logo-shadow.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-logo-shadow.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-logo.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-logo.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-paper.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-paper.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-table.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-table.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-text.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-text.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-under-table.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/ideas-under-table.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/jellyfish.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/jellyfish.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/light-advanced.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/light-advanced.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/light-basic-tex-bilinear.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/light-basic-tex.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/light-basic-texgen.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/light-basic.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/light-basic.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/light-cel.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/light-phong.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/light-phong.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/light-refract.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/light-refract.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/loop-step-loop.all
+ D oneplus_fajita/sample/glmark2/data/shaders/loop-step-simple.all
+ D oneplus_fajita/sample/glmark2/data/shaders/loop.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/loop.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/pulsar-light.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/pulsar.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/shadow.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/shadow.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/terrain-blur.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/terrain-luminance.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/terrain-noise.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/terrain-normalmap.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/terrain-overlay.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/terrain-texture.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/terrain.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/terrain.vert
+ D oneplus_fajita/sample/glmark2/data/shaders/text-renderer.frag
+ D oneplus_fajita/sample/glmark2/data/shaders/text-renderer.vert
+ D oneplus_fajita/sample/glmark2/data/textures/asteroid-height-map.png
+ D oneplus_fajita/sample/glmark2/data/textures/asteroid-normal-map-tangent.png
+ D oneplus_fajita/sample/glmark2/data/textures/asteroid-normal-map.png
+ D oneplus_fajita/sample/glmark2/data/textures/crate-base.png
+ D oneplus_fajita/sample/glmark2/data/textures/desktop-shadow-corner.png
+ D oneplus_fajita/sample/glmark2/data/textures/desktop-shadow.png
+ D oneplus_fajita/sample/glmark2/data/textures/desktop-window.png
+ D oneplus_fajita/sample/glmark2/data/textures/effect-2d.png
+ D oneplus_fajita/sample/glmark2/data/textures/glyph-atlas.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-01.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-02.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-03.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-04.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-05.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-06.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-07.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-08.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-09.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-10.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-11.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-12.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-13.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-14.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-15.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-16.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-17.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-18.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-19.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-20.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-21.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-22.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-23.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-24.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-25.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-26.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-27.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-28.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-29.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-30.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-31.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish-caustics-32.png
+ D oneplus_fajita/sample/glmark2/data/textures/jellyfish256.png
+ D oneplus_fajita/sample/glmark2/data/textures/nasa1.png
+ D oneplus_fajita/sample/glmark2/data/textures/nasa2.png
+ D oneplus_fajita/sample/glmark2/data/textures/nasa3.png
+ D oneplus_fajita/sample/glmark2/data/textures/terrain-backgrounddetailed6.jpg
+ D oneplus_fajita/sample/glmark2/data/textures/terrain-grasslight-512-nm.jpg
+ D oneplus_fajita/sample/glmark2/data/textures/terrain-grasslight-512.jpg
+ D oneplus_fajita/sample/glmark2/glmark2-es2-ohos
+ D oneplus_fajita/sample/napi/BUILD.gn
+ D oneplus_fajita/sample/napi/led_napi/@ohos.led_napi.d.ts
+ D oneplus_fajita/sample/napi/led_napi/BUILD.gn
+ D oneplus_fajita/sample/napi/led_napi/led_napi.cpp
+ D oneplus_fajita/sample/native_window/BUILD.gn
+ D oneplus_fajita/sample/native_window/Makefile
+ D oneplus_fajita/sample/native_window/include/native_window_wrapper.h
+ D oneplus_fajita/sample/native_window/main.cpp
+ D oneplus_fajita/sample/native_window/ohos_native_window
+ D oneplus_fajita/sample/native_window/src/canvas-generic.cpp
+ D oneplus_fajita/sample/native_window/src/canvas-generic.h
+ D oneplus_fajita/sample/native_window/src/canvas.h
+ D oneplus_fajita/sample/native_window/src/gl-headers.cpp
+ D oneplus_fajita/sample/native_window/src/gl-headers.h
+ D oneplus_fajita/sample/native_window/src/gl-state-egl.cpp
+ D oneplus_fajita/sample/native_window/src/gl-state-egl.h
+ D oneplus_fajita/sample/native_window/src/gl-state.h
+ D oneplus_fajita/sample/native_window/src/gl-visual-config.cpp
+ D oneplus_fajita/sample/native_window/src/gl-visual-config.h
+ D oneplus_fajita/sample/native_window/src/glad/README.md
+ D oneplus_fajita/sample/native_window/src/glad/include/EGL/eglplatform.h
+ D oneplus_fajita/sample/native_window/src/glad/include/KHR/khrplatform.h
+ D oneplus_fajita/sample/native_window/src/glad/include/glad/egl.h
+ D oneplus_fajita/sample/native_window/src/glad/include/glad/gl.h
+ D oneplus_fajita/sample/native_window/src/glad/include/glad/gles2.h
+ D oneplus_fajita/sample/native_window/src/glad/include/glad/glx.h
+ D oneplus_fajita/sample/native_window/src/glad/include/glad/wgl.h
+ D oneplus_fajita/sample/native_window/src/glad/src/egl.c
+ D oneplus_fajita/sample/native_window/src/glad/src/gles2.c
+ D oneplus_fajita/sample/native_window/src/include/dirent.h
+ D oneplus_fajita/sample/native_window/src/include/getopt.h
+ D oneplus_fajita/sample/native_window/src/include/sys/time.h
+ D oneplus_fajita/sample/native_window/src/libmatrix/COPYING
+ D oneplus_fajita/sample/native_window/src/libmatrix/Makefile
+ D oneplus_fajita/sample/native_window/src/libmatrix/README
+ D oneplus_fajita/sample/native_window/src/libmatrix/gl-if.h
+ D oneplus_fajita/sample/native_window/src/libmatrix/log.cc
+ D oneplus_fajita/sample/native_window/src/libmatrix/log.h
+ D oneplus_fajita/sample/native_window/src/libmatrix/mat.cc
+ D oneplus_fajita/sample/native_window/src/libmatrix/mat.h
+ D oneplus_fajita/sample/native_window/src/libmatrix/program.cc
+ D oneplus_fajita/sample/native_window/src/libmatrix/program.h
+ D oneplus_fajita/sample/native_window/src/libmatrix/shader-source.cc
+ D oneplus_fajita/sample/native_window/src/libmatrix/shader-source.h
+ D oneplus_fajita/sample/native_window/src/libmatrix/stack.h
+ D oneplus_fajita/sample/native_window/src/libmatrix/util.cc
+ D oneplus_fajita/sample/native_window/src/libmatrix/util.h
+ D oneplus_fajita/sample/native_window/src/libmatrix/vec.h
+ D oneplus_fajita/sample/native_window/src/native-state-ohos.cpp
+ D oneplus_fajita/sample/native_window/src/native-state-ohos.h
+ D oneplus_fajita/sample/native_window/src/native-state.h
+ D oneplus_fajita/sample/native_window/src/ohos_wrapper_linker.cpp
+ D oneplus_fajita/sample/native_window/src/ohos_wrapper_linker.h
+ D oneplus_fajita/sample/native_window/src/options.cpp
+ D oneplus_fajita/sample/native_window/src/options.h
+ D oneplus_fajita/sample/native_window/src/shared-library.cpp
+ D oneplus_fajita/sample/native_window/src/shared-library.h
+ D oneplus_fajita/sample/native_window_wrapper/BUILD.gn
+ D oneplus_fajita/sample/native_window_wrapper/native_window_wrapper.cpp
+ D oneplus_fajita/sample/native_window_wrapper/native_window_wrapper.h
+ D oneplus_fajita/security_config/critical_reboot_process_list.json
+ D oneplus_fajita/security_config/high_privilege_process_list.json
+ D oneplus_fajita/security_config/sanitizer_check_list.gni
+ D oneplus_fajita/updater_config/build_cfg.gni
+?? xiaomi_sagit/
+### vendor/revoview
+### vendor/bearkey
+### productdefine/common
+### drivers/peripheral
+### drivers/hdf_core
+### drivers/external_device_manager
+### drivers/liteos
+### drivers/interface
+### commonlibrary/rust/ylong_json
+### commonlibrary/rust/ylong_http
+### commonlibrary/rust/ylong_runtime
+### commonlibrary/ets_utils
+### commonlibrary/memory_utils
+### commonlibrary/utils_lite
+### commonlibrary/c_utils

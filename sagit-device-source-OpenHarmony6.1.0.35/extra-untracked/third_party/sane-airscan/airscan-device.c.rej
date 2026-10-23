@@ -1,0 +1,17 @@
+--- airscan-device.c
++++ airscan-device.c
+@@ -1187,13 +1187,12 @@ device_open (const char *ident, SANE_Status *status)
+     while (device_stm_state_get(dev) == DEVICE_STM_PROBING) {
+         eloop_cond_wait(&dev->stm_cond);
+     }
+-
+     if (device_stm_state_get(dev) == DEVICE_STM_PROBING_FAILED) {
+         device_free(dev, NULL);
+         *status = SANE_STATUS_IO_ERROR;
+         return NULL;
+     }
+-
++    
+     return dev;
+ }
+ 

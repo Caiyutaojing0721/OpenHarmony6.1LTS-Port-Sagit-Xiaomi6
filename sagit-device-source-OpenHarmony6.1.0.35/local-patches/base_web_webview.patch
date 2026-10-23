@@ -1,0 +1,67 @@
+diff --git a/ohos_adapter/BUILD.gn b/ohos_adapter/BUILD.gn
+index d4d35b249..08f8eedd9 100644
+--- a/ohos_adapter/BUILD.gn
++++ b/ohos_adapter/BUILD.gn
+@@ -277,34 +277,14 @@ ohos_shared_library("nweb_ohos_adapter") {
+       "media_adapter/src/media_codec_list_adapter_impl.cpp",
+       "media_adapter/src/ohos_buffer_adapter_impl.cpp",
+     ]
+-    if (target_cpu == "arm") {
+-      libs += [
+-        "${current_sdk_home}/native/sysroot/usr/lib/arm-linux-ohos/libnative_media_vdec.so",
+-        "${current_sdk_home}/native/sysroot/usr/lib/arm-linux-ohos/libnative_media_codecbase.so",
+-        "${current_sdk_home}/native/sysroot/usr/lib/arm-linux-ohos/libnative_buffer.so",
+-        "${current_sdk_home}/native/sysroot/usr/lib/arm-linux-ohos/libnative_media_core.so",
+-        "${current_sdk_home}/native/sysroot/usr/lib/arm-linux-ohos/libnative_window.so",
+-      ]
+-    } else if (target_cpu == "arm64") {
+-      libs += [
+-        "${current_sdk_home}/native/sysroot/usr/lib/aarch64-linux-ohos/libnative_media_vdec.so",
+-        "${current_sdk_home}/native/sysroot/usr/lib/aarch64-linux-ohos/libnative_media_codecbase.so",
+-        "${current_sdk_home}/native/sysroot/usr/lib/aarch64-linux-ohos/libnative_buffer.so",
+-        "${current_sdk_home}/native/sysroot/usr/lib/aarch64-linux-ohos/libnative_media_core.so",
+-        "${current_sdk_home}/native/sysroot/usr/lib/aarch64-linux-ohos/libnative_window.so",
+-      ]
+-    } else if (target_cpu == "x86_64") {
+-      libs += [
+-        "${current_sdk_home}/native/sysroot/usr/lib/x86_64-linux-ohos/libnative_media_vdec.so",
+-        "${current_sdk_home}/native/sysroot/usr/lib/x86_64-linux-ohos/libnative_media_codecbase.so",
+-        "${current_sdk_home}/native/sysroot/usr/lib/x86_64-linux-ohos/libnative_buffer.so",
+-        "${current_sdk_home}/native/sysroot/usr/lib/x86_64-linux-ohos/libnative_media_core.so",
+-        "${current_sdk_home}/native/sysroot/usr/lib/x86_64-linux-ohos/libnative_window.so",
+-      ]
+-    }
+     external_deps += [
+       "av_codec:av_codec_client",
++      "av_codec:native_media_acodec",
++      "av_codec:native_media_avcencinfo",
++      "av_codec:native_media_codecbase",
++      "av_codec:native_media_vdec",
+       "media_foundation:media_foundation",
++      "media_foundation:native_media_core",
+     ]
+     if (webview_drm_enable) {
+       sources += [
+@@ -313,22 +293,6 @@ ohos_shared_library("nweb_ohos_adapter") {
+         "media_adapter/src/drm_adapter_impl.cpp",
+       ]
+       external_deps += [ "drm_framework:native_drm" ]
+-      if (target_cpu == "arm") {
+-        libs += [
+-          "${current_sdk_home}/native/sysroot/usr/lib/arm-linux-ohos/libnative_media_acodec.so",
+-          "${current_sdk_home}/native/sysroot/usr/lib/arm-linux-ohos/libnative_media_avcencinfo.so",
+-        ]
+-      } else if (target_cpu == "arm64") {
+-        libs += [
+-          "${current_sdk_home}/native/sysroot/usr/lib/aarch64-linux-ohos/libnative_media_acodec.so",
+-          "${current_sdk_home}/native/sysroot/usr/lib/aarch64-linux-ohos/libnative_media_avcencinfo.so",
+-        ]
+-      } else if (target_cpu == "x86_64") {
+-        libs += [
+-          "${current_sdk_home}/native/sysroot/usr/lib/x86_64-linux-ohos/libnative_media_acodec.so",
+-          "${current_sdk_home}/native/sysroot/usr/lib/x86_64-linux-ohos/libnative_media_avcencinfo.so",
+-        ]
+-      }
+       defines += [ "NWEB_AUDIO_DRM_ENABLE" ]
+     }
+     defines += [ "NWEB_MEDIA_AVCODEC_ENABLE" ]

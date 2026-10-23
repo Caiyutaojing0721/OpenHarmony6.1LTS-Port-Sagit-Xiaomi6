@@ -1,0 +1,74 @@
+--- airscan.h
++++ airscan.h
+@@ -7,9 +7,11 @@
+ #ifndef airscan_h
+ #define airscan_h
+ 
++#ifndef OH_AIRSCAN
+ #include <avahi-common/address.h>
+ #include <avahi-common/strlst.h>
+ #include <avahi-common/watch.h>
++#endif // OH_AIRSCAN
+ 
+ #include <sane/sane.h>
+ #include <sane/saneopts.h>
+@@ -1539,10 +1541,12 @@ eloop_mutex_unlock (void);
+ void
+ eloop_cond_wait (pthread_cond_t *cond);
+ 
++#ifndef OH_AIRSCAN
+ /* Get AvahiPoll that runs in event loop thread
+  */
+ const AvahiPoll*
+ eloop_poll_get (void);
++#endif // OH_AIRSCAN
+ 
+ /* ELOOP_CALL_BADID is the invalid callid which will never be returned by
+  * the eloop_call().
+@@ -3418,10 +3422,12 @@ struct proto_handler {
+ proto_handler*
+ proto_handler_escl_new (void);
+ 
++#ifndef OH_AIRSCAN
+ /* proto_handler_wsd_new creates new WSD protocol handler
+  */
+ proto_handler*
+ proto_handler_wsd_new (void);
++#endif // OH_AIRSCAN
+ 
+ /* proto_handler_new creates new protocol handler by protocol ID
+  */
+@@ -3431,8 +3437,10 @@ proto_handler_new (ID_PROTO proto)
+     switch (proto) {
+     case ID_PROTO_ESCL:
+         return proto_handler_escl_new();
++#ifndef OH_AIRSCAN
+     case ID_PROTO_WSD:
+         return proto_handler_wsd_new();
++#endif // OH_AIRSCAN
+     default:
+         return NULL;
+     }
+@@ -3487,10 +3495,12 @@ image_decoder_jpeg_new (void);
+ image_decoder*
+ image_decoder_png_new (void);
+ 
++#ifndef OH_AIRSCAN
+ /* Create TIFF image decoder
+  */
+ image_decoder*
+ image_decoder_tiff_new (void);
++#endif
+ 
+ /* Create BMP image decoder
+  */
+@@ -3600,7 +3610,9 @@ image_decoder_create_all (image_decoder *decoders[NUM_ID_FORMAT])
+     decoders[ID_FORMAT_BMP] = image_decoder_bmp_new();
+     decoders[ID_FORMAT_JPEG] = image_decoder_jpeg_new();
+     decoders[ID_FORMAT_PNG] = image_decoder_png_new();
++#ifndef OH_AIRSCAN
+     decoders[ID_FORMAT_TIFF] = image_decoder_tiff_new();
++#endif
+ }
+ 
+ /* image_decoder_free_all destroys all decoders, previously

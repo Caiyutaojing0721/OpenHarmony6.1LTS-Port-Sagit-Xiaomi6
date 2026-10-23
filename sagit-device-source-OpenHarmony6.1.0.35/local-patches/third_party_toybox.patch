@@ -1,0 +1,26 @@
+diff --git a/toys/pending/mdev.c b/toys/pending/mdev.c
+index eb44d9d..ae26425 100644
+--- a/toys/pending/mdev.c
++++ b/toys/pending/mdev.c
+@@ -234,14 +234,14 @@ found_device:
+     else
+       sprintf(toybuf, "/dev/%s", device_name);
+ 
+-      if ((temp=getenv("ACTION")) && !strcmp(temp, "remove")) {
+-        unlink(toybuf);
+-        return;
+-      }
++    if ((temp=getenv("ACTION")) && !strcmp(temp, "remove")) {
++      unlink(toybuf);
++      return;
++    }
+ 
+-      if (strchr(device_name, '/')) mkpath(toybuf);
+-      if (mknod(toybuf, mode | type, dev_makedev(major, minor)) &&
+-          errno != EEXIST)
++    if (strchr(device_name, '/')) mkpath(toybuf);
++    if (mknod(toybuf, mode | type, dev_makedev(major, minor)) &&
++        errno != EEXIST)
+         perror_exit("mknod %s failed", toybuf);
+       if(create_symlink){
+         char *symlink_name = malloc(sizeof("/dev/") + strlen(device_name) + 1);

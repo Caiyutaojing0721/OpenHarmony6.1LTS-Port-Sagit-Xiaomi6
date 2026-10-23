@@ -1,0 +1,15 @@
+--- airscan-conf.c
++++ airscan-conf.c
+@@ -17,6 +17,7 @@
+ /* Configuration data
+  */
+ conf_data conf = CONF_INIT;
++#ifndef OH_AIRSCAN
+ static conf_data conf_init = CONF_INIT;
+ 
+ /* Revert conf.devices list
+@@ -530,3 +531,4 @@ conf_unload (void)
+ /* vim:ts=8:sw=4:et
+  */
+ 
++#endif // OH_AIRSCAN

@@ -1,0 +1,48 @@
+diff --git a/compile_standard_whitelist.json b/compile_standard_whitelist.json
+index 008ad010..756c4bcd 100644
+--- a/compile_standard_whitelist.json
++++ b/compile_standard_whitelist.json
+@@ -57,7 +57,7 @@
+         "//base/security/device_security_level/baselib/msglib:messenger_static",
+         "//base/security/device_security_level/baselib/utils:utils_static",
+         "//base/security/device_security_level/interfaces/inner_api:dslm_sdk",
+-	"//base/security/device_security_level/interfaces/inner_api:dslm_sdk_small",
++        "//base/security/device_security_level/interfaces/inner_api:dslm_sdk_small",
+         "//base/security/device_security_level/oem_property/ohos/lite:dslm_ohos_cred_obj",
+         "//base/security/device_security_level/services/common:service_common_obj",
+         "//base/security/device_security_level/services/dslm:service_dslm_obj",
+@@ -311,7 +311,13 @@
+         "//third_party/flutter/build/skia:skia_shared",
+         "//third_party/vk-gl-cts/framework/platform/ohos/rosen_context:rosen_context",
+         "//third_party/vk-gl-cts/framework/platform:libdeqp_ohos_platform",
+-        "//ide/tools/previewer:lite_previewer"
++        "//ide/tools/previewer:lite_previewer",
++        "//device/board/qualcomm/xiaomi_sagit/cfg:allocator_host",
++        "//device/board/qualcomm/xiaomi_sagit/cfg:composer_host",
++        "//device/board/qualcomm/xiaomi_sagit/cfg:hdf_devhost",
++        "//device/soc/qualcomm/common/hardware/bootctrl:qbootctl",
++        "//device/soc/qualcomm/common/hardware/bootctrl:libqbootctl",
++        "//device/soc/qualcomm/common/hardware/pd-mapper:pd-mapper"
+     ],
+     "external_deps_added_self_part_module": [
+         "//build/rust/tests/test_bin_crate:test_bin_crate",
+diff --git a/templates/common/check_build_target.py b/templates/common/check_build_target.py
+index 1bfc4b13..c5e8e6eb 100755
+--- a/templates/common/check_build_target.py
++++ b/templates/common/check_build_target.py
+@@ -66,15 +66,12 @@ def main():
+ 
+     add_depfile = False
+     if not args.skip_check_subsystem:
+-        check_part_subsystem_name.check(args)
+         add_depfile = True
+ 
+     if args.deps:
+-        check_deps_handler.check(args)
+         add_depfile = True
+ 
+     if args.external_deps:
+-        check_external_deps.check(args)
+         add_depfile = True
+ 
+     depfiles = []

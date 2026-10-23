@@ -1,0 +1,21 @@
+--- airscan-tiff.c
++++ airscan-tiff.c
+@@ -365,6 +365,7 @@ image_decoder_tiff_read_line (image_decoder *decoder, void *buffer)
+     return NULL;
+ }
+ 
++#ifndef OH_AIRSCAN
+ /* Create TIFF image decoder
+  */
+ image_decoder*
+@@ -381,9 +382,9 @@ image_decoder_tiff_new (void)
+     tiff->decoder.set_window = image_decoder_tiff_set_window;
+     tiff->decoder.read_line = image_decoder_tiff_read_line;
+     tiff->jpeg_decoder = image_decoder_jpeg_new();
+-
+     return &tiff->decoder;
+ }
++#endif
+ 
+ /***** JPEG-in-TIFF handling *****/
+ /* Prepare decoder to handle OLD JPEG format

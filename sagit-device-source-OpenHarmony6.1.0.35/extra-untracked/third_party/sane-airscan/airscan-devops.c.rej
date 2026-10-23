@@ -1,0 +1,14 @@
+--- airscan-devops.c
++++ airscan-devops.c
+@@ -467,7 +467,11 @@ devopt_update_params (devopt *opt)
+         break;
+ 
+     default:
++#ifdef OH_AIRSCAN
++        log_assert(NULL, false);
++#else
+         log_assert(NULL, !"internal error");
++#endif // OH_AIRSCAN
+     }
+ }
+ 

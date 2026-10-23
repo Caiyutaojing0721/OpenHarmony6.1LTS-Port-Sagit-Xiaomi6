@@ -1,0 +1,10 @@
+diff --git a/interfaces/kits/napi/environmental/package.json b/interfaces/kits/napi/environmental/package.json
+index 036e374c03..96cc1430d9 100644
+--- a/interfaces/kits/napi/environmental/package.json
++++ b/interfaces/kits/napi/environmental/package.json
+@@ -11,4 +11,3 @@
+   "author": "window",
+   "license": "Apache-2.0"
+ }
+-  
+\ No newline at end of file

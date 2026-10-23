@@ -1,0 +1,13 @@
+--- airscan-zeroconf.c
++++ airscan-zeroconf.c
+@@ -947,8 +947,10 @@ zeroconf_initscan_timer_callback (void *unused)
+ 
+     log_debug(zeroconf_log, "initial scan timer expired");
+ 
++#ifndef OH_AIRSCAN
+     mdns_initscan_timer_expired();
+     wsdd_initscan_timer_expired();
++#endif // OH_AIRSCAN
+ 
+     zeroconf_initscan_timer = NULL;
+     pthread_cond_broadcast(&zeroconf_initscan_cond);

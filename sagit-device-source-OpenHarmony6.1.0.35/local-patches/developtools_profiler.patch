@@ -1,0 +1,13 @@
+diff --git a/device/plugins/hiebpf_plugin/tools/include/ebpf_std_type.h b/device/plugins/hiebpf_plugin/tools/include/ebpf_std_type.h
+index 41d7ee1cf..548c3b9c9 100644
+--- a/device/plugins/hiebpf_plugin/tools/include/ebpf_std_type.h
++++ b/device/plugins/hiebpf_plugin/tools/include/ebpf_std_type.h
+@@ -14,6 +14,8 @@
+ #ifndef EBPF_STD_TYPE_H
+ #define EBPF_STD_TYPE_H
+ 
++#include <cstdint>
++
+ namespace OHOS {
+ namespace EBPF_TOOLS {
+ struct HeaderDataItem {

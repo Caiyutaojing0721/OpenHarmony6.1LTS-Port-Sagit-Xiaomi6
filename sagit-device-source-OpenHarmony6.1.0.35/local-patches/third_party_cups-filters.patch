@@ -1,0 +1,765 @@
+diff --git a/backend/beh.c b/backend/beh.c
+index 225fd27d..275af351 100644
+--- a/backend/beh.c
++++ b/backend/beh.c
+@@ -22,12 +22,12 @@
+ #include "backend-private.h"
+ #include <cups/array.h>
+ #include <ctype.h>
+-
++#include <sys/wait.h>
+ /*
+  * Local globals...
+  */
+ 
+-static int		job_canceled = 0; /* Set to 1 on SIGTERM */
++static volatile  int		job_canceled = 0; /* Set to 1 on SIGTERM */
+ 
+ /*
+  * Local functions...
+@@ -213,21 +213,44 @@ call_backend(char *uri,                 /* I - URI of final destination */
+ 	     char **argv,		/* I - Command-line arguments */
+ 	     char *filename) {          /* I - File name of input data */
+   const char	*cups_serverbin;	/* Location of programs */
++  char         *backend_argv[8];       // Arguments for called CUPS backend
+   char		scheme[1024],           /* Scheme from URI */
+                 *ptr,			/* Pointer into scheme */
+-		cmdline[65536];		/* Backend command line */
+-  int           retval;
++		backend_path[2048];     // Backend path
++  int           pid,
++		wait_pid,
++		wait_status,
++		retval = 0,
++  int           bytes;
+ 
+  /*
+   * Build the backend command line...
+   */
+ 
+-  strncpy(scheme, uri, sizeof(scheme) - 1);
+-  if (strlen(uri) > 1023)
+-    scheme[1023] = '\0';
++  scheme[0] = '\0';
++  strncat(scheme, uri, sizeof(scheme) - 1);
++
+   if ((ptr = strchr(scheme, ':')) != NULL)
+     *ptr = '\0';
+-
++  else
++  {
++    fprintf(stderr,
++	    "ERROR: beh: Invalid URI, no colon (':') to mark end of scheme part.\n");
++    exit (CUPS_BACKEND_FAILED);
++  }
++  if (strchr(scheme, '/'))
++  {
++    fprintf(stderr,
++	    "ERROR: beh: Invalid URI, scheme contains a slash ('/').\n");
++    exit (CUPS_BACKEND_FAILED);
++  }
++  if (!strcmp(scheme, ".") || !strcmp(scheme, ".."))
++  {
++    fprintf(stderr,
++	    "ERROR: beh: Invalid URI, scheme (\"%s\") is a directory.\n",
++	    scheme);
++    exit (CUPS_BACKEND_FAILED);
++  }
+   if ((cups_serverbin = getenv("CUPS_SERVERBIN")) == NULL)
+     cups_serverbin = CUPS_SERVERBIN;
+ 
+@@ -235,17 +258,28 @@ call_backend(char *uri,                 /* I - URI of final destination */
+     fprintf(stderr,
+ 	    "ERROR: beh: Direct output into a file not supported.\n");
+     exit (CUPS_BACKEND_FAILED);
+-  } else
+-    snprintf(cmdline, sizeof(cmdline),
+-	     "%s/backend/%s '%s' '%s' '%s' '%s' '%s' %s",
+-	     cups_serverbin, scheme, argv[1], argv[2], argv[3],
+-	     /* Apply number of copies only if beh was called with a
+-		file name and not with the print data in stdin, as
+-	        backends should handle copies only if they are called
+-	        with a file name */
+-	     (argc == 6 ? "1" : argv[4]),
+-	     argv[5], filename);
+-
++  } 
++
++  backend_argv[0] = uri;
++  backend_argv[1] = argv[1];
++  backend_argv[2] = argv[2];
++  backend_argv[3] = argv[3];
++  backend_argv[4] = (argc == 6 ? "1" : argv[4]);
++  backend_argv[5] = argv[5];
++  backend_argv[6] = filename;
++  backend_argv[7] = NULL;
++
++  bytes = snprintf(backend_path, sizeof(backend_path),
++		   "%s/backend/%s", cups_serverbin, scheme);
++  if (bytes < 0 || bytes >= sizeof(backend_path))
++  {
++    fprintf(stderr,
++	    "ERROR: beh: Invalid scheme (\"%s\"), could not determing backend path.\n",
++	    scheme);
++    exit (CUPS_BACKEND_FAILED);
++  }
++  
++  
+  /*
+   * Overwrite the device URI and run the actual backend...
+   */
+@@ -253,17 +287,42 @@ call_backend(char *uri,                 /* I - URI of final destination */
+   setenv("DEVICE_URI", uri, 1);
+ 
+   fprintf(stderr,
+-	  "DEBUG: beh: Executing backend command line \"%s\"...\n",
+-	  cmdline);
++	  "DEBUG: beh: Executing backend command line \"%s '%s' '%s' '%s' '%s' '%s'%s%s\"...\n",
++	  backend_path, backend_argv[1], backend_argv[2], backend_argv[3],
++	  backend_argv[4], backend_argv[5],
++	  (backend_argv[6] && backend_argv[6][0] ? " " : ""),
++	  (backend_argv[6] && backend_argv[6][0] ? backend_argv[6] : ""));
+   fprintf(stderr,
+ 	  "DEBUG: beh: Using device URI: %s\n",
+ 	  uri);
+ 
+-  retval = system(cmdline) >> 8;
++  if ((pid = fork()) == 0)
++  {
++    retval = execv(backend_path, backend_argv);
+ 
+-  if (retval == -1)
+-    fprintf(stderr, "ERROR: Unable to execute backend command line: %s\n",
+-	    strerror(errno));
++    if (retval == -1)
++      fprintf(stderr, "ERROR: Unable to execute backend: %s\n",
++	      strerror(errno));
++    exit (CUPS_BACKEND_FAILED);
++  }
++  else if (pid < 0)
++  {
++    fprintf(stderr, "ERROR: Unable to fork for backend\n");
++    return (CUPS_BACKEND_FAILED);
++  }
++
++  while ((wait_pid = wait(&wait_status)) < 0 && errno == EINTR);
++
++  if (wait_pid >= 0 && wait_status)
++  {
++    if (WIFEXITED(wait_status))
++      retval = WEXITSTATUS(wait_status);
++    else if (WTERMSIG(wait_status) != SIGTERM)
++      retval = WTERMSIG(wait_status);
++    else
++      retval = 0;
++  }
++  
+ 
+   return (retval);
+ }
+@@ -277,8 +336,10 @@ static void
+ sigterm_handler(int sig) {		/* I - Signal number (unused) */
+   (void)sig;
+ 
+-  fprintf(stderr,
+-	  "DEBUG: beh: Job canceled.\n");
++  const char * const msg = "DEBUG: beh: Job canceled.\n";
++  // The if() is to eliminate the return value and silence the warning
++  // about an unused return value.
++  if (write(2, msg, strlen(msg)));
+ 
+   if (job_canceled)
+     _exit(CUPS_BACKEND_OK);
+diff --git a/cupsfilters/image-tiff.c b/cupsfilters/image-tiff.c
+index 5fe89071..0842e8d2 100644
+--- a/cupsfilters/image-tiff.c
++++ b/cupsfilters/image-tiff.c
+@@ -43,6 +43,7 @@ _cupsImageReadTIFF(
+   TIFF		*tif;			/* TIFF file */
+   uint32_t	width, height;		/* Size of image */
+   uint16_t	photometric,		/* Colorspace */
++    planar,         /* Color components in separate planes */
+ 		compression,		/* Type of compression */
+ 		orientation,		/* Orientation */
+ 		resunit,		/* Units for resolution */
+@@ -115,6 +116,15 @@ _cupsImageReadTIFF(
+     return (-1);
+   }
+ 
++  if (TIFFGetField(tif, TIFFTAG_PLANARCONFIG, &planar) &&
++      planar == PLANARCONFIG_SEPARATE)
++  {
++    fputs("DEBUG: Images with planar color configuration are not supported!\n", stderr);
++    TIFFClose(tif);
++    fclose(fp);
++    return (1);
++  }
++
+   if (!TIFFGetField(tif, TIFFTAG_COMPRESSION, &compression))
+   {
+     fputs("DEBUG: No compression tag in the file!\n", stderr);
+@@ -129,6 +139,15 @@ _cupsImageReadTIFF(
+   if (!TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &bits))
+     bits = 1;
+ 
++  if (bits == 1 && samples > 1)
++  {
++    fprintf(stderr, "ERROR: Color images with 1 bit per sample not supported! "
++                    "Samples per pixel: %d; Bits per sample: %d\n", samples, bits);
++    TIFFClose(tif);
++    fclose(fp);
++    return (1);
++  }
++
+  /*
+   * Get the image orientation...
+   */
+@@ -195,6 +214,23 @@ _cupsImageReadTIFF(
+   else
+     alpha = 0;
+ 
++ /*
++  * Check whether number of samples per pixel corresponds with color space...
++  */
++
++  if ((photometric == PHOTOMETRIC_RGB && (samples < 3 || samples > 4)) ||
++      (photometric == PHOTOMETRIC_SEPARATED && samples != 4))
++  {
++    fprintf(stderr, "DEBUG: Number of samples per pixel does not correspond to color space! "
++                    "Color space: %s; Samples per pixel: %d\n",
++                    (photometric == PHOTOMETRIC_RGB ? "RGB" :
++                     (photometric == PHOTOMETRIC_SEPARATED ? "CMYK" : "Unknown")),
++                    samples);
++    TIFFClose(tif);
++    fclose(fp);
++    return (1);
++  }
++
+  /*
+   * Check the size of the image...
+   */
+@@ -267,6 +303,14 @@ _cupsImageReadTIFF(
+         break;
+   }
+ 
++  if (orientation >= ORIENTATION_LEFTTOP)
++  {
++    fputs("ERROR: TIFF files with vertical scanlines are not supported!\n", stderr);
++    TIFFClose(tif);
++    fclose(fp);
++    return (-1);
++  }
++
+   switch (orientation)
+   {
+     case ORIENTATION_TOPRIGHT :
+@@ -1469,7 +1513,7 @@ _cupsImageReadTIFF(
+ 	      }
+ 
+ 	      if (lut)
+-	        cupsImageLut(out, img->xsize * 3, lut);
++	        cupsImageLut(out, img->xsize * bpp, lut);
+ 
+               _cupsImagePutRow(img, 0, y, img->xsize, out);
+             }
+diff --git a/filter/pdf.cxx b/filter/pdf.cxx
+index 68b1af91..2e888915 100644
+--- a/filter/pdf.cxx
++++ b/filter/pdf.cxx
+@@ -26,6 +26,7 @@
+ #include <qpdf/QPDFWriter.hh>
+ #include <qpdf/QPDFAcroFormDocumentHelper.hh>
+ #include <qpdf/QPDFPageDocumentHelper.hh>
++#include <qpdf/PointerHolder.hh>
+ 
+ /*
+  * Useful reference:
+diff --git a/filter/pdftopdf/pdftopdf.cc b/filter/pdftopdf/pdftopdf.cc
+index 7a684a26..c9957d25 100644
+--- a/filter/pdftopdf/pdftopdf.cc
++++ b/filter/pdftopdf/pdftopdf.cc
+@@ -1112,6 +1112,9 @@ int main(int argc,char **argv)
+ 
+     cupsMarkOptions(ppd,num_options,options);
+ 
++    const char* ppdPageSize = cupsGetOption("PageSize", num_options, options);
++    ppdMarkOption(ppd, "PageSize", ppdPageSize);
++
+     getParameters(ppd,num_options,options,param);
+     calculate(ppd,param);
+ 
+diff --git a/filter/pdftopdf/qpdf_pdftopdf_processor.cc b/filter/pdftopdf/qpdf_pdftopdf_processor.cc
+index 2420e1f4..7c7a7676 100644
+--- a/filter/pdftopdf/qpdf_pdftopdf_processor.cc
++++ b/filter/pdftopdf/qpdf_pdftopdf_processor.cc
+@@ -83,10 +83,10 @@ QPDFObjectHandle QPDF_PDFTOPDF_PageHandle::get() // {{{
+     page.getKey("/Resources").replaceKey("/XObject",QPDFObjectHandle::newDictionary(xobjs));
+     content.append("Q\n");
+     page.getKey("/Contents").replaceStreamData(content,QPDFObjectHandle::newNull(),QPDFObjectHandle::newNull());
+-    page.replaceOrRemoveKey("/Rotate",makeRotate(rotation));
++    page.replaceKey("/Rotate",makeRotate(rotation));
+   } else {
+     Rotation rot=getRotate(page)+rotation;
+-    page.replaceOrRemoveKey("/Rotate",makeRotate(rot));
++    page.replaceKey("/Rotate",makeRotate(rot));
+   }
+   page=QPDFObjectHandle(); // i.e. uninitialized
+   return ret;
+@@ -181,9 +181,9 @@ Rotation QPDF_PDFTOPDF_PageHandle::crop(const PageRect &cropRect,Rotation orient
+   page.assertInitialized();
+   Rotation save_rotate = getRotate(page);
+   if(orientation==ROT_0||orientation==ROT_180)
+-    page.replaceOrRemoveKey("/Rotate",makeRotate(ROT_90));
++    page.replaceKey("/Rotate",makeRotate(ROT_90));
+   else
+-    page.replaceOrRemoveKey("/Rotate",makeRotate(ROT_0));
++    page.replaceKey("/Rotate",makeRotate(ROT_0));
+ 
+   PageRect currpage= getBoxAsRect(getTrimBox(page));
+   double width = currpage.right-currpage.left;
+@@ -242,7 +242,7 @@ Rotation QPDF_PDFTOPDF_PageHandle::crop(const PageRect &cropRect,Rotation orient
+   //Cropping.
+   // TODO: Borders are covered by the image. buffer space?
+   page.replaceKey("/TrimBox",makeBox(currpage.left,currpage.bottom,currpage.right,currpage.top));
+-  page.replaceOrRemoveKey("/Rotate",makeRotate(save_rotate));
++  page.replaceKey("/Rotate",makeRotate(save_rotate));
+   return getRotate(page);
+ }
+ 
+@@ -251,14 +251,14 @@ bool QPDF_PDFTOPDF_PageHandle::is_landscape(Rotation orientation)
+   page.assertInitialized();
+   Rotation save_rotate = getRotate(page);
+   if(orientation==ROT_0||orientation==ROT_180)
+-    page.replaceOrRemoveKey("/Rotate",makeRotate(ROT_90));
++    page.replaceKey("/Rotate",makeRotate(ROT_90));
+   else
+-    page.replaceOrRemoveKey("/Rotate",makeRotate(ROT_0));
++    page.replaceKey("/Rotate",makeRotate(ROT_0));
+ 
+   PageRect currpage= getBoxAsRect(getTrimBox(page));
+   double width = currpage.right-currpage.left;
+   double height = currpage.top-currpage.bottom;
+-  page.replaceOrRemoveKey("/Rotate",makeRotate(save_rotate));
++  page.replaceKey("/Rotate",makeRotate(save_rotate));
+   if(width>height)
+     return true;
+   return false;
+@@ -662,7 +662,7 @@ void QPDF_PDFTOPDF_Processor::autoRotateAll(bool dst_lscape,Rotation normal_land
+       // TODO? other rotation direction, e.g. if (src_rot==ROT_0)&&(param.orientation==ROT_270) ... etc.
+       // rotation=ROT_270;
+ 
+-      page.replaceOrRemoveKey("/Rotate",makeRotate(src_rot+rotation));
++      page.replaceKey("/Rotate",makeRotate(src_rot+rotation));
+     }
+   }
+ }
+diff --git a/filter/pdftopdf/qpdf_xobject.cc b/filter/pdftopdf/qpdf_xobject.cc
+index cc33f43a..63b8b78e 100644
+--- a/filter/pdftopdf/qpdf_xobject.cc
++++ b/filter/pdftopdf/qpdf_xobject.cc
+@@ -4,6 +4,7 @@
+ #include <qpdf/Pl_Discard.hh>
+ #include <qpdf/Pl_Count.hh>
+ #include <qpdf/Pl_Concatenate.hh>
++#include <qpdf/PointerHolder.hh>
+ #include "qpdf_tools.h"
+ #include "qpdf_pdftopdf.h"
+ 
+diff --git a/filter/pdftoraster.cxx b/filter/pdftoraster.cxx
+index e8af184f..6f1581a6 100755
+--- a/filter/pdftoraster.cxx
++++ b/filter/pdftoraster.cxx
+@@ -49,12 +49,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ #include <cupsfilters/colormanager.h>
+ #include <strings.h>
+ #include <math.h>
+-#include <poppler/cpp/poppler-document.h>
+-#include <poppler/cpp/poppler-page.h>
+-#include <poppler/cpp/poppler-global.h>
+-#include <poppler/cpp/poppler-image.h>
+-#include <poppler/cpp/poppler-page-renderer.h>
+-#include <poppler/cpp/poppler-rectangle.h>
++#include <vector>
++#include "pdfservice_inner.h"
+ #ifdef USE_LCMS1
+ #include <lcms.h>
+ #define cmsColorSpaceSignature icColorSpaceSignature
+@@ -120,6 +116,7 @@ namespace {
+   bool swap_margin_x = false;
+   bool swap_margin_y = false;
+   bool allocLineBuf = false;
++  static int g_pdfSdkCount = 0;
+   ConvertLineFunc convertLineOdd;
+   ConvertLineFunc convertLineEven;
+   ConvertCSpaceFunc convertCSpace;
+@@ -191,6 +188,10 @@ namespace {
+   int renderingIntent = INTENT_PERCEPTUAL;
+   int cm_disabled = 0;
+   cm_calibration_t cm_calibrate;
++
++  static const char* ignoreCupsBackSidePrinterList[] = {
++    "_PixLab_X1", "_CV81", "_PixLab_B5"
++  };
+ }
+ 
+ cmsCIExyY adobergb_wp()
+@@ -382,8 +383,28 @@ static void parseOpts(int argc, char **argv)
+ 	FM_NO, FM_FALSE, FM_TRUE
+       } flippedMargin = FM_NO;
+ 
++      bool isIgnoreCupsBackSidePrinter = false;
++      int listSize = sizeof(ignoreCupsBackSidePrinterList) / sizeof(ignoreCupsBackSidePrinterList[0]);
++      const char *printerName = getenv("PRINTER");
++      for (int i = 0; i < listSize; i++) {
++        if (strstr(printerName, ignoreCupsBackSidePrinterList[i]) != NULL) {
++          fprintf(stderr, "DEBUG: ignoreCupsBackSide Printer found!\n");
++          isIgnoreCupsBackSidePrinter = true;
++          break;
++        }
++      }
++
++      bool isBsUniPrinter = false;
++      attr = ppdFindAttr(ppd, "PCFileName", NULL);
++      if (attr != NULL && attr->value != NULL && !strcasecmp(attr->value, "BSUNIPRT.PPD")) {
++        fprintf(stderr, "DEBUG: BsUni Printer found!\n");
++        isBsUniPrinter = true;
++      }
++
+       attr = ppdFindAttr(ppd,"cupsBackSide",NULL);
+-      if (attr != NULL && attr->value != NULL) {
++      if (isIgnoreCupsBackSidePrinter && isBsUniPrinter) {
++        fprintf(stderr, "DEBUG: ignoreCupsBackSide Get!\n");
++      } else  if (attr != NULL && attr->value != NULL) {
+ 	ppd->flip_duplex = 0;
+ 	backside = attr->value;
+       } else if (ppd->flip_duplex) {
+@@ -1521,12 +1542,14 @@ static unsigned char *onebitpixel(unsigned char *src, unsigned char *dst, unsign
+       unsigned char tem=0;
+       for(int k=0;k<8;k++){
+         cnt++;
+-          tem <<=1;
++        tem <<=1;
++        if (j + k < width) {
+           unsigned int var=*src;
+           if(var > dither1[i & 0xf][(j+k) & 0xf]){
+             tem |= 0x1;
+           }
+           src +=1;
++        }
+       }
+       *dst=tem;
+       dst+=1;
+@@ -1551,7 +1574,7 @@ static unsigned char *removeAlpha(unsigned char *src, unsigned char *dst, unsign
+   return temp;
+ }
+ 
+-static void writePageImage(cups_raster_t *raster, poppler::document *doc,
++static void writePageImage(cups_raster_t *raster, PDFInner::PDFDocument* doc,
+   int pageNo)
+ {
+   ConvertLineFunc convertLine;
+@@ -1559,36 +1582,38 @@ static void writePageImage(cups_raster_t *raster, poppler::document *doc,
+   unsigned char *dp;
+   unsigned int rowsize;
+ 
+-  poppler::page *current_page =doc->create_page(pageNo-1);
+-  poppler::page_renderer pr;
+-  pr.set_render_hint(poppler::page_renderer::antialiasing, true);
+-  pr.set_render_hint(poppler::page_renderer::text_antialiasing, true);
+-
+   unsigned char *colordata,*newdata,*graydata,*onebitdata;
+   unsigned int pixel_count;
+-  poppler::image im;
++  std::vector<unsigned char>* buffer;
++  unsigned char* newBuffer;
++  unsigned int fullPageBitmapWidth = (unsigned int)(header.cupsPageSize[0] / 72 * header.HWResolution[0]);
++  unsigned int fullPageBitmapHeight = (unsigned int)(header.cupsPageSize[1] / 72 * header.HWResolution[1]);
++  fprintf(stderr, "paperdimesion0=%u, paperdimesion1=%u\n", fullPageBitmapWidth, fullPageBitmapHeight);
+   //render the page according to the colourspace and generate the requried data
+   switch (header.cupsColorSpace) {
+    case CUPS_CSPACE_W://gray
+    case CUPS_CSPACE_K://black
+    case CUPS_CSPACE_SW://sgray
+     if(header.cupsBitsPerColor==1){ //special case for 1-bit colorspaces
+-      im = pr.render_page(current_page,header.HWResolution[0],header.HWResolution[1],bitmapoffset[0],bitmapoffset[1],bytesPerLine*8,header.cupsHeight);
+-    newdata = (unsigned char *)malloc(sizeof(char)*3*im.width()*im.height());
+-    newdata = removeAlpha((unsigned char *)im.const_data(),newdata,im.width(),im.height());
+-    graydata=(unsigned char *)malloc(sizeof(char)*im.width()*im.height());
+-    cupsImageRGBToWhite(newdata,graydata,im.width()*im.height());
+-    onebitdata=(unsigned char *)malloc(sizeof(char)*bytesPerLine*im.height());
+-    onebitpixel(graydata,onebitdata,im.width(),im.height());
++    buffer = doc->GetPageBitMapBuffer(pageNo-1, -bitmapoffset[0], -bitmapoffset[1], fullPageBitmapWidth,
++      fullPageBitmapHeight, 3, header.cupsWidth, header.cupsHeight, 0, 0, 0xFFFFFFFF);
++    newBuffer = &((*buffer)[0]);
++    newdata = (unsigned char *)malloc(sizeof(char)*3*header.cupsWidth*header.cupsHeight);
++    newdata = removeAlpha(newBuffer, newdata, header.cupsWidth, header.cupsHeight);
++    graydata=(unsigned char *)malloc(sizeof(char)*header.cupsWidth*header.cupsHeight);
++    cupsImageRGBToWhite(newdata,graydata,header.cupsWidth*header.cupsHeight);
++    onebitdata=(unsigned char *)malloc(sizeof(char)*bytesPerLine*header.cupsHeight);
++    onebitpixel(graydata,onebitdata,header.cupsWidth, header.cupsHeight);
+     colordata=onebitdata;
+     rowsize=bytesPerLine;
+-    }
+-    else{
+-      im = pr.render_page(current_page,header.HWResolution[0],header.HWResolution[1],bitmapoffset[0],bitmapoffset[1],header.cupsWidth,header.cupsHeight);
+-      newdata = (unsigned char *)malloc(sizeof(char)*3*im.width()*im.height());
+-      newdata = removeAlpha((unsigned char *)im.const_data(),newdata,im.width(),im.height());
+-      pixel_count=im.width()*im.height();
+-      graydata=(unsigned char *)malloc(sizeof(char)*im.width()*im.height());
++    } else {
++      buffer = doc->GetPageBitMapBuffer(pageNo-1, -bitmapoffset[0], -bitmapoffset[1], fullPageBitmapWidth,
++        fullPageBitmapHeight, 3, header.cupsWidth, header.cupsHeight, 0, 0, 0xFFFFFFFF);
++      newBuffer = &((*buffer)[0]);
++      newdata = (unsigned char *)malloc(sizeof(char)*3*header.cupsWidth*header.cupsHeight);
++      newdata = removeAlpha(newBuffer, newdata, header.cupsWidth, header.cupsHeight);
++      pixel_count=header.cupsWidth * header.cupsHeight;
++      graydata=(unsigned char *)malloc(sizeof(char)*header.cupsWidth*header.cupsHeight);
+       cupsImageRGBToWhite(newdata,graydata,pixel_count);
+       colordata=graydata;
+       rowsize=header.cupsWidth;
+@@ -1602,10 +1627,12 @@ static void writePageImage(cups_raster_t *raster, poppler::document *doc,
+    case CUPS_CSPACE_CMY:
+    case CUPS_CSPACE_RGBW:
+    default:
+-   im = pr.render_page(current_page,header.HWResolution[0],header.HWResolution[1],bitmapoffset[0],bitmapoffset[1],header.cupsWidth,header.cupsHeight);
+-   newdata = (unsigned char *)malloc(sizeof(char)*3*im.width()*im.height());
+-   newdata = removeAlpha((unsigned char *)im.const_data(),newdata,im.width(),im.height());
+-   pixel_count=im.width()*im.height();
++   buffer = doc->GetPageBitMapBuffer(pageNo-1, -bitmapoffset[0], -bitmapoffset[1], fullPageBitmapWidth,
++    fullPageBitmapHeight, 3, header.cupsWidth, header.cupsHeight, 0, 0, 0xFFFFFFFF);
++   newBuffer = &((*buffer)[0]);
++   newdata = (unsigned char *)malloc(sizeof(char)*3*header.cupsWidth*header.cupsHeight);
++   newdata = removeAlpha(newBuffer, newdata, header.cupsWidth, header.cupsHeight);
++   pixel_count=header.cupsWidth * header.cupsHeight;
+    rowsize=header.cupsWidth*3;
+    colordata=newdata;
+      break;
+@@ -1645,11 +1672,18 @@ static void writePageImage(cups_raster_t *raster, poppler::document *doc,
+       }
+     }
+   }
+-  free(colordata);
++  if (colordata == newdata) {
++     if (colordata) free(colordata);
++  } else {
++     if (colordata) free(colordata);
++     if (newdata) free(newdata);
++  }
++  if (buffer) delete(buffer);
++  newBuffer = NULL;
+   if (allocLineBuf) delete[] lineBuf;
+ }
+ 
+-static void outPage(poppler::document *doc, int pageNo,
++static void outPage(PDFInner::PDFDocument* doc, int pageNo,
+   cups_raster_t *raster)
+ {
+   int rotate = 0;
+@@ -1661,34 +1695,40 @@ static void outPage(poppler::document *doc, int pageNo,
+   int imageable_area_fit = 0;
+   int i;
+ 
+-  poppler::page *current_page =doc->create_page(pageNo-1);
+-  poppler::page_box_enum box = poppler::page_box_enum::media_box;
+-  poppler::rectf mediaBox = current_page->page_rect(box);
+-  poppler::page::orientation_enum orient = current_page->orientation();
+-  switch (orient) {
+-    case poppler::page::landscape: rotate=90;
+-     break;
+-    case poppler::page::upside_down: rotate=180;
+-     break;
+-    case poppler::page::seascape: rotate=270;
+-     break;
+-     default:rotate=0;
+-  }
++  float left = 0;
++  float bottom = 0;
++  float right = 0;
++  float top = 0;
++  doc->GetMediaBox(pageNo-1, &left, &bottom, &right, &top);
++  rotate = doc->GetPageRotation(pageNo-1);
+   fprintf(stderr, "DEBUG: mediaBox = [ %f %f %f %f ]; rotate = %d\n",
+-	  mediaBox.left(), mediaBox.top(), mediaBox.right(), mediaBox.bottom(), rotate);
+-  l = mediaBox.width();
++	  left, top, right, bottom, rotate);
++  l = right - left;
+   if (l < 0) l = -l;
+   if (rotate == 90 || rotate == 270)
+     header.PageSize[1] = (unsigned)l;
+   else
+     header.PageSize[0] = (unsigned)l;
+-  l = mediaBox.height();
++  l = bottom - top;
+   if (l < 0) l = -l;
+   if (rotate == 90 || rotate == 270)
+     header.PageSize[0] = (unsigned)l;
+   else
+     header.PageSize[1] = (unsigned)l;
+ 
++  /*
++    Maximum allowed page size for PDF is 200x200 inches (~ 5x5 m), or 14400x14400 pt
++    https://community.adobe.com/t5/indesign-discussions/maximum-width-of-a-pdf/td-p/9217372
++  */
++  if (header.PageSize[0] > 14400) {
++    fprintf(stderr, "ERROR: Page width is %dpt, too large, cropping to 14400pt\n", header.PageSize[0]);
++    header.PageSize[0] = 14400;
++  }
++  if (header.PageSize[1] > 14400) {
++    fprintf(stderr, "ERROR: Page height is %dpt, too large, cropping to 14400pt\n", header.PageSize[1]);
++    header.PageSize[1] = 14400;
++  }
++
+   memset(paperdimensions, 0, sizeof(paperdimensions));
+   memset(margins, 0, sizeof(margins));
+   if (ppd) {
+@@ -1882,6 +1922,9 @@ static void outPage(poppler::document *doc, int pageNo,
+       exit(1);
+   }
+ 
++  fprintf(stderr, "margins=[%.0f %.0f %.0f %.0f], pwgraster=%d\n",
++    margins[0], margins[1], margins[2], margins[3], pwgraster);
++
+   /* write page image */
+   writePageImage(raster,doc,pageNo);
+ }
+@@ -1972,7 +2015,9 @@ static void setPopplerColorProfile()
+ }
+ 
+ int main(int argc, char *argv[]) {
+-  poppler::document *doc;
++  g_pdfSdkCount++;
++  PDFInner::PDFSdk sdk = PDFInner::PDFSdk::GetSdkInstance();
++  PDFInner::PDFDocument* doc = sdk.GetDocInstance();
+   int i;
+   int npages=0;
+   cups_raster_t *raster;
+@@ -2002,7 +2047,20 @@ int main(int argc, char *argv[]) {
+       }
+     }
+     close(fd);
+-    doc=poppler::document::load_from_file(name,"","");
++    if (doc != nullptr) {
++        size_t len = mbstowcs(NULL, name, 0) + 1;
++        wchar_t *wName = new wchar_t[len];
++        mbstowcs(wName, name, len);
++        doc->LoadDocument(wName, "");
++        delete[] wName;
++    }
++    FILE* fp;
++    if ((fp = fopen(name, "rb")) == nullptr) {
++      fprintf(stderr, "ERROR: Can't open input stdin file\n");
++      exit(1);
++    }
++    parsePDFTOPDFComment(fp);
++    fclose(fp);
+     /* remove name */
+     unlink(name);
+   } else {
+@@ -2015,14 +2073,21 @@ int main(int argc, char *argv[]) {
+     }
+     parsePDFTOPDFComment(fp);
+     fclose(fp);
+-    doc=poppler::document::load_from_file(argv[6],"","");
++    if (doc != nullptr) {
++        size_t len = strlen(argv[6]) + 1;
++        wchar_t *wstr = new wchar_t[len];
++        mbstowcs(wstr, argv[6], len);
++        doc->LoadDocument(wstr, "");
++        delete[] wstr;
++    }
+   }
+ 
+   if(doc != NULL)
+-    npages = doc->pages();
++    npages = doc->GetPageCount();
+ 
+   /* fix NumCopies, Collate ccording to PDFTOPDFComments */
+   header.NumCopies = deviceCopies;
++  fprintf(stderr, "ERROR: NumCopies: %d\n", header.NumCopies);
+   header.Collate = deviceCollate ? CUPS_TRUE : CUPS_FALSE;
+   /* fixed other values that pdftopdf handles */
+   header.MirrorPrint = CUPS_FALSE;
+@@ -2127,7 +2192,13 @@ int main(int argc, char *argv[]) {
+ 
+   cupsRasterClose(raster);
+ 
+-  delete doc;
++  if (doc != nullptr) {
++    sdk.ReleaseDocInstance(doc);
++  }
++  g_pdfSdkCount--;
++  if (g_pdfSdkCount == 0) {
++    sdk.Release();
++  }
+   if (ppd != NULL) {
+     ppdClose(ppd);
+   }
+@@ -2143,30 +2214,3 @@ int main(int argc, char *argv[]) {
+ 
+   return exitCode;
+ }
+-
+-/* replace memory allocation methods for memory check */
+-/* For compatibility with g++ >= 4.7 compilers _GLIBCXX_THROW
+- *  should be used as a guard, otherwise use traditional definition */
+-#ifndef _GLIBCXX_THROW
+-#define _GLIBCXX_THROW throw
+-#endif
+-
+-void * operator new(size_t size) _GLIBCXX_THROW (std::bad_alloc)
+-{
+-  return malloc(size);
+-}
+-
+-void operator delete(void *p) throw ()
+-{
+-  free(p);
+-}
+-
+-void * operator new[](size_t size) _GLIBCXX_THROW (std::bad_alloc)
+-{
+-  return malloc(size);
+-}
+-
+-void operator delete[](void *p) throw ()
+-{
+-  free(p);
+-}
+diff --git a/filter/rastertopdf.cpp b/filter/rastertopdf.cpp
+index ad5dd34c..211bc016 100644
+--- a/filter/rastertopdf.cpp
++++ b/filter/rastertopdf.cpp
+@@ -49,6 +49,7 @@
+ #include <qpdf/Pl_RunLength.hh>
+ #include <qpdf/Pl_DCT.hh>
+ #endif
++#include <qpdf/PointerHolder.hh>
+ 
+ #ifdef USE_LCMS1
+ #include <lcms.h>
+diff --git a/filter/urftopdf.cpp b/filter/urftopdf.cpp
+index 4e7f6535..0e018836 100644
+--- a/filter/urftopdf.cpp
++++ b/filter/urftopdf.cpp
+@@ -38,6 +38,7 @@
+ 
+ #include <qpdf/Pl_Flate.hh>
+ #include <qpdf/Pl_Buffer.hh>
++#include <qpdf/PointerHolder.hh>
+ 
+ #include "unirast.h"
+ 
+diff --git a/mime/cupsfilters-ghostscript.convs b/mime/cupsfilters-ghostscript.convs
+index 9ccb0a1a..29a0ce19 100644
+--- a/mime/cupsfilters-ghostscript.convs
++++ b/mime/cupsfilters-ghostscript.convs
+@@ -16,6 +16,6 @@
+ #
+ 
+ application/postscript		application/pdf			0	gstopdf
+-application/vnd.cups-pdf	application/vnd.cups-raster	99	gstoraster
+-application/vnd.cups-pdf	image/pwg-raster		99	gstoraster
+-application/vnd.cups-postscript	application/vnd.cups-raster	175	gstoraster
++#application/vnd.cups-pdf	application/vnd.cups-raster	99	gstoraster
++#application/vnd.cups-pdf	image/pwg-raster		99	gstoraster
++#application/vnd.cups-postscript	application/vnd.cups-raster	175	gstoraster

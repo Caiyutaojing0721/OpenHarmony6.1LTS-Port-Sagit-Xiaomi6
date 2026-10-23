@@ -1,0 +1,12 @@
+diff --git a/icu4c/source/ohos/lunar_calendar.h b/icu4c/source/ohos/lunar_calendar.h
+index 2cb3ea4d..eb9ba254 100644
+--- a/icu4c/source/ohos/lunar_calendar.h
++++ b/icu4c/source/ohos/lunar_calendar.h
+@@ -16,6 +16,7 @@
+ #define OHOS_GLOBAL_I18N_LUNAR_CALENDAR_H
+ 
+ #include <string>
++#include <cstdint>
+ #include <unordered_map>
+ #include <vector>
+ 

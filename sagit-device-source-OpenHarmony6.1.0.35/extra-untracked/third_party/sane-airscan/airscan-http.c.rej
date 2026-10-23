@@ -1,0 +1,289 @@
+--- airscan-http.c
++++ airscan-http.c
+@@ -5,7 +5,6 @@
+  *
+  * HTTP Client
+  */
+-#define _GNU_SOURCE
+ #include <string.h>
+ 
+ #define NO_HTTP_STATUS
+@@ -22,8 +21,10 @@
+ #include <sys/un.h>
+ #include <unistd.h>
+ 
++#ifndef OH_AIRSCAN
+ #include <avahi-common/domain.h>
+ #include <gnutls/gnutls.h>
++#endif // OH_AIRSCAN
+ 
+ /******************** Constants ********************/
+ /* I/O buffer size
+@@ -39,8 +40,10 @@
+  */
+ #define HTTP_QUERY_TIMEOUT      -1
+ 
++#ifndef OH_AIRSCAN
+ /******************** Static variables ********************/
+ static gnutls_certificate_credentials_t gnutls_cred;
++#endif // OH_AIRSCAN
+ 
+ /******************** Forward declarations ********************/
+ typedef struct http_multipart http_multipart;
+@@ -924,6 +927,7 @@ http_uri_host_is (const http_uri *uri, const char *host)
+         return !strcasecmp(uri_host, host);
+     }
+ 
++#ifndef OH_AIRSCAN
+     if (!avahi_is_valid_domain_name(uri_host)) {
+         return false;
+     }
+@@ -933,6 +937,9 @@ http_uri_host_is (const http_uri *uri, const char *host)
+     }
+ 
+     return avahi_domain_equal(uri_host, host);
++#else 
++    return false;
++#endif // OH_AIRSCAN
+ }
+ 
+ /* http_uri_host_is_literal returns true if URI uses literal
+@@ -2043,8 +2050,10 @@ struct http_query {
+     bool              addrs_freeaddrinfo;       /* Use freeaddrinfo(addrs) */
+     struct addrinfo   *addr_next;               /* Next address to try */
+     int               sock;                     /* HTTP socket */
++#ifndef OH_AIRSCAN
+     gnutls_session_t  tls;                      /* NULL if not TLS */
+     bool              handshake;                /* TLS handshake in progress */
++#endif // OH_AIRSCAN
+     bool              sending;                  /* We are now sending */
+     eloop_fdpoll      *fdpoll;                  /* Polls q->sock */
+     ip_straddr        straddr;                  /* q->sock peer addr, for log */
+@@ -2111,8 +2120,11 @@ http_query_reset (http_query *q)
+         q->addrs = NULL;
+         q->addr_next = NULL;
+     }
+-
++#ifndef OH_AIRSCAN
+     q->handshake = q->sending = false;
++#else
++    q->sending = false;
++#endif // OH_AIRSCAN
+ 
+     http_query_disconnect(q);
+ 
+@@ -2137,17 +2149,17 @@ static void
+ http_query_free (http_query *q)
+ {
+     http_query_reset(q);
+-
++    
+     http_query_timeout_cancel(q);
+     http_uri_free(q->uri);
+     http_uri_free(q->real_uri);
+     http_uri_free(q->orig_uri);
+     http_hdr_cleanup(&q->request_header);
+-
++    
+     mem_free(q->rq_buf);
+-
++    
+     http_data_unref(q->request_data);
+-
++    
+     mem_free(q);
+ }
+ 
+@@ -2290,7 +2302,7 @@ static void
+ http_query_timeout_callback (void *p)
+ {
+     http_query *q = (http_query*) p;
+-
++    
+     q->timeout_timer = NULL; /* to prevent eloop_timer_cancel() */
+     http_query_complete(q, ERROR("timeout"));
+ }
+@@ -2304,10 +2316,10 @@ void
+ http_query_timeout (http_query *q, int timeout)
+ {
+     q->timeout_value = timeout;
+-
++    
+     if (q->submitted) {
+         http_query_timeout_cancel(q);
+-
++        
+         if (timeout >= 0) {
+             log_debug(q->client->log, "HTTP using timeout: %d ms",
+                 q->timeout_value);
+@@ -2669,6 +2681,7 @@ http_query_fdpoll_callback (int fd, void *data, ELOOP_FDPOLL_MASK mask)
+     (void) fd;
+     (void) mask;
+ 
++#ifndef OH_AIRSCAN
+     if (q->handshake) {
+         rc = gnutls_handshake(q->tls);
+         if (rc < 0) {
+@@ -2688,12 +2701,14 @@ http_query_fdpoll_callback (int fd, void *data, ELOOP_FDPOLL_MASK mask)
+ 
+             return;
+         }
+-
+         log_debug(q->client->log, "HTTP done TLS handshake");
+-
++        
+         q->handshake = false;
+         http_query_fdpoll_set_mask(q, ELOOP_FDPOLL_BOTH);
+     } else if (q->sending) {
++#else
++    if (q->sending) {
++#endif // OH_AIRSCAN
+         rc = http_query_sock_send(q, q->rq_buf + q->rq_off, len);
+ 
+         if (rc > 0) {
+@@ -2833,6 +2848,7 @@ AGAIN:
+         goto AGAIN;
+     }
+ 
++#ifndef OH_AIRSCAN
+     /* Setup TLS, if required */
+     if (q->uri->scheme == HTTP_SCHEME_HTTPS) {
+         int rc = gnutls_init(&q->tls,
+@@ -2856,12 +2872,15 @@ AGAIN:
+ 
+         gnutls_transport_set_int(q->tls, q->sock);
+     }
++#endif // OH_AIRSCAN
+ 
+     /* Create fdpoll, and we are done */
+     q->fdpoll = eloop_fdpoll_new(q->sock, http_query_fdpoll_callback, q);
++#ifndef OH_AIRSCAN
+     if (q->tls != NULL) {
+         q->handshake = true;
+     }
++#endif // OH_AIRSCAN
+     q->sending = true;
+     http_query_fdpoll_set_mask(q, ELOOP_FDPOLL_WRITE);
+ }
+@@ -2875,11 +2894,12 @@ http_query_disconnect (http_query *q)
+         eloop_fdpoll_free(q->fdpoll);
+         q->fdpoll = NULL;
+     }
+-
++#ifndef OH_AIRSCAN
+     if (q->tls != NULL) {
+         gnutls_deinit(q->tls);
+         q->tls = NULL;
+     }
++#endif // OH_AIRSCAN
+ 
+     if (q->sock >= 0) {
+         close(q->sock);
+@@ -2895,19 +2915,21 @@ static ssize_t
+ http_query_sock_send (http_query *q, const void *data, size_t size)
+ {
+     ssize_t rc;
+-
++#ifndef OH_AIRSCAN
+     if (q->tls == NULL) {
++#endif // OH_AIRSCAN
+         rc = send(q->sock, data, size, MSG_NOSIGNAL);
+         if (rc < 0) {
+             rc = -errno;
+         }
++#ifndef OH_AIRSCAN
+     } else {
+         rc = gnutls_record_send(q->tls, data, size);
+         if (rc < 0) {
+             gnutls_record_discard_queued(q->tls);
+         }
+     }
+-
++#endif // OH_AIRSCAN
+     return rc;
+ }
+ 
+@@ -2917,16 +2939,18 @@ static ssize_t
+ http_query_sock_recv (http_query *q, void *data, size_t size)
+ {
+     ssize_t rc;
+-
++#ifndef OH_AIRSCAN
+     if (q->tls == NULL) {
++#endif // OH_AIRSCAN
+         rc = recv(q->sock, data, size, MSG_NOSIGNAL);
+         if (rc < 0) {
+             rc = -errno;
+         }
++#ifndef OH_AIRSCAN
+     } else {
+         rc = gnutls_record_recv(q->tls, data, size);
+     }
+-
++#endif // OH_AIRSCAN
+     return rc;
+ }
+ 
+@@ -2938,8 +2962,9 @@ http_query_sock_err (http_query *q, int rc)
+ {
+     ELOOP_FDPOLL_MASK mask = 0;
+     error             err = NULL;
+-
++#ifndef OH_AIRSCAN
+     if (q->tls == NULL) {
++#endif // OH_AIRSCAN
+         rc = -rc;
+         switch (rc) {
+         case EINTR:
+@@ -2952,7 +2977,7 @@ http_query_sock_err (http_query *q, int rc)
+         default:
+             err = ERROR(strerror(errno));
+         }
+-
++#ifndef OH_AIRSCAN
+     } else {
+         switch (rc) {
+         case GNUTLS_E_INTERRUPTED:
+@@ -2969,7 +2994,7 @@ http_query_sock_err (http_query *q, int rc)
+             }
+         }
+     }
+-
++#endif // OH_AIRSCAN
+     if (mask != 0) {
+         http_query_fdpoll_set_mask(q, mask);
+     }
+@@ -3079,7 +3104,6 @@ http_query_start_processing (void *p)
+         q->rq_buf = str_append_mem(q->rq_buf,
+             q->request_data->bytes, q->request_data->size);
+     }
+-
+     /* Connect to the host */
+     http_query_connect(q, ERROR("no host addresses available"));
+ }
+@@ -3372,8 +3396,12 @@ http_query_test_decode_response (http_query *q, const void *data, size_t size)
+ SANE_Status
+ http_init (void)
+ {
++#ifndef OH_AIRSCAN
+     int rc = gnutls_certificate_allocate_credentials(&gnutls_cred);
+     return rc == GNUTLS_E_SUCCESS ? SANE_STATUS_GOOD : SANE_STATUS_NO_MEM;
++#else 
++    return SANE_STATUS_GOOD;
++#endif // OH_AIRSCAN
+ }
+ 
+ /* Initialize HTTP client
+@@ -3381,10 +3409,12 @@ http_init (void)
+ void
+ http_cleanup (void)
+ {
++#ifndef OH_AIRSCAN
+     if (gnutls_cred != NULL) {
+         gnutls_certificate_free_credentials(gnutls_cred);
+         gnutls_cred = NULL;
+     }
++#endif // OH_AIRSCAN
+ }
+ 
+ /* vim:ts=8:sw=4:et

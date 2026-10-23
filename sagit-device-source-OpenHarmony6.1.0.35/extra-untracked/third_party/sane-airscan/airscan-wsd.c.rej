@@ -1,0 +1,14 @@
+--- airscan-wsd.c
++++ airscan-wsd.c
+@@ -237,11 +237,9 @@ wsd_devcaps_parse_formats (proto_handler_wsd *wsd,
+     if (wsd->png) {
+         formats |= 1 << ID_FORMAT_PNG;
+     }
+-
+     if (wsd->tiff_single_g4 || wsd->tiff_single_g3mh) {
+         formats |= 1 << ID_FORMAT_TIFF;
+     }
+-
+     if ((formats & DEVCAPS_FORMATS_SUPPORTED) == 0) {
+         /* These used as last resort */
+         if (wsd->tiff_single_jpeg_tn2 || wsd->tiff_single_uncompressed) {

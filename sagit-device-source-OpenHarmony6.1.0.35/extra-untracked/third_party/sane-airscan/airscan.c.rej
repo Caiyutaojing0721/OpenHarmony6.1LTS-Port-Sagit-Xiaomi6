@@ -1,0 +1,54 @@
+--- airscan.c
++++ airscan.c
+@@ -8,9 +8,11 @@
+ 
+ #include "airscan.h"
+ 
++#ifndef OH_AIRSCAN
+ /* Static variables
+  */
+ static const SANE_Device **sane_device_list;
++#endif // OH_AIRSCAN
+ 
+ /* Initialize the backend
+  */
+@@ -30,11 +32,9 @@ sane_init (SANE_Int *version_code, SANE_Auth_Callback authorize)
+     if (status == SANE_STATUS_GOOD) {
+         status = device_management_init();
+     }
+-
+     if (status != SANE_STATUS_GOOD) {
+         log_debug(NULL, "API: sane_init(): %s", sane_strstatus(status));
+     }
+-
+     return status;
+ }
+ 
+@@ -51,12 +51,13 @@ sane_exit (void)
+ }
+ 
+ /* Get list of devices
+- */
++*/
+ SANE_Status
+ sane_get_devices (const SANE_Device ***device_list, SANE_Bool local_only)
+ {
+     log_debug(NULL, "API: sane_get_devices(): called");
+-
++    
++#ifndef OH_AIRSCAN
+     if (local_only && !conf.pretend_local) {
+         /* Note, all our devices are non-local */
+         static const SANE_Device *empty_devlist[1] = {0};
+@@ -70,7 +71,10 @@ sane_get_devices (const SANE_Device ***device_list, SANE_Bool local_only)
+ 
+         eloop_mutex_unlock();
+     }
+-
++#else
++    static const SANE_Device *empty_devlist[1] = {0};
++    *device_list = empty_devlist;
++#endif // OH_AIRSCAN
+     log_debug(NULL, "API: sane_get_devices(): done");
+ 
+     return SANE_STATUS_GOOD;
