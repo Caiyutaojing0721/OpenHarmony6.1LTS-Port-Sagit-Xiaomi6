@@ -1,0 +1,185 @@
+{
+    "high_privilege_process_list": [
+        {
+            "name": "appspawn",
+            "uid": "root",
+            "gid": "root"
+        },
+        {
+            "name": "cjappspawn",
+            "uid": "root",
+            "gid": "root"
+        },
+        {
+            "name": "nativespawn",
+            "uid": "root",
+            "gid": "root"
+        },
+        {
+            "name": "hybridspawn",
+            "uid": "root",
+            "gid": "root"
+        },
+        {
+            "name": "console",
+            "uid": "root"
+        },
+        {
+            "name": "dhardware",
+            "gid": "root"
+        },
+        {
+            "name": "media_service",
+            "gid": ["root", "system"]
+        },
+        {
+            "name": "misc",
+            "uid": "root",
+            "gid": "root"
+        },
+        {
+            "name": "netsysnative",
+            "uid": "root",
+            "gid": "root"
+        },
+        {
+            "name": "render_service",
+            "uid": "system",
+            "gid": ["root", "system"]
+        },
+        {
+            "name": "resource_schedule_service",
+            "uid": "root",
+            "gid": "root"
+        },
+        {
+            "name": "resource_schedule_executor",
+            "uid": "root",
+            "gid": "root"
+        },
+        {
+            "name": "storage_daemon",
+            "uid": "root",
+            "gid": "root"
+        },
+        {
+            "name": "udevd_service",
+            "uid": "root",
+            "gid": "system"
+        },
+        {
+            "name": "ueventd",
+            "uid": "system",
+            "gid": "system"
+        },
+        {
+            "name": "concurrent_task_service",
+            "uid": "system",
+            "gid": "system"
+        },
+        {
+            "name": "hdcd",
+            "uid": "root"
+        },
+        {
+            "name": "key_enable",
+            "uid": "root",
+            "gid": "root"
+        },
+        {
+            "name": "check_module_update",
+            "uid": "root",
+            "gid": "root"
+        },
+        {
+            "name": "module_update_sa",
+            "uid": "root",
+            "gid": "root"
+        },
+        {
+            "name": "sys_installer_sa",
+            "uid": "root",
+            "gid": "root"
+        },
+        {
+            "name": "qrtr-ns",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        },
+        {
+            "name": "pd-mapper",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        },
+        {
+            "name": "tqftpserv",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        },
+        {
+            "name": "rmtfs",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        },
+        {
+            "name": "qmi-proxy",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        },
+        {
+            "name": "bluetooth_hci",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        },
+        {
+            "name": "dbus-daemon",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        },
+        {
+            "name": "modem-manager",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        },
+        {
+            "name": "vncserver",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        },
+        {
+            "name": "vncserver",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        },
+        {
+            "name": "dockerd",
+            "uid": "root",
+            "gid": ["root"]
+        },
+        {
+            "name": "vncserver",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        },
+        {
+            "name": "docker",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        },
+        {
+            "name": "dockerd",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        },
+        {
+            "name": "containerd",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        },
+        {
+            "name": "runc",
+            "uid": "root",
+            "gid": ["root", "shell"]
+        }
+    ]
+}

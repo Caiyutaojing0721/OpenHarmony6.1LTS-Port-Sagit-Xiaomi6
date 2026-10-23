@@ -1,0 +1,12 @@
+{
+  "parts": {
+    "product_xiaomi_sagit": {
+      "module_list": [
+        "//vendor/qualcomm/xiaomi_sagit/hals/audio:hdf_audio_config",
+        "//vendor/qualcomm/xiaomi_sagit/hdf_config/uhdf:hdf_config",
+        "//vendor/qualcomm/xiaomi_sagit/power_config:power_config"
+      ]
+    }
+  },
+  "subsystem": "product_xiaomi_sagit"
+}

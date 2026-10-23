@@ -1,0 +1,115 @@
+# Copyright (c) 2022-2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+hdf_audio_path = "//drivers/peripheral/audio"
+hdf_hdi_service_path = "//drivers/peripheral/audio/hdi_service"
+import("//build/ohos.gni")
+import("//drivers/peripheral/audio/audio.gni")
+
+ohos_shared_library("audio_capture_adapter") {
+  sources = [ "$hdf_hdi_service_path/primary_impl/src/audio_common.c" ]
+  sources += [
+    "alsa_adapter/src/alsa_lib_capture.c",
+    "alsa_adapter/src/alsa_lib_common.c",
+    "//third_party/cJSON/cJSON.c",
+  ]
+
+  include_dirs = [
+    "$hdf_hdi_service_path/primary_impl/include",
+    "$hdf_audio_path/supportlibs/interfaces/include",
+    "//third_party/bounds_checking_function/include",
+    "$hdf_hdi_service_path/vendor_interface/utils",
+  ]
+
+  include_dirs += [
+    "//third_party/cJSON",
+    "alsa_adapter/include",
+    "//third_party/alsa-lib/include",
+    "$hdf_audio_path/supportlibs/alsa_adapter/include",
+  ]
+
+  public_deps = []
+  public_deps += [ "//third_party/alsa-lib:libasound" ]
+
+  defines = [ "AUDIO_HDI_SERVICE_MODE" ]
+
+  if (enable_audio_hal_hdf_log) {
+    defines += [ "AUDIO_HDF_LOG" ]
+  }
+
+  if (is_standard_system) {
+    external_deps = [
+      "c_utils:utils",
+      "drivers_interface_audio:audio_idl_headers",
+      "hdf_core:libhdf_utils",
+      "hilog:libhilog",
+    ]
+  } else {
+    external_deps = [ "hilog:libhilog" ]
+  }
+
+  install_images = [ chipset_base_dir ]
+  part_name = "qualcomm_products"
+}
+
+ohos_shared_library("audio_render_adapter") {
+  sources = [ "$hdf_hdi_service_path/primary_impl/src/audio_common.c" ]
+  sources += [
+    "alsa_adapter/src/alsa_lib_common.c",
+    "alsa_adapter/src/alsa_lib_render.c",
+    "//third_party/cJSON/cJSON.c",
+  ]
+
+  include_dirs = [
+    "$hdf_hdi_service_path/primary_impl/include",
+    "$hdf_audio_path/supportlibs/interfaces/include",
+    "//third_party/bounds_checking_function/include",
+    "$hdf_hdi_service_path/vendor_interface/utils",
+  ]
+
+  include_dirs += [
+    "//third_party/cJSON",
+    "alsa_adapter/include",
+    "//third_party/alsa-lib/include",
+    "$hdf_audio_path/supportlibs/alsa_adapter/include",
+  ]
+  public_deps = []
+  public_deps += [ "//third_party/alsa-lib:libasound" ]
+
+  defines = [ "AUDIO_HDI_SERVICE_MODE" ]
+
+  if (enable_audio_hal_hdf_log) {
+    defines += [ "AUDIO_HDF_LOG" ]
+  }
+
+  if (is_standard_system) {
+    external_deps = [
+      "c_utils:utils",
+      "drivers_interface_audio:audio_idl_headers",
+      "hdf_core:libhdf_utils",
+      "hilog:libhilog",
+    ]
+  } else {
+    external_deps = [ "hilog:libhilog" ]
+  }
+
+  install_images = [ chipset_base_dir ]
+  part_name = "qualcomm_products"
+}
+
+group("audio") {
+  deps = [
+    ":audio_capture_adapter",
+    ":audio_render_adapter",
+  ]
+}

@@ -1,0 +1,15 @@
+root {
+    platform {
+        i2c_config {
+            match_attr = "linux_i2c_adapter";
+
+            template i2c_controller {
+                bus = 0;
+            }
+
+            controller_0xffd01f00 :: i2c_controller {
+                bus = 0;
+            }
+        }
+    }
+}

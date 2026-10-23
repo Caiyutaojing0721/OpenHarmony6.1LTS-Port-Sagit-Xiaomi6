@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=dev.Cogitri.apkPolkit2
+Exec=/usr/libexec/apk-polkit/apk-polkit-server 
+User=root

@@ -1,0 +1,10 @@
+# Copyright (C) 2021 AlgoIdeas <yu19881234@163.com>.
+
+import("//build/ohos.gni")
+
+group("hardware") {
+  deps = [
+    "audio:audio",
+    "bluetooth:bluetooth",
+  ]
+}

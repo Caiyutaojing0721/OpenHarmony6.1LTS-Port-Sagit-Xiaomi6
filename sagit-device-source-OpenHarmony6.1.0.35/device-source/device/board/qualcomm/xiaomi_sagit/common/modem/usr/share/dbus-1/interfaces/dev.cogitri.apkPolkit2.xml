@@ -1,0 +1,160 @@
+<!DOCTYPE node PUBLIC
+"-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+
+<!--
+    Copyright (c) 2020-2022 Rasmus Thomsen <oss@cogitri.dev>
+
+    This file is part of apk-polkit-rs (see https://gitlab.alpinelinux.org/Cogitri/apk-polkit-rs).
+
+    apk-polkit is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    apk-polkit is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with apk-polkit.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<node name="/" xmlns:doc="http://www.freedesktop.org/dbus/1.0/doc.dtd">
+    <interface name="dev.Cogitri.apkPolkit2">
+        <!--
+            AddPackage:
+            @package: The name of the package to add (install)
+
+            Adds a new package to the world constraint of the system (and as such installs it).
+        -->
+        <method name="AddPackage">
+            <arg name="package" type="s" direction="in"/>
+        </method>
+
+        <!--
+            AddRepository:
+            @url: The URL of the repository to add
+
+            Adds a new repository to /etc/apk/repositories which will be fetched upon
+            calling UpdateRepositories.
+        -->
+        <method name="AddRepository">
+            <arg name="url" type="s" direction="in"/>
+        </method>
+
+        <!--
+            DeletePackage:
+            @package: The name of the package to delete (uninstall)
+
+            Removes a package from the world constraint of the system (and as such
+            uninstalls it, in case nothing else depends on it).
+        -->
+        <method name="DeletePackage">
+            <arg name="package" type="s" direction="in"/>
+        </method>
+
+        <!--
+            GetPackagesDetails:
+            @packages: The names of the packages to retrieve information from
+            @requestedProperties: Bitflag containing what details are requested.
+            @packagesDetails: The details of the packages. Information is encoded in a dictionary array.
+                              The array is warrantied to have the same the length as the @packages input
+                              argument if the call returns successfully. Every dictionary represents one
+                              package and will always contain a "name" entry with the name of the package.
+                              If fetching the details of the specific package was successful, additional
+                              entries corresponding to the @requestedProperties will be added. If fetching
+                              the details of a package returned an error, the error will be provided in an
+                              "error" entry in the dictionary.
+
+            Retrieves details (like the homepage etc.) of a number of packages.
+        -->
+        <method name="GetPackagesDetails">
+            <arg name="packages" type="as" direction="in"/>
+            <arg name="requestedProperties" type="u" direction="in"/>
+            <arg name="packagesDetails" type="aa{sv}" direction="out"/>
+        </method>
+
+        <!--
+            ListRepositories:
+            @repositories: An array of repositories. Each repository consists of
+                           its state (b, enabled or disabled), an optional description (s)
+                           and the name of the repository (s).
+
+            Returns all available repositories on the system.
+        -->
+        <method name="ListRepositories">
+            <arg name="repositories" type="a(bss)" direction="out"/>
+        </method>
+
+        <!--
+            ListUpgradablePackages:
+            @requestedProperties: Bitflag containing what details are requested.
+            @packagesDetails: The details of all packages which are upgradable.
+
+            Lists all packages that are upgradable on the system.
+        -->
+        <method name="ListUpgradablePackages">
+            <arg name="requestedProperties" type="u" direction="in"/>
+            <arg name="packagesDetails" type="aa{sv}" direction="out"/>
+        </method>
+
+        <!--
+            RemoveRepository:
+            @url: The URL of the repository to remove
+
+            Removes a repository from /etc/apk/repositories which will be removed upon
+            calling UpdateRepositories.
+        -->
+        <method name="RemoveRepository">
+            <arg name="url" type="s" direction="in"/>
+        </method>
+
+        <!--
+            SearchFilesOwners:
+            @paths: The paths to search for.
+            @requestedProperties: Bitflag containing what details are requested.
+            @packagesDetails: The details of the package which owns the file. The first member
+                              in the array are the details of the first path and so on. If no
+                              owning package is found, an empty hashmap is inserted.
+
+            Searches for the package that owns a file.
+        -->
+        <method name="SearchFilesOwners">
+            <arg name="paths" type="as" direction="in"/>
+            <arg name="requestedProperties" type="u" direction="in"/>
+            <arg name="packagesDetails" type="aa{sv}" direction="out"/>
+        </method>
+
+        <!--
+            UpdateRepositories:
+
+            Refreshes all repositories that are present on the system.
+        -->
+        <method name="UpdateRepositories">
+        </method>
+
+        <!--
+            UpgradePackages:
+            @packages: The name of the packages to upgrade.
+
+            Upgrades multiple  packages. Keep in mind that due to world constraints this is
+            prone to breaking. Please try to specify all packages returned by ListUpgradablePackages
+            if possible.
+        -->
+        <method name="UpgradePackages">
+            <arg name="packages" type="as" direction="in"/>
+        </method>
+
+        <!--
+            ProgressNotification:
+            @progressPercentage: How many percents of the operation have been completed.
+
+            Sends a signal when the current operation proceeds.
+        -->
+        <signal name="ProgressNotification">
+            <arg name="progressPercentage" type="u"/>
+        </signal>
+    </interface>
+</node>

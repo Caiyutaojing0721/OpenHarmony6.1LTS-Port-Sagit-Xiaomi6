@@ -1,0 +1,2208 @@
+# ===== base/security/selinux_adapter/sepolicy/base/system/file_contexts =====
+# Copyright (c) 2021-2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# please put shorter config ahead;
+# root
+/       u:object_r:rootfs:s0
+
+/lost\+found       u:object_r:rootfs:s0
+/bin       u:object_r:rootfs:s0
+/chip_prod       u:object_r:rootfs:s0
+/init       u:object_r:rootfs:s0
+/chipset       u:object_r:rootfs:s0
+/mnt      u:object_r:rootfs:s0
+/proc      u:object_r:rootfs:s0
+/storage      u:object_r:rootfs:s0
+/sys_prod      u:object_r:rootfs:s0
+/cust      u:object_r:rootfs:s0
+/version      u:object_r:system_file:s0
+/preload      u:object_r:system_file:s0
+/tmp      u:object_r:rootfs:s0
+/sys           u:object_r:sys_file:s0
+
+/dev(/.*)?       u:object_r:dev_file:s0
+/dev/functionfs(/.*)?       u:object_r:dev_functionfs_file:s0
+/dev/__parameters__(/.*)?         u:object_r:dev_parameters_file:s0
+/dev/block(/.*)?                u:object_r:dev_block_file:s0
+/dev/block/zram0                u:object_r:zram_device:s0
+/dev/block/by-name/misc         u:object_r:updater_block_file:s0
+/dev/block/mmcblk0p2            u:object_r:updater_block_file:s0
+/dev/block/by-name/bootctrl     u:object_r:updater_block_file:s0
+/dev/block/mmcblk0p3            u:object_r:updater_block_file:s0
+/dev/bus(/.*)?                u:object_r:dev_bus_file:s0
+/dev/bus/usb(/.*)?                u:object_r:dev_bus_usb_file:s0
+/dev/char(/.*)?                u:object_r:dev_char_file:s0
+/dev/dma_heap(/.*)?                u:object_r:dev_dma_heap_file:s0
+/dev/dri(/.*)?                u:object_r:dev_dri_file:s0
+/dev/fscklogs(/.*)?                u:object_r:dev_fscklogs_file:s0
+/dev/graphics(/.*)?                u:object_r:dev_graphics_file:s0
+/dev/input(/.*)?                u:object_r:dev_input_file:s0
+/dev/pts(/.*)?                u:object_r:dev_pts_file:s0
+/dev/snd(/.*)?                u:object_r:dev_snd_file:s0
+/dev/socket(/.*)?                u:object_r:dev_socket_file:s0
+/dev/unix(/.*)?                u:object_r:dev_unix_file:s0
+/dev/unix/socket                u:object_r:dev_unix_socket:s0
+/dev/unix/socket/AppSpawn       u:object_r:appspawn_socket:s0
+/dev/unix/socket/NWebSpawn      u:object_r:nwebspawn_socket:s0
+/dev/unix/socket/HybridSpawn    u:object_r:appspawn_socket:s0
+/dev/unix/socket/fd_holder      u:object_r:fd_holder_socket:s0
+/dev/unix/socket/hdcd           u:object_r:hdcd_socket:s0
+/dev/unix/socket/native         u:object_r:native_socket:s0
+/dev/unix/socket/paramservice   u:object_r:paramservice_socket:s0
+/dev/v4l(/.*)?                u:object_r:dev_v_file:s0
+/dev/v4l-subdev[0-9]*         u:object_r:dev_v_file:s0
+/dev/tty[0-9]*                u:object_r:tty_device:s0
+/dev/ttyFIQ0                  u:object_r:tty_device:s0
+/dev/ttyS[0-9]*               u:object_r:tty_device:s0
+/dev/usb-ffs(/.*)?            u:object_r:dev_usb_ffs:s0
+/dev/asanlog(/.*)?                  u:object_r:dev_asanlog_file:s0
+
+/dev/usbfn                  u:object_r:dev_usbfn_file:s0
+/dev/access_token_id          u:object_r:dev_at_file:s0
+/dev/ashmem          u:object_r:dev_ashmem_file:s0
+/dev/binder          u:object_r:dev_binder_file:s0
+/dev/console          u:object_r:dev_console_file:s0
+/dev/cpu_dma_latency          u:object_r:dev_cpu_dma_latency_file:s0
+/dev/dev_mgr          u:object_r:dev_mgr_file:s0
+/dev/devsvc_mgr          u:object_r:dev_svc_mgr_file:s0
+/dev/fuse          u:object_r:dev_fuse_file:s0
+/dev/hdf_input_host          u:object_r:dev_hdf_file:s0
+/dev/hwbinder          u:object_r:dev_hwbinder_file:s0
+/dev/iio:device0          u:object_r:dev_iio_file:s0
+/dev/kmsg          u:object_r:dev_kmsg_file:s0
+/dev/loop-control          u:object_r:dev_loop_control_file:s0
+/dev/media[0-9]*          u:object_r:dev_media_file:s0
+/dev/mmcblk0rpmb          u:object_r:dev_rpmb_file:s0
+/dev/null                 u:object_r:dev_null_file:s0
+/dev/random          u:object_r:dev_random_file:s0
+/dev/urandom          u:object_r:dev_random_file:s0
+/dev/rtc          u:object_r:dev_rtc_file:s0
+/dev/rtc[0-9]*          u:object_r:dev_rtc_file:s0
+/dev/socket          u:object_r:dev_socket_file:s0
+/dev/tee[0-9]*          u:object_r:dev_tee_file:s0
+/dev/teepriv[0-9]*          u:object_r:dev_tee_file:s0
+/dev/ubi_ctrl          u:object_r:dev_ubi_file:s0
+/dev/uhid          u:object_r:dev_uhid_file:s0
+/dev/tun          u:object_r:dev_tun_file:s0
+/dev/vcs          u:object_r:dev_vcs_file:s0
+/dev/vcs[0-9]*          u:object_r:dev_vcs_file:s0
+/dev/vcsa          u:object_r:dev_vcs_file:s0
+/dev/vcsa[0-9]*          u:object_r:dev_vcs_file:s0
+/dev/vcsu          u:object_r:dev_vcs_file:s0
+/dev/vcsu[0-9]*          u:object_r:dev_vcs_file:s0
+/dev/vhci          u:object_r:dev_vhci_file:s0
+/dev/video[0-9]*          u:object_r:dev_video_file:s0
+/dev/vndbinder          u:object_r:dev_vndbinder_file:s0
+/dev/watchdog*          u:object_r:dev_watchdog_file:s0
+/dev/watchdog[0-9]*          u:object_r:dev_watchdog_file:s0
+/dev/zero          u:object_r:dev_zero_file:s0
+/dev/HDF_PLATFORM_I2C_MANAGER       u:object_r:dev_hdf_i2c_mgr:s0
+/dev/khdf_ut                       u:object_r:dev_hdf_test:s0
+/dev/I2C_TEST                       u:object_r:dev_i2c_test:s0
+/dev/bbox                           u:object_r:dev_bbox:s0
+/dev/bus                            u:object_r:dev_bus:s0
+/dev/cec0                           u:object_r:dev_dev_cec0:s0
+/dev/full                           u:object_r:dev_full:s0
+/dev/gpiochip[0-9]*                 u:object_r:dev_gpiochip:s0
+/dev/hdf_audio_capture              u:object_r:dev_hdf_audio_capture:s0
+/dev/hdf_audio_codec_dev0           u:object_r:dev_hdf_audio_codec_dev:s0
+/dev/hdf_audio_codec_primary_dev0   u:object_r:dev_hdf_audio_codec_primary:s0
+/dev/hdf_audio_codec_hdmi_dev0      u:object_r:dev_hdf_audio_codec_hdmi:s0
+/dev/hdf_audio_smartpa_dev0         u:object_r:dev_hdf_audio_smartpa:s0
+/dev/hdf_audio_control              u:object_r:dev_hdf_audio_control:s0
+/dev/hdf_audio_render               u:object_r:dev_hdf_audio_render:s0
+/dev/hdf_bl                         u:object_r:dev_hdf_bl:s0
+/dev/hdf_disp                       u:object_r:dev_hdf_disp:s0
+/dev/hdf_input_event[0-9]           u:object_r:dev_hdf_input:s0
+/dev/hdf_light                      u:object_r:dev_hdf_light:s0
+/dev/hdf_misc_vibrator              u:object_r:dev_hdf_misc_vibrator:s0
+/dev/hdf_sensor_manager_ap          u:object_r:dev_hdf_sensor_mgr:s0
+/dev/hdf_usb_pnp_notify_service     u:object_r:dev_hdf_usb_pnp:s0
+/dev/hdmi_hdcplx                    u:object_r:dev_hdmi_hdcplx:s0
+/dev/hwrng                          u:object_r:dev_hwrng:s0
+/dev/i2c-[0-9]                      u:object_r:dev_i2c:s0
+/dev/mali0                          u:object_r:dev_mali:s0
+/dev/mem                            u:object_r:dev_mem:s0
+/dev/mpp_service                    u:object_r:dev_mpp:s0
+/dev/pm_ut_service                u:object_r:dev_pm_test:s0
+/dev/port                           u:object_r:dev_port:s0
+/dev/ptmx                           u:object_r:dev_ptmx:s0
+/dev/ptp[0-9]                       u:object_r:dev_ptp:s0
+/dev/rfkill                         u:object_r:dev_rfkill:s0
+/dev/rga                            u:object_r:dev_rga:s0
+/dev/sample_service                 u:object_r:dev_sample_svc:s0
+/dev/sched_rtg_ctrl                 u:object_r:dev_sched_rtg_ctrl:s0
+/dev/auth_ctrl                      u:object_r:dev_auth_ctrl:s0
+/dev/snapshot                       u:object_r:dev_snapshot:s0
+/dev/sw_sync                        u:object_r:dev_sw_sync:s0
+/dev/usb-ffs                        u:object_r:dev_usb_ffs:s0
+/dev/uinput                         u:object_r:dev_uinput:s0
+
+/dev/hdmi_hdcp1x                    u:object_r:dev_hdmi_hdcp1x:s0
+/dev/xpm                            u:object_r:dev_xpm:s0
+
+
+/etc(/.*)?       u:object_r:etc_file:s0
+/lib(/.*)?       u:object_r:lib_file:s0
+/lib64(/.*)?       u:object_r:lib_file:s0
+
+/config(/.*)?       u:object_r:config_file:s0
+/updater(/.*)?       u:object_r:updater_file:s0
+/cust(/.*)?       u:object_r:system_file:s0
+/preload(/.*)?       u:object_r:system_file:s0
+/version(/.*)?       u:object_r:system_file:s0
+/system(/.*)?       u:object_r:system_file:s0
+/system/hap(/.*)?       u:object_r:system_hap_file:s0
+/system/bin(/.*)?       u:object_r:system_bin_file:s0
+/system/etc(/.*)?       u:object_r:system_etc_file:s0
+/system/fonts(/.*)?       u:object_r:system_fonts_file:s0
+/system/lib(/.*)?       u:object_r:system_lib_file:s0
+/system/profile(/.*)?       u:object_r:system_profile_file:s0
+/system/usr(/.*)?       u:object_r:system_usr_file:s0
+
+/sys_prod(/.*)?      u:object_r:sys_prod_file:s0
+
+/chip_prod(/.*)?     u:object_r:chip_prod_file:s0
+/chip_ckm(/.*)?      u:object_r:chip_ckm_file:s0
+
+/eng_system(/.*)?           u:object_r:system_file:s0
+/eng_system/etc(/.*)?       u:object_r:system_etc_file:s0
+/eng_system/lib(/.*)?       u:object_r:system_lib_file:s0
+/eng_system/bin(/.*)?       u:object_r:system_bin_file:s0
+
+/eng_chipset(/.*)?           u:object_r:vendor_file:s0
+/eng_chipset/bin(/.*)?       u:object_r:vendor_bin_file:s0
+/eng_chipset/lib(/.*)?       u:object_r:vendor_lib_file:s0
+/eng_chipset/lib64(/.*)?     u:object_r:vendor_lib_file:s0
+/eng_chipset/etc(/.*)?       u:object_r:vendor_etc_file:s0
+
+/data(/.*)?                   u:object_r:data_file:s0
+/data/app                     u:object_r:data_app_file:s0
+/data/app/(.*)?               u:object_r:data_app_file:s0
+/data/app/el1(/.*)?           u:object_r:data_app_el1_file:s0
+/data/app/el2(/.*)?           u:object_r:data_app_el2_file:s0
+/data/app/el3(/.*)?           u:object_r:data_app_el3_file:s0
+/data/app/el4(/.*)?           u:object_r:data_app_el4_file:s0
+/data/app/el5(/.*)?           u:object_r:data_app_el5_file:s0
+/data/service                 u:object_r:data_service_file:s0
+/data/service/(.*)?           u:object_r:data_service_file:s0
+/data/service/el0(/.*)?       u:object_r:data_service_el0_file:s0
+/data/service/el1(/.*)?       u:object_r:data_service_el1_file:s0
+/data/service/el1/public/print_service(/.*)?       u:object_r:data_service_el1_public_print_service_file:s0
+/data/service/el2(/.*)?       u:object_r:data_service_el2_file:s0
+/data/service/el3(/.*)?       u:object_r:data_service_el3_file:s0
+/data/service/el4(/.*)?       u:object_r:data_service_el4_file:s0
+/data/service/el5(/.*)?       u:object_r:data_service_el5_file:s0
+/data/chipset                 u:object_r:data_chipset_file:s0
+/data/chipset/(.*)?           u:object_r:data_chipset_file:s0
+/data/chipset/el1(/.*)?       u:object_r:data_chipset_el1_file:s0
+/data/chipset/el2(/.*)?       u:object_r:data_chipset_el2_file:s0
+/data/storage                 u:object_r:data_storage:s0
+/data/storage/(.*)?           u:object_r:data_storage:s0
+/data/accounts                u:object_r:data_accounts:s0
+/data/accounts/(.*)?          u:object_r:data_accounts:s0
+/data/ams_white_list          u:object_r:data_ams_whitelist:s0
+/data/app-asec                u:object_r:data_appasec:s0
+/data/app-asec/(.*)?          u:object_r:data_appasec:s0
+/data/app-ephemeral           u:object_r:data_appephemeral:s0
+/data/app-ephemeral/(.*)?     u:object_r:data_appephemeral:s0
+/data/app-lib                 u:object_r:data_applib:s0
+/data/app-lib/(.*)?           u:object_r:data_applib:s0
+/data/app-private             u:object_r:data_appprivate:s0
+/data/app-private/(.*)?       u:object_r:data_appprivate:s0
+/data/app-staging             u:object_r:data_appstaging:s0
+/data/app-staging/(.*)?                 u:object_r:data_appstaging:s0
+/data/backup                       u:object_r:data_backup:s0
+/data/backup/(.*)?                 u:object_r:data_backup:s0
+/data/bluetooth                       u:object_r:data_bluetooth:s0
+/data/bluetooth/(.*)?                 u:object_r:data_bluetooth:s0
+/data/service/el0/startup(/.*)?                 u:object_r:data_startup:s0
+/data/cache                       u:object_r:data_cache:s0
+/data/cache/(.*)?                 u:object_r:data_cache:s0
+/data/data                       u:object_r:data_data_file:s0
+/data/data/(.*)?                 u:object_r:data_data_file:s0
+/data/drm                       u:object_r:data_drm:s0
+/data/drm/(.*)?                 u:object_r:data_drm:s0
+/data/ethernet                  u:object_r:data_ethernet:s0
+/data/ethernet/(.*)?                 u:object_r:data_ethernet:s0
+/data/file\.log                 u:object_r:data_filelog:s0
+/data/init_agent                       u:object_r:data_init_agent:s0
+/data/init_agent/(.*)?                 u:object_r:data_init_agent:s0
+/data/log/libinput(/.*)?                 u:object_r:data_libinput:s0
+/data/local                       u:object_r:data_local:s0
+/data/local/(.*)?                 u:object_r:data_local:s0
+/data/local/traces(/.*)?                 u:object_r:data_local_traces:s0
+/data/local/tmp(/.*)?                 u:object_r:data_local_tmp:s0
+/data/local/ark-cache(/.*)?                 u:object_r:data_local_arkcache:s0
+/data/local/ark-profile(/.*)?               u:object_r:data_local_arkprofile:s0
+/data/log                       u:object_r:data_log:s0
+/data/log/(.*)?                 u:object_r:data_log:s0
+/data/media                       u:object_r:data_media:s0
+/data/media/(.*)?                 u:object_r:data_media:s0
+/data/mediadrm                       u:object_r:data_mediadrm:s0
+/data/mediadrm/(.*)?                 u:object_r:data_mediadrm:s0
+/data/misc                       u:object_r:data_misc:s0
+/data/misc/(.*)?                 u:object_r:data_misc:s0
+/data/misc_ce                       u:object_r:data_misc_ce:s0
+/data/misc_ce/(.*)?                 u:object_r:data_misc_ce:s0
+/data/misc_de                       u:object_r:data_misc_de:s0
+/data/misc_de/(.*)?                 u:object_r:data_misc_de:s0
+/data/nfc                       u:object_r:data_nfc:s0
+/data/nfc/(.*)?                 u:object_r:data_nfc:s0
+/data/ota                       u:object_r:data_ota:s0
+/data/ota/(.*)?                 u:object_r:data_ota:s0
+/data/ota_package                       u:object_r:data_ota_package:s0
+/data/ota_package/(.*)?                 u:object_r:data_ota_package:s0
+/data/service/el1/startup/parameters(/.*)?                 u:object_r:data_parameters:s0
+/data/preloads                       u:object_r:data_preloads:s0
+/data/preloads/(.*)?                 u:object_r:data_preloads:s0
+/data/resource-cache                       u:object_r:data_resourcecache:s0
+/data/resource-cache/(.*)?                 u:object_r:data_resourcecache:s0
+/data/sadata                       u:object_r:data_sadata:s0
+/data/sadata/(.*)?                 u:object_r:data_sadata:s0
+/data/sadata_de                       u:object_r:data_sadata_de:s0
+/data/sadata_de/(.*)?                 u:object_r:data_sadata_de:s0
+/data/samgr                       u:object_r:data_samgr:s0
+/data/samgr/(.*)?                 u:object_r:data_samgr:s0
+/data/ss                       u:object_r:data_ss:s0
+/data/ss/(.*)?                 u:object_r:data_ss:s0
+/data/system                       u:object_r:data_system:s0
+/data/system/(.*)?                 u:object_r:data_system:s0
+/data/system_ce                       u:object_r:data_system_ce:s0
+/data/system_ce/(.*)?                 u:object_r:data_system_ce:s0
+/data/system_de                       u:object_r:data_system_de:s0
+/data/system_de/(.*)?                 u:object_r:data_system_de:s0
+/data/service/el1/public/udev(/.*)?                 u:object_r:data_udev:s0
+/data/update_service_log\.txt     u:object_r:data_update_service_log:s0
+/data/user                       u:object_r:data_user:s0
+/data/user/(.*)?                 u:object_r:data_user:s0
+/data/user_de                       u:object_r:data_user_de:s0
+/data/user_de/(.*)?                 u:object_r:data_user_de:s0
+/data/vendor                       u:object_r:data_vendor:s0
+/data/vendor/(.*)?                 u:object_r:data_vendor:s0
+/data/vendor_ce                       u:object_r:data_vendor_ce:s0
+/data/vendor_ce/(.*)?                 u:object_r:data_vendor_ce:s0
+/data/vendor_de                       u:object_r:data_vendor_de:s0
+/data/vendor_de/(.*)?                 u:object_r:data_vendor_de:s0
+
+/vendor(/.*)?       u:object_r:vendor_file:s0
+/vendor/bin(/.*)?       u:object_r:vendor_bin_file:s0
+/vendor/lib(/.*)?       u:object_r:vendor_lib_file:s0
+/vendor/lib64(/.*)?       u:object_r:vendor_lib_file:s0
+/vendor/etc(/.*)?       u:object_r:vendor_etc_file:s0
+
+/system/bin/init                u:object_r:init_exec:s0
+
+/system/bin/watchdog_service        u:object_r:watchdog_service_exec:s0
+
+/system/bin/lmks        u:object_r:lmks_exec:s0
+
+/system/bin/hdf_devmgr        u:object_r:hdf_devmgr_exec:s0
+
+/system/bin/wifi_hal_service        u:object_r:wifi_hal_service_exec:s0
+
+/system/bin/ispserver        u:object_r:ispserver_exec:s0
+
+/system/bin/storage_daemon        u:object_r:storage_daemon_exec:s0
+
+/system/bin/sdc        u:object_r:sdc_exec:s0
+
+/system/bin/mtpfs       u:object_r:mtpfs_exec:s0
+
+/system/bin/thermal_protector        u:object_r:thermal_protector_exec:s0
+
+/system/bin/sh        u:object_r:sh_exec:s0
+
+/system/bin/hdcd        u:object_r:hdcd_exec:s0
+
+/system/lib64(/.*)?        u:object_r:system_lib_file:s0
+
+/eng_system/bin/hdcd        u:object_r:hdcd_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/ability/ability_runtime/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# for aa tool
+/system/bin/aa u:object_r:aa_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/accesscontrol/sandbox_manager/public/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/dev/dec   u:object_r:dev_dec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/accesscontrol/sandbox_manager/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/sandbox_manager(/.*)?    u:object_r:sandbox_manager_data_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/account/os_account/system/file_contexts =====
+# Copyright (c) 2022-2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/account      u:object_r:account_data_file:s0
+/data/service/el1/public/account/[0-9]+(/.*)?       u:object_r:account_data_file:s0
+/data/service/el2/[0-9]+/account(/.*)?              u:object_r:account_data_el2_file:s0
+/data/service/el1/public/account/account_list.json      u:object_r:account_data_file:s0
+/data/service/el1/public/account/account_index_info.json      u:object_r:account_data_file:s0
+/data/service/el1/public/account/account_info_digest.json      u:object_r:account_data_file:s0
+
+/data/service/el1/public/account/base_os_account_constraints.json      u:object_r:account_data_file:s0
+/data/service/el1/public/account/global_os_account_constraints.json      u:object_r:account_data_file:s0
+/data/service/el1/public/account/specific_os_account_constraints.json      u:object_r:account_data_file:s0
+#/system/etc/account/osaccount_constraints.json       u:object_r:account_data_file:s0
+#/system/etc/account/constraints_list_collection.json       u:object_r:account_data_file:s0
+
+# for acm tool
+/system/bin/acm u:object_r:acm_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/arkcompiler/ets_runtime/system/file_contexts =====
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/ark_aot_compiler u:object_r:ark_aot_compiler_exec:s0
+/system/bin/rawheap_translator u:object_r:rawheap_translator_exec:s0
+/system/bin/ark_aot u:object_r:ark_aot_exec:s0
+
+/data/app/el1/public/aot_compiler(/.*)?       u:object_r:data_app_el1_arkcache:s0
+/data/app/el1/[0-9]+/aot_compiler(/.*)?       u:object_r:data_app_el1_arkprofile:s0
+/data/service/el1/public/for-all-app/framework_ark_cache(/.*)?       u:object_r:data_service_el1_framework_arkcache:s0
+/data/app/el1/[0-9]+/system_optimize/.+/ark_startup_cache(/.*)?       u:object_r:data_app_el1_arkstartupcache:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/ark/musl/system/file_contexts =====
+# Copyright (c) 2025-2026 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/etc/ld-musl(.*)?      u:object_r:system_etc_musl_file:s0
+/data/service/el0/public/musl_namespace_config(/.*)?      u:object_r:data_musl_namespace:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/ark/runtime/system/file_contexts =====
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/lib(64)?/platformsdk/libark_jsruntime.so        u:object_r:ark_lib_file:s0
+/system/lib(64)?/libark_jsoptimizer.so                  u:object_r:ark_lib_file:s0
+/system/lib(64)?/ndk/libjsvm.so                         u:object_r:ark_lib_file:s0
+/system/lib(64)?/libv8_shared.so                    u:object_r:ark_lib_file:s0
+
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/arkXtest/arkXtest/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/uitest u:object_r:uitest_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/arkXtest/perftest/system/file_contexts =====
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/perftest u:object_r:perftest_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/bootanimation/system/file_contexts =====
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/bootanimation        u:object_r:bootanimation_exec:s0
+
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/bundlemanager/app_domain_verify/system/file_contexts =====
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/app_domain_verify_mgr_service(/.*)?    u:object_r:adv_data_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/bundlemanager/bundle_framework/system/file_contexts =====
+# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+#installs
+/system/bin/installs u:object_r:installs_exec:s0
+
+# for sa_main Service
+/system/bin/sa_main u:object_r:samain_exec:s0
+
+# for bm tool
+/system/bin/bm u:object_r:bm_exec:s0
+
+# for bmsdb
+/data/service/el1/public/bms/bundle_manager_service/bmsdb.* u:object_r:bms_db_file:s0
+/data/service/el1/public/bms/bundle_manager_service/bmsdb.db_binlog(/.*) u:object_r:bms_db_file:s0
+/data/service/el1/public/bms/bundle_resources/bundleResource.* u:object_r:bms_db_file:s0
+/data/service/el1/public/bms/bundle_resources/bundleResource.db_binlog(/.*) u:object_r:bms_db_file:s0
+/data/service/el1/public/bms/bundle_manager_service/.*\.json u:object_r:bms_db_file:s0
+/data/service/el1/public/bms/bundle_resources/.*\.json u:object_r:bms_db_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/communication/netmanager/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/dev/ppp                          u:object_r:dev_ppp_file:s0
+/dev/unix/socket/fwmarkd          u:object_r:fwmark_service:s0
+/dev/unix/socket/dnsproxyd        u:object_r:dnsproxy_service:s0
+/system/bin/iptables              u:object_r:iptables_exec:s0
+/system/bin/iptables-restore      u:object_r:iptables_exec:s0
+/system/bin/iptables-save         u:object_r:iptables_exec:s0
+/system/bin/ip6tables             u:object_r:iptables_exec:s0
+/system/bin/ip6tables-restore     u:object_r:iptables_exec:s0
+/system/bin/ip6tables-save        u:object_r:iptables_exec:s0
+/system/bin/charon                u:object_r:sysvpn_exec:s0
+/system/bin/xfrmi                 u:object_r:sysvpn_exec:s0
+/system/bin/starter               u:object_r:sysvpn_exec:s0
+/system/bin/pki                   u:object_r:sysvpn_exec:s0
+/system/bin/stroke                u:object_r:sysvpn_exec:s0
+/system/bin/swanctl               u:object_r:sysvpn_exec:s0
+/system/bin/ipsec                 u:object_r:sysvpn_exec:s0
+/system/bin/_updown               u:object_r:sysvpn_exec:s0
+/system/bin/pppd                  u:object_r:sysvpn_exec:s0
+/system/bin/xl2tpd                u:object_r:sysvpn_exec:s0
+/system/bin/openvpn               u:object_r:sysvpn_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/customization/enterprise_device_management/public/file_contexts =====
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/edm/config(/.*)?                          u:object_r:edm_config_file:s0
+/data/service/el1/public/edm/config/application(/.*)?              u:object_r:edm_application_config_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/customization/enterprise_device_management/system/file_contexts =====
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# for edmm tool
+/system/bin/edm u:object_r:edm_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/developtools/bytrace/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License
+
+/system/bin/bytrace	u:object_r:bytrace_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/developtools/ebpf/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License
+
+/system/bin/hiebpf	u:object_r:hiebpf_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/developtools/hdc/system/file_contexts =====
+# Copyright (c) 2021-2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/hdc               u:object_r:data_hdc_pubkeys:s0
+/data/service/el1/public/hdc/(.*)?         u:object_r:data_hdc_pubkeys:s0
+/system/bin/hdcd_user_permit        u:object_r:hdcd_user_permit_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/developtools/hiperf/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License
+
+/system/bin/hiperf u:object_r:hiperf_exec:s0
+
+/data/test        u:object_r:data_test_file:s0
+/data/test/(.*)?  u:object_r:data_test_file:s0
+
+/data/log/hiperf(/.*)?  u:object_r:data_log_hiperf_file:s0
+/data/log/hiperflog u:object_r:data_log_hiperf_file:s0
+/data/log/hiperflog/(.*)?  u:object_r:data_log_hiperf_file:s0
+
+/data/local/tmp/hiperf(/.*)?  u:object_r:data_local_tmp_hiperf_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/developtools/lldb/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# For lldb-server
+/data/local/tmp/debugserver(/.*)?         u:object_r:lldb_server_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/developtools/profiler/system/file_contexts =====
+# Copyright (c) 2022-2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License
+
+/system/bin/hiprofilerd	u:object_r:hiprofilerd_exec:s0
+
+/system/bin/hiprofiler_plugins	u:object_r:hiprofiler_plugins_exec:s0
+
+/system/bin/hiprofiler_cmd	u:object_r:hiprofiler_cmd_exec:s0
+
+/system/bin/native_daemon	u:object_r:native_daemon_exec:s0
+
+/system/bin/timestamps u:object_r:hiprofiler_cmd_exec:s0
+
+/dev/unix/socket/hiprofiler_unix_socket u:object_r:hiprofiler_socket:s0
+
+/dev/unix/socket/hook_unix_socket u:object_r:hiprofiler_socket:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/developtools/smartperf/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# for SP_daemon tool
+/system/bin/SP_daemon u:object_r:SP_daemon_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/device_attest/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/device_attest                       u:object_r:data_service_el1_public_device_attest:s0
+/data/service/el1/public/device_attest/(.*)?                 u:object_r:data_service_el1_public_device_attest:s0
+/etc/device_attest                        u:object_r:etc_device_attest:s0
+/etc/device_attest/(.*)?                  u:object_r:etc_device_attest:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/distributeddatamgr/distributeddatamgr/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/app/el1/[0-9]+/database(/.*)?       u:object_r:data_app_el1_database_file:s0
+/data/app/el2/[0-9]+/database(/.*)?       u:object_r:data_app_el2_database_file:s0
+/data/app/el3/[0-9]+/database(/.*)?       u:object_r:data_app_el3_database_file:s0
+/data/app/el4/[0-9]+/database(/.*)?       u:object_r:data_app_el4_database_file:s0
+/data/service/el1/[0-9]+/distributeddata/utd(/.*)?       u:object_r:data_service_el1_utd_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/distributeddatamgr/pasteboard/public/file_contexts =====
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el2/[0-9]+/database/pasteboard_service(/.*)?                   u:object_r:data_service_el2_pasteboard_service:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/distributeddatamgr/sqlite3/system/file_contexts =====
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License
+ 
+/system/bin/sqlite3	u:object_r:sqlite3_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/distributedschedule/safwk/system/file_contexts =====
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/svc       u:object_r:svc_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/distributedschedule/samgr/system/file_contexts =====
+# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/samgr       u:object_r:samain_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/drivers/adapter/vendor/file_contexts =====
+# Copyright (c) 2022-2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/dev/hdf_kevent             u:object_r:dev_hdf_kevent:s0
+/dev/hdfwifi                u:object_r:dev_hdfwifi:s0
+/vendor/bin/hdf_devhost       u:object_r:hdf_devhost_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/drivers/external_device_manager/public/file_contexts =====
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# please put shorter config ahead;
+# root
+/dev/hidraw[0-9]*          u:object_r:hidraw_device_file:s0
+/dev/ttyUSB[0-9]*             u:object_r:tty_device:s0
+/dev/sg[0-9]*                 u:object_r:dev_sg_file:s0
+
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/drivers/external_device_manager/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/pkg_service(/.*)?    u:object_r:hdf_ext_devmgr_file:s0
+
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/drivers/peripheral/battery/public/file_contexts =====
+# Copyright (c) 2025-2026 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el0/battery(/.*)?                                u:object_r:battery_el0_data:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/drivers/peripheral/intelligent_voice/vendor/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/dev/soundtrigger        u:object_r:dev_soundtrigger:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/drivers/peripheral/power/public/file_contexts =====
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/power                       u:object_r:data_power:s0
+/data/power/(.*)?                 u:object_r:data_power:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/drivers/peripheral/thermal/public/file_contexts =====
+# Copyright (c) 2025-2026 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el0/thermal(/.*)?                                u:object_r:thermal_el0_data:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/drivers/peripheral/thermal/vendor/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/vendor/etc/thermal_config/hdf/thermal_hdi_config.xml          u:object_r:vendor_etc_thermal_hdi_config_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/drivers/peripheral/usb/public/file_contexts =====
+# Copyright (c) 2021-2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# please put shorter config ahead;
+# root
+/dev/usb_accessory                u:object_r:dev_usb_accessory_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/drivers/peripheral/useriam/system/file_contexts =====
+# Copyright (c) 2026 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+ /data/service/el1/public/pinauth(/.*)?           u:object_r:pinauth_el1_data:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/filemanagement/app_file_service/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el2/[0-9]+/share(/.*)?        u:object_r:data_service_el2_share:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/filemanagement/dfs_service/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el2/[0-9]+/hmdfs(/.*)?        u:object_r:data_service_el2_hmdfs:s0
+
+# Public directory for user data
+/data/service/el2/[0-9]+/hmdfs/account/files(/.*)?       u:object_r:data_user_file:s0
+/data/service/el1/public/cloudfile(/.*)?        u:object_r:cloudfile_data_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/filemanagement/storage_service/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/dev/block(/^vol.*)?                u:object_r:dev_block_volfile:s0
+/data/service/el1/public/storage_daemon/sd(/.*)?                u:object_r:data_service_storage_daemon_sd_file:s0
+/data/service/el0/storage_daemon/sd(/.*)?                u:object_r:data_service_storage_daemon_sd_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/filemanagement/userfile_manager/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/etc/userfilemanager/userfilemanager_mimetypes.json       u:object_r:mimetype_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/filemanagement/user_file_service/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/mnt/data/external(/.*)?           u:object_r:mnt_external_file:s0
+/mnt/data/external_fuse(/.*)?           u:object_r:mnt_external_fuse_file:s0
+/data/service/el1/public/storage_daemon/share/public(/.*)?       u:object_r:share_public_file:s0
+
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/global/i18n/system/file_contexts =====
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/i18n/libphonenumber(/.*)?      u:object_r:data_service_el1_i18n_libphonenumber_file:s0
+/data/service/el1/public/i18n/taboo(/.*)?      u:object_r:data_service_el1_i18n_taboo_file:s0
+/data/service/el1/public/i18n/timezone(/.*)?      u:object_r:data_service_el1_i18n_timezone_file:s0
+/system/etc/zoneinfo(/.*)?                        u:object_r:system_etc_zoneinfo_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/graphic/graphic/public/file_contexts =====
+/data/local/shader_cache(/.*)?    u:object_r:data_local_shadercache:s0
+/data/app/el1/public/shader_cache(/.*)?        u:object_r:data_app_el1_shadercache:s0
+/data/app/el1/[0-9]+/shader_cache(/.*)?        u:object_r:data_app_el1_shadercache:s0
+/data/app/el1/[0-9]+/system_optimize/.+/shader_cache(/.*)?        u:object_r:data_app_el1_shadercache:s0
+/data/service/el1/public/shader_cache(/.*)?    u:object_r:data_service_el1_shadercache:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/graphic/graphic/system/file_contexts =====
+# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/render_service      u:object_r:render_service_exec:s0
+
+/system/bin/drawing_engine_sample      u:object_r:drawing_engine_sample:s0
+
+/system/bin/drawing_sample_replayer      u:object_r:drawing_sample_replayer:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/graphic/graphic/vendor/file_contexts =====
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/vendor/etc/vulkan(/.*)?       u:object_r:vendor_etc_vulkan_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/hiviewdfx/faultloggerd/system/file_contexts =====
+# Copyright (c) 2022-2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# processdump
+/system/bin/processdump              u:object_r:processdump_exec:s0
+/dev/lperf                           u:object_r:dev_lperf:s0
+
+# faultloggerd
+/system/bin/faultloggerd             u:object_r:faultloggerd_exec:s0
+
+# faultloggerd file
+/data/log/faultlog/temp(/.*)?        u:object_r:faultloggerd_temp_file:s0
+
+# faultloggerd socket
+/dev/unix/socket/faultloggerd.server u:object_r:faultloggerd_socket:s0
+/dev/unix/socket/faultloggerd.crash.server u:object_r:faultloggerd_socket_crash:s0
+/dev/unix/socket/faultloggerd.sdkdump.server u:object_r:faultloggerd_socket_sdkdump:s0
+
+#dumpcatcher
+/system/bin/dumpcatcher             u:object_r:dumpcatcher_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/hiviewdfx/hidumper/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/hidumper       u:object_r:hidumper_exec:s0
+
+/data/log/hidumper(/.*)?       u:object_r:hidumper_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/hiviewdfx/hilog/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/hilogd              u:object_r:hilogd_exec:s0
+/system/bin/hilog               u:object_r:hilog_exec:s0
+/system/etc/hilog(/.*)?         u:object_r:system_etc_hilog_file:s0
+
+/dev/unix/socket/hilogControl   u:object_r:hilog_control_socket:s0
+/dev/unix/socket/hilogControlPub     u:object_r:hilog_control_pub_socket:s0
+/dev/unix/socket/hilogOutput     u:object_r:hilog_output_socket:s0
+/dev/unix/socket/hilogInput     u:object_r:hilog_input_socket:s0
+
+/data/log/hilog(/.*)?           u:object_r:data_hilogd_file:s0
+/data/service/el0/public/for-all-app/hilog(/.*)?       u:object_r:hilog_whitelist_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/hiviewdfx/hisysevent/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License
+
+/system/bin/hisysevent          u:object_r:hisysevent_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/hiviewdfx/hitrace/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License
+
+/system/bin/hitrace	u:object_r:hitrace_exec:s0
+
+/data/log/hitrace(/.*)?  u:object_r:hitrace_log_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/hiviewdfx/hiview/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/hiview              u:object_r:hiview_exec:s0
+/system/bin/usage_report        u:object_r:usage_report_exec:s0
+
+/dev/unix/socket/hisysevent     u:object_r:hisysevent_socket:s0
+/dev/unix/socket/hisysevent_fast     u:object_r:hisysevent_socket:s0
+
+/data/log/faultlog/faultlogger(/.*)?          u:object_r:faultlogger_log_file:s0
+/data/log/hiview(/.*)?          u:object_r:hiview_file:s0
+/data/system/hiview(/.*)?       u:object_r:hiview_file:s0
+/data/system/hiview/unzip_configs/sys_event_def(/.*)?    u:object_r:hiview_sys_def_file:s0
+
+/dev/ucollection                u:object_r:dev_ucollection:s0
+
+/dev/sysevent                   u:object_r:dev_sysevent:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/liteos/toybox/system/file_contexts =====
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# for toybox
+/system/bin/toybox             u:object_r:toybox_exec:s0
+/eng_system/bin/toybox         u:object_r:toybox_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/miscservices/inputmethod_native/system/file_contexts =====
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# for ime
+/system/bin/ime  u:object_r:ime_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/msdp/common/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/msdp(/.*)?    u:object_r:msdp_data_file:s0
+/system/bin/vdevadm        u:object_r:vdevadm_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/multimedia/audio/system/file_contexts =====
+# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/data/.pulse_dir(/.*)?               u:object_r:data_data_pulse_dir:s0
+
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/multimedia/av_session/system/file_contexts =====
+# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/av_session(/.*)?       u:object_r:av_session_data_file:s0
+/data/service/el1/public/av_session/cache(/.*)?      u:object_r:av_session_data_file:s0
+
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/multimedia/media_library/system/file_contexts =====
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/mediatool        u:object_r:mediatool_exec:s0
+/system/bin/scanner          u:object_r:mediatool_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/multimedia/midi/vendor/file_contexts =====
+# Copyright (c) 2026 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/vendor/etc/audio/alsa/share/alsa.conf       u:object_r:alsa_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/multimedia/player/system/file_contexts =====
+# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/test/media(/.*)?               u:object_r:data_test_media_file:s0
+/data/media/log(/.*)?               u:object_r:data_media_log_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/multimodalinput/input/system/file_contexts =====
+# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/udevadm         u:object_r:udevadm_exec:s0
+
+# for udevd
+/system/bin/udevd u:object_r:udevd_exec:s0
+/data/service/el1/public/udev/control u:object_r:udevd_socket:s0
+
+# for uinput_inject
+/system/bin/uinput_inject u:object_r:uinput_inject_exec:s0
+
+# for data_multimodalinput
+/data/service/el1/public/multimodalinput    u:object_r:data_multimodalinput:s0
+/data/service/el1/public/multimodalinput(/.*)?    u:object_r:data_multimodalinput:s0
+
+# for uinput
+/system/bin/uinput  u:object_r:uinput_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/notification/common_event_service/system/file_contexts =====
+# Copyright (c) 2024-2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/cem     u:object_r:cem_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/notification/distributed_notification_service/system/file_contexts =====
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/notification(/.*)? u:object_r:reminder_db_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/openssl/system/file_contexts =====
+# Copyright (c) 2026 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/etc/openssl.cnf      u:object_r:system_etc_openssl_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/powermgr/battery_manager/system/file_contexts =====
+# Copyright (c) 2022-2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/charger        u:object_r:charger_exec:s0
+
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/powermgr/battery_statistics/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/etc/power_config/power_average.json      u:object_r:system_etc_batterystats_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/powermgr/power_manager/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/etc/power_config/power_mode_config.xml           u:object_r:system_etc_power_mode_config_file:s0
+/system/bin/power-shell                                  u:object_r:power_shell_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/powermgr/power_manager/vendor/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/vendor/etc/power_config/power_mode_config.xml           u:object_r:vendor_etc_power_mode_config_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/powermgr/thermal_manager/system/file_contexts =====
+# Copyright (c) 2022-2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/etc/thermal_config(/.*)?                            u:object_r:system_etc_thermal_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/print/print_service/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/cupsd        u:object_r:cupsd_exec:s0
+/system/bin/cupsfilter        u:object_r:cupsd_exec:s0
+/system/bin/uni_print_driver(/.*)?       u:object_r:system_bin_uni_print_driver_file:s0
+/system/bin/cups(/.*)?       u:object_r:system_bin_uni_print_driver_file:s0
+/data/service/el1/public/print_service/sane/backend(/.*)?       u:object_r:data_service_scan_service_driver_file:s0
+/data/service/el1/public/print_service/sane/config(/.*)?       u:object_r:data_service_sane_service_config_file:s0
+/data/service/el2/public/print_service/sane(/.*)?       u:object_r:data_service_sane_service_tmp_file:s0
+/data/service/el1/public/print_service/cups/serverbin/filter    u:object_r:print_driver_exec:s0
+/data/service/el1/public/print_service/cups/serverbin/backend   u:object_r:print_driver_exec:s0
+/data/service/el1/public/print_service/cups/cache               u:object_r:print_driver_tmp:s0
+/data/service/el1/public/print_service/cups/spool/tmp           u:object_r:print_driver_tmp:s0
+/data/service/el1/public/print_service/cups/spool           	u:object_r:print_driver_read:s0
+/data/service/el1/public/print_service/cups/ppd           	    u:object_r:print_driver_read:s0
+/data/service/el1/public/print_service/cups/socket(/.*)?        u:object_r:cups_socket:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/resourceschedule/ffrt/system/file_contexts =====
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/etc/ffrt(/.*)?         u:object_r:system_etc_ffrt_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/resourceschedule/resource_schedule_service/system/file_contexts =====
+# Copyright (c) 2022-2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# resource_schedule_service config file
+/sys_prod/etc/ressched(/.*)?       u:object_r:sys_prod_ressched_file:s0
+
+/vendor/etc/ressched(/.*)?       u:object_r:vendor_etc_ressched_file:s0
+/data/app/el1/bundle/public(/.*)?       u:object_r:app_el1_bundle_public:s0
+/data/service/el1/public/bundle_usage(/.*)? u:object_r:data_service_el1_public_bundle_usage:s0
+
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/screenlock/system/file_contexts =====
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/screenlock(/.*)? u:object_r:screenlock_data_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/security/access_token/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/access_token(/.*)?    u:object_r:accesstoken_data_file:s0
+/data/service/el0/access_token/nativetoken.json u:object_r:accesstoken_data_file:s0
+/data/service/el0/access_token/nativetoken.json.lock u:object_r:accesstoken_data_file:s0
+
+# for atm tool
+/system/bin/atm u:object_r:atm_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/security/asset/system/file_contexts =====
+# Copyright (C) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/asset_service(/.*)?                   u:object_r:data_service_el1_public_asset_service_file:s0
+/data/service/el2/[0-9]+/asset_service(/.*)?                   u:object_r:data_service_el2_user_id_asset_service_file:s0
+/data/service/el1/public/asset_clone(/.*)?                     u:object_r:data_service_el1_public_asset_clone_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/security/cert_manager/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/cert_manager_service                            u:object_r:cert_manager_service_exec:s0
+/data/service/el1/public/cert_manager_service(/.*)?         u:object_r:cert_manager_service_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/security/code_signature/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/lib(64)?/libcode_sign_utils.z.so      u:object_r:code_sign_utils:s0
+
+/dev/code_sign                           u:object_r:dev_code_sign:s0
+
+/data/service/el0/profiles(/.*)?               u:object_r:trusted_profile_data_file:s0
+
+/data/service/el1/profiles(/.*)?               u:object_r:trusted_profile_data_file:s0
+
+/data/service/el1/public/profiles(/.*)?               u:object_r:trusted_profile_data_file:s0
+
+/system/bin/key_enable                         u:object_r:key_enable_exec:s0
+
+/system/lib(64)?/libjit_code_sign.z.so          u:object_r:code_sign_jit_lib:s0
+
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/security/deviceauth/system/file_contexts =====
+# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/deviceauth_service          u:object_r:deviceauth_service_exec:s0
+/data/service/el1/public/deviceauth(/.*)?                   u:object_r:data_service_el1_public_deviceauthService_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/security/dlp_permission_service/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/dlp_permission_service(/.*)?    u:object_r:dlp_permission_data_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/security/encaps/public/file_contexts =====
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/dev/encaps                           u:object_r:dev_encaps:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/security/huks/system/file_contexts =====
+# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/huks_service                   u:object_r:huks_service_exec:s0
+/data/service/el1/public/huks_service(/.*)?                   u:object_r:data_service_el1_public_huksService_file:s0
+/data/service/el2/public/huks_service(/.*)?                   u:object_r:data_service_el2_public_huksService_file:s0
+/data/service/el2/[0-9]+/huks_service(/.*)?                   u:object_r:data_service_el2_userId_huksService_file:s0
+/data/service/el4/[0-9]+/huks_service(/.*)?                   u:object_r:data_service_el4_userId_huksService_file:s0
+/data/data/huks_service(/.*)?                   u:object_r:data_data_huksService_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/security/security_guard/system/file_contexts =====
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/etc/security_guard_model.cfg u:object_r:system_etc_security_guard_file:s0
+/system/etc/security_guard_event.cfg u:object_r:system_etc_security_guard_file:s0
+/system/etc/security_guard.cfg u:object_r:system_etc_security_guard_file:s0
+/data/service/el1/public/security_guard(/.*)? u:object_r:data_service_el1_public_security_guard_file:s0
+/data/service/el1/public/database/security_guard_service/file_store(/.*)? u:object_r:security_guard_file_store_file:s0
+
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/security/system_security/system/file_contexts =====
+# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/log/sanitizer(/.*)?                 u:object_r:data_log_sanitizer_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/sharing_service/system/file_contexts =====
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/sharing_service(/.*)?                 u:object_r:data_service_el1_public_sharing_service_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/startup/appspawn/public/file_contexts =====
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/hnp                                    u:object_r:hnp_exec:s0
+/data/app/el1/bundle/[0-9]+/hnppublic(/.*)?        u:object_r:hnp_file:s0
+/data/app/el1/bundle/[0-9]+/hnp(/.*)?              u:object_r:private_hnp_file:s0
+/system/bin/devicedebug                            u:object_r:devicedebug_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/startup/appspawn/system/file_contexts =====
+# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/appspawn        u:object_r:appspawn_exec:s0
+
+/system/bin/cjappspawn        u:object_r:cjappspawn_exec:s0
+
+/system/bin/nativespawn        u:object_r:nativespawn_exec:s0
+
+/system/bin/nwebspawn        u:object_r:nwebspawn_exec:s0
+
+/system/bin/hybridspawn     u:object_r:appspawn_exec:s0
+
+/system/bin/pid_ns_init       u:object_r:pid_ns_init_exec:s0
+
+/dev/unix/socket/CJAppSpawn       u:object_r:appspawn_socket:s0
+
+/dev/unix/socket/NativeSpawn       u:object_r:appspawn_socket:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/startup/init/public/file_contexts =====
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/begetctl        u:object_r:begetctl_exec:s0
+
+/system/bin/param       u:object_r:param_exec:s0
+
+/system/bin/paramshell      u:object_r:param_exec:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/startup/init/system/file_contexts =====
+# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/ueventd             u:object_r:ueventd_exec:s0
+/system/bin/remount             u:object_r:remount_exec:s0
+
+# for hyperhold
+/data/vendor/hyperhold(/.*)?          u:object_r:hyperhold_sys:s0
+
+# for bootup.trace
+/data/log/startup(/.*)?         u:object_r:bootuptrace_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/systemabilitymgr/selection_fwk/system/file_contexts =====
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/data/service/el1/public/selection_service(/.*)?    u:object_r:selection_service_data_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/tee/tee_client/public/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/sec_storage(/.*)?                                u:object_r:teecd_data_file:s0
+/data/vendor/sec_storage_data(/.*)?               u:object_r:teecd_data_file_vendor:s0
+/data/vendor/sec_storage_data_users(/.*)?         u:object_r:teecd_data_file_vendor:s0
+/system/bin/teecd                                 u:object_r:teecd_exec:s0
+/vendor/etc/passthrough/teeos(/.*)?              u:object_r:tee_file:s0
+/vendor/etc/passthrough/teeos/ta(/.*)?            u:object_r:tee_ta_sec_file:s0
+/vendor/etc/passthrough/teeos/dynamic_srv(/.*)?   u:object_r:tee_srv_sec_file:s0
+/vendor/etc/passthrough/teeos/dynamic_drv(/.*)?   u:object_r:tee_drv_sec_file:s0
+/vendor/etc/passthrough/teeos/source(/.*)?        u:object_r:tee_src_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/tee/tee_tzdriver/public/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/dev/tc_ns_client                u:object_r:dev_tee_public:s0
+/dev/tc_ns_container             u:object_r:dev_tee_container_public:s0
+/dev/teelog                      u:object_r:dev_tee_log:s0
+/dev/tc_private                  u:object_r:dev_tee_private:s0
+
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/test_framework/wukong/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# for wukong tool
+/system/bin/wukong u:object_r:wukong_exec:s0
+
+/data/local/tmp/wukong(/.*)? u:object_r:data_local_tmp_wukong:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/update/module_update/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/module_update              u:object_r:rootfs:s0
+/module_update(/.*)?        u:object_r:module_update_file:s0
+/module_update/bin(/.*)?    u:object_r:module_update_bin_file:s0
+/module_update/lib(/.*)?    u:object_r:module_update_lib_file:s0
+/module_update/lib64(/.*)?  u:object_r:module_update_lib_file:s0
+/data/module_update         u:object_r:data_module_update:s0
+/data/module_update/(.*)?   u:object_r:data_module_update:s0
+/data/module_update_package         u:object_r:data_module_update_package:s0
+/data/module_update_package/(.*)?   u:object_r:data_module_update_package:s0
+/system/module_update(/.*)?         u:object_r:system_module_update_file:s0
+/system/bin/module_update_client   u:object_r:module_update_service_exec:s0
+/system/bin/check_module_update_init   u:object_r:system_bin_module_update_exec:s0
+/dev/mapper/control       u:object_r:dev_mapper_control_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/update/updater_sa/public/file_contexts =====
+# Copyright (c) 2022-2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific
+
+/data/service/el1/public/update/dupdate_engine          u:object_r:update_dupdate_engine_file:s0
+/data/service/el1/public/update/dupdate_engine(/.*)?    u:object_r:update_dupdate_engine_file:s0
+/data/service/el1/public/update/update_service          u:object_r:update_update_service_file:s0
+/data/service/el1/public/update/update_service(/.*)?    u:object_r:update_update_service_file:s0
+/data/update/ota_package        u:object_r:update_firmware_file:s0
+/data/update/ota_package/(.*)?  u:object_r:update_firmware_file:s0
+
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/update/updater/system/file_contexts =====
+# Copyright (c) 2021-2022 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/write_updater   u:object_r:write_updater_exec:s0
+/data/updater           u:object_r:data_updater_file:s0
+/data/updater/(.*)?     u:object_r:data_updater_file:s0
+/tmp/updater_binary     u:object_r:updater_binary_exec:s0
+/bin/updater_binary     u:object_r:updater_binary_exec:s0
+
+# processdump
+/bin/processdump     u:object_r:processdump_exec:s0
+# faultloggerd
+/bin/faultloggerd     u:object_r:faultloggerd_exec:s0
+
+/bin/hiview_light     u:object_r:hiview_light_exec:s0
+
+/etc/hiview/hiview_light            u:object_r:hiview_light_file:s0
+/etc/hiview/hiview_light/(.*)?      u:object_r:hiview_light_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/web/webview/system/file_contexts =====
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/arkweb_crashpad_handler        u:object_r:arkweb_crashpad_handler_exec:s0
+/data/service/el1/public/for-all-app/shared_relro(/.*)?    u:object_r:shared_relro_file:s0
+
+# ===== base/security/selinux_adapter/sepolicy/ohos_policy/window/window_manager/system/file_contexts =====
+# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+/system/bin/snapshot_display      u:object_r:snapshot_display_exec:s0
+

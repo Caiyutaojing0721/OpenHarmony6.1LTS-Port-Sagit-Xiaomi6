@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=sm.puri.Phosh.CalendarServer
+Exec=/usr/libexec/phosh-calendar-server

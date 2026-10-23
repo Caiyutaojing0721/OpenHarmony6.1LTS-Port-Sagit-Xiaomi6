@@ -1,0 +1,220 @@
+# Copyright (c) 2022 Unionman Technology Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/ohos.gni")
+
+ohos_prebuilt_executable("glmark2-es2-ohos") {
+  source = "glmark2-es2-ohos"
+
+  install_enable = true
+  install_images = [ "vendor" ]
+  module_install_dir = "bin"
+  part_name = "qualcomm_products"
+}
+
+glmark2_models_deps_file = [
+  "asteroid-high.3ds",
+  "asteroid-low.3ds",
+  "bunny.obj",
+  "cat.3ds",
+  "cube.3ds",
+  "horse.3ds",
+  "jellyfish.jobj",
+]
+
+foreach(name, glmark2_models_deps_file) {
+  ohos_prebuilt_etc("${name}") {
+    source = "data/models/${name}"
+    module_install_dir = "etc/usr/local/share/glmark2/models"
+    install_images = [ "system" ]
+    part_name = "qualcomm_products"
+    install_enable = true
+  }
+}
+
+glmark2_models_deps = []
+foreach(name, glmark2_models_deps_file) {
+  glmark2_models_deps += [ ":${name}" ]
+}
+
+glmark2_shaders_deps_file = [
+  "README.shaders",
+  "buffer-wireframe.frag",
+  "buffer-wireframe.vert",
+  "bump-height.frag",
+  "bump-height.vert",
+  "bump-normals-tangent.frag",
+  "bump-normals-tangent.vert",
+  "bump-normals.frag",
+  "bump-normals.vert",
+  "bump-poly.frag",
+  "bump-poly.vert",
+  "conditionals-step-conditional.all",
+  "conditionals-step-simple.all",
+  "conditionals.frag",
+  "conditionals.vert",
+  "depth.frag",
+  "depth.vert",
+  "desktop-blur.frag",
+  "desktop.frag",
+  "desktop.vert",
+  "effect-2d-convolution.frag",
+  "effect-2d.vert",
+  "function-call.all",
+  "function-step-low.all",
+  "function-step-medium.all",
+  "function.frag",
+  "function.vert",
+  "gradient.frag",
+  "gradient.vert",
+  "ideas-lamp-lit.frag",
+  "ideas-lamp-lit.vert",
+  "ideas-lamp-unlit.frag",
+  "ideas-lamp-unlit.vert",
+  "ideas-logo-flat.frag",
+  "ideas-logo-flat.vert",
+  "ideas-logo-shadow.frag",
+  "ideas-logo-shadow.vert",
+  "ideas-logo.frag",
+  "ideas-logo.vert",
+  "ideas-paper.frag",
+  "ideas-paper.vert",
+  "ideas-table.frag",
+  "ideas-table.vert",
+  "ideas-text.frag",
+  "ideas-text.vert",
+  "ideas-under-table.frag",
+  "ideas-under-table.vert",
+  "jellyfish.frag",
+  "jellyfish.vert",
+  "light-advanced.frag",
+  "light-advanced.vert",
+  "light-basic-tex-bilinear.frag",
+  "light-basic-tex.frag",
+  "light-basic-texgen.vert",
+  "light-basic.frag",
+  "light-basic.vert",
+  "light-cel.frag",
+  "light-phong.frag",
+  "light-phong.vert",
+  "light-refract.frag",
+  "light-refract.vert",
+  "loop-step-loop.all",
+  "loop-step-simple.all",
+  "loop.frag",
+  "loop.vert",
+  "pulsar-light.vert",
+  "pulsar.vert",
+  "shadow.frag",
+  "shadow.vert",
+  "terrain-blur.frag",
+  "terrain-luminance.frag",
+  "terrain-noise.frag",
+  "terrain-normalmap.frag",
+  "terrain-overlay.frag",
+  "terrain-texture.vert",
+  "terrain.frag",
+  "terrain.vert",
+  "text-renderer.frag",
+  "text-renderer.vert",
+]
+
+foreach(name, glmark2_shaders_deps_file) {
+  ohos_prebuilt_etc("${name}") {
+    source = "data/shaders/${name}"
+    module_install_dir = "etc/usr/local/share/glmark2/shaders"
+    install_images = [ "system" ]
+    part_name = "qualcomm_products"
+    install_enable = true
+  }
+}
+
+glmark2_shaders_deps = []
+foreach(name, glmark2_shaders_deps_file) {
+  glmark2_shaders_deps += [ ":${name}" ]
+}
+
+glmark2_textures_deps_file = [
+  "asteroid-height-map.png",
+  "asteroid-normal-map-tangent.png",
+  "asteroid-normal-map.png",
+  "crate-base.png",
+  "desktop-shadow-corner.png",
+  "desktop-shadow.png",
+  "desktop-window.png",
+  "effect-2d.png",
+  "glyph-atlas.png",
+  "jellyfish-caustics-01.png",
+  "jellyfish-caustics-02.png",
+  "jellyfish-caustics-03.png",
+  "jellyfish-caustics-04.png",
+  "jellyfish-caustics-05.png",
+  "jellyfish-caustics-06.png",
+  "jellyfish-caustics-07.png",
+  "jellyfish-caustics-08.png",
+  "jellyfish-caustics-09.png",
+  "jellyfish-caustics-10.png",
+  "jellyfish-caustics-11.png",
+  "jellyfish-caustics-12.png",
+  "jellyfish-caustics-13.png",
+  "jellyfish-caustics-14.png",
+  "jellyfish-caustics-15.png",
+  "jellyfish-caustics-16.png",
+  "jellyfish-caustics-17.png",
+  "jellyfish-caustics-18.png",
+  "jellyfish-caustics-19.png",
+  "jellyfish-caustics-20.png",
+  "jellyfish-caustics-21.png",
+  "jellyfish-caustics-22.png",
+  "jellyfish-caustics-23.png",
+  "jellyfish-caustics-24.png",
+  "jellyfish-caustics-25.png",
+  "jellyfish-caustics-26.png",
+  "jellyfish-caustics-27.png",
+  "jellyfish-caustics-28.png",
+  "jellyfish-caustics-29.png",
+  "jellyfish-caustics-30.png",
+  "jellyfish-caustics-31.png",
+  "jellyfish-caustics-32.png",
+  "jellyfish256.png",
+  "nasa1.png",
+  "nasa2.png",
+  "nasa3.png",
+  "terrain-backgrounddetailed6.jpg",
+  "terrain-grasslight-512-nm.jpg",
+  "terrain-grasslight-512.jpg",
+]
+
+foreach(name, glmark2_textures_deps_file) {
+  ohos_prebuilt_etc("${name}") {
+    source = "data/textures/${name}"
+    module_install_dir = "etc/usr/local/share/glmark2/textures"
+    install_images = [ "system" ]
+    part_name = "qualcomm_products"
+    install_enable = true
+  }
+}
+
+glmark2_textures_deps = []
+foreach(name, glmark2_textures_deps_file) {
+  glmark2_textures_deps += [ ":${name}" ]
+}
+
+group("glmark2") {
+  deps = [
+    ":glmark2-es2-ohos",
+  ]
+  deps += glmark2_models_deps
+  deps += glmark2_shaders_deps
+  deps += glmark2_textures_deps
+}

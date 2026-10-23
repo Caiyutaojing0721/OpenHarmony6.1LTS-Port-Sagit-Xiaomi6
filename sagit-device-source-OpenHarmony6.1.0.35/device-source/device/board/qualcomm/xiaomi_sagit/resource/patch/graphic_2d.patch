@@ -1,0 +1,437 @@
+diff --git a/frameworks/bootanimation/src/boot_animation.cpp b/frameworks/bootanimation/src/boot_animation.cpp
+old mode 100644
+new mode 100755
+index 461b56215..3f10d96a1
+--- a/frameworks/bootanimation/src/boot_animation.cpp
++++ b/frameworks/bootanimation/src/boot_animation.cpp
+@@ -154,7 +154,7 @@ void BootAnimation::Run(Rosen::ScreenId id, int screenWidth, int screenHeight)
+         if (id > 0) {
+             LOGI("SetScreenPowerStatus POWER_STATUS_OFF_FAKE: 0");
+             interface.SetScreenPowerStatus(0, Rosen::ScreenPowerStatus::POWER_STATUS_OFF_FAKE);
+-            LOGI("SetScreenPowerStatus POWER_STATUS_ON: %{public}llu", id);
++            // LOGI("SetScreenPowerStatus POWER_STATUS_ON: %{public}llu", id);
+             interface.SetScreenPowerStatus(id, Rosen::ScreenPowerStatus::POWER_STATUS_ON);
+         }
+     } else if (interface.GetScreenPowerStatus(id) != Rosen::ScreenPowerStatus::POWER_STATUS_ON) {
+diff --git a/frameworks/surfaceimage/BUILD.gn b/frameworks/surfaceimage/BUILD.gn
+old mode 100644
+new mode 100755
+index 0faf11636..a805d56c6
+--- a/frameworks/surfaceimage/BUILD.gn
++++ b/frameworks/surfaceimage/BUILD.gn
+@@ -23,6 +23,10 @@ config("native_image_config") {
+     "-Werror",
+     "-g3",
+   ]
++
++  if (product_name == "xiaomi_sagit" || product_name == "rk3399" || product_name == "intelli_tvbox") {
++    cflags += [ "-DOHOS_MESA3D" ]
++  }
+ }
+ 
+ config("libnative_image_public_config") {
+diff --git a/frameworks/surfaceimage/src/surface_image.cpp b/frameworks/surfaceimage/src/surface_image.cpp
+old mode 100644
+new mode 100755
+index 0f4a48cf3..66fb06943
+--- a/frameworks/surfaceimage/src/surface_image.cpp
++++ b/frameworks/surfaceimage/src/surface_image.cpp
+@@ -34,6 +34,17 @@
+ 
+ namespace OHOS {
+ namespace {
++
++// Mesa3D
++#ifdef OHOS_MESA3D
++static PFNGLEGLIMAGETARGETTEXTURE2DOESPROC glEGLImageTargetTexture2DOES = NULL;
++static PFNEGLCREATESYNCKHRPROC eglCreateSyncKHR = NULL;
++static PFNEGLDESTROYSYNCKHRPROC eglDestroySyncKHR = NULL;
++static PFNEGLCLIENTWAITSYNCKHRPROC eglClientWaitSyncKHR = NULL;
++static PFNEGLCREATEIMAGEKHRPROC eglCreateImageKHR = NULL;
++static PFNEGLDESTROYIMAGEKHRPROC eglDestroyImageKHR = NULL;
++#endif
++
+ // Get a uniqueID in a process
+ static int GetProcessUniqueId()
+ {
+@@ -75,6 +86,33 @@ void SurfaceImage::InitSurfaceImage()
+     if (ret != SURFACE_ERROR_OK) {
+         BLOGE("init surfaceimage failed");
+     }
++
++#ifdef OHOS_MESA3D
++    if (glEGLImageTargetTexture2DOES == NULL) {
++        glEGLImageTargetTexture2DOES = (PFNGLEGLIMAGETARGETTEXTURE2DOESPROC)eglGetProcAddress("glEGLImageTargetTexture2DOES");
++    }
++
++    if (eglCreateSyncKHR == NULL) {
++        eglCreateSyncKHR = (PFNEGLCREATESYNCKHRPROC)eglGetProcAddress("eglCreateSyncKHR");
++    }
++
++    if (eglDestroySyncKHR == NULL) {
++        eglDestroySyncKHR = (PFNEGLDESTROYSYNCKHRPROC)eglGetProcAddress("eglDestroySyncKHR");
++    }
++
++    if (eglClientWaitSyncKHR == NULL) {
++        eglClientWaitSyncKHR = (PFNEGLCLIENTWAITSYNCKHRPROC)eglGetProcAddress("eglClientWaitSyncKHR");
++    }
++
++    if (eglCreateImageKHR == NULL) {
++        eglCreateImageKHR = (PFNEGLCREATEIMAGEKHRPROC)eglGetProcAddress("eglCreateImageKHR");
++    }
++ 
++    if (eglDestroyImageKHR == NULL) {
++        eglDestroyImageKHR = (PFNEGLDESTROYIMAGEKHRPROC)eglGetProcAddress("eglDestroyImageKHR");
++    }
++#endif
++
+     surfaceImageName_ = name;
+ }
+ 
+diff --git a/interfaces/kits/napi/graphic/animation/window_animation_manager/rs_window_animation_manager.cpp b/interfaces/kits/napi/graphic/animation/window_animation_manager/rs_window_animation_manager.cpp
+index bd5427f56..89862cd50 100644
+--- a/interfaces/kits/napi/graphic/animation/window_animation_manager/rs_window_animation_manager.cpp
++++ b/interfaces/kits/napi/graphic/animation/window_animation_manager/rs_window_animation_manager.cpp
+@@ -216,7 +216,7 @@ napi_value RSWindowAnimationManager::OnGetWindowAnimationTargets(napi_env env, n
+                 WALOGE("element is not number!");
+                 break;
+             }
+-            uint32_t missionId = reinterpret_cast<uint32_t>(value);
++            uint64_t missionId = reinterpret_cast<uint64_t>(value);
+             missionIds.push_back(missionId);
+         }
+     }
+diff --git a/rosen/modules/2d_graphics/BUILD.gn b/rosen/modules/2d_graphics/BUILD.gn
+index 9615a92ca..fde32eec4 100755
+--- a/rosen/modules/2d_graphics/BUILD.gn
++++ b/rosen/modules/2d_graphics/BUILD.gn
+@@ -190,6 +190,10 @@ template("graphics2d_source_set") {
+       sources += [ "$drawing_src_dir/utils/system_properties.cpp" ]
+     }
+ 
++    if (product_name == "xiaomi_sagit" || product_name == "rk3399" || product_name == "intelli_tvbox") {
++      defines += [ "OHOS_MESA3D" ]
++    }
++
+     if (ace_enable_gpu) {
+       sources += [
+         "$drawing_src_dir/engine_adapter/skia_adapter/skia_gpu_context.cpp",
+diff --git a/rosen/modules/2d_graphics/src/drawing/recording/draw_cmd.cpp b/rosen/modules/2d_graphics/src/drawing/recording/draw_cmd.cpp
+old mode 100644
+new mode 100755
+index 631b30329..c7e295510
+--- a/rosen/modules/2d_graphics/src/drawing/recording/draw_cmd.cpp
++++ b/rosen/modules/2d_graphics/src/drawing/recording/draw_cmd.cpp
+@@ -46,6 +46,14 @@ namespace OHOS {
+ namespace Rosen {
+ namespace Drawing {
+ namespace {
++
++// Mesa3D
++#ifdef OHOS_MESA3D
++static PFNEGLCREATEIMAGEKHRPROC eglCreateImageKHR = (PFNEGLCREATEIMAGEKHRPROC)eglGetProcAddress("eglCreateImageKHR");
++static PFNEGLDESTROYIMAGEKHRPROC eglDestroyImageKHR = (PFNEGLDESTROYIMAGEKHRPROC)eglGetProcAddress("eglDestroyImageKHR");
++static PFNGLEGLIMAGETARGETTEXTURE2DOESPROC glEGLImageTargetTexture2DOES = (PFNGLEGLIMAGETARGETTEXTURE2DOESPROC)eglGetProcAddress("glEGLImageTargetTexture2DOES");
++#endif
++
+ void BrushHandleToBrush(const BrushHandle& brushHandle, const CmdList& cmdList, Brush& brush)
+ {
+     brush.SetBlendMode(brushHandle.mode);
+diff --git a/rosen/modules/2d_graphics/src/drawing/recording/draw_cmd_list.cpp b/rosen/modules/2d_graphics/src/drawing/recording/draw_cmd_list.cpp
+old mode 100644
+new mode 100755
+index 9a77d85f4..c07857e20
+--- a/rosen/modules/2d_graphics/src/drawing/recording/draw_cmd_list.cpp
++++ b/rosen/modules/2d_graphics/src/drawing/recording/draw_cmd_list.cpp
+@@ -170,7 +170,7 @@ std::string DrawCmdList::GetOpsWithDesc() const
+         desc += typeOpDes[item->GetType()];
+         desc += "\n";
+     }
+-    LOGI("DrawCmdList::GetOpsWithDesc %{public}s, opitem sz: %{public}u", desc.c_str(), unmarshalledOpItems_.size());
++    // LOGI("DrawCmdList::GetOpsWithDesc %{public}s, opitem sz: %{public}u", desc.c_str(), unmarshalledOpItems_.size());
+     return desc;
+ }
+ 
+diff --git a/rosen/modules/2d_graphics/src/render_context/render_context.cpp b/rosen/modules/2d_graphics/src/render_context/render_context.cpp
+old mode 100644
+new mode 100755
+index 5cb713b97..3afc1a179
+--- a/rosen/modules/2d_graphics/src/render_context/render_context.cpp
++++ b/rosen/modules/2d_graphics/src/render_context/render_context.cpp
+@@ -44,6 +44,11 @@ constexpr const char* CHARACTER_STRING_WHITESPACE = " ";
+ constexpr const char* EGL_GET_PLATFORM_DISPLAY_EXT = "eglGetPlatformDisplayEXT";
+ constexpr const char* EGL_KHR_SURFACELESS_CONTEXT = "EGL_KHR_surfaceless_context";
+ 
++// Mesa3D
++#ifdef OHOS_MESA3D
++static PFNEGLQUERYSURFACEPROC eglQuerySurface = (PFNEGLQUERYSURFACEPROC)eglGetProcAddress("eglQuerySurface");
++#endif
++
+ // use functor to call gel*KHR API
+ static PFNEGLSETDAMAGEREGIONKHRPROC GetEGLSetDamageRegionKHRFunc()
+ {
+diff --git a/rosen/modules/render_service/BUILD.gn b/rosen/modules/render_service/BUILD.gn
+old mode 100644
+new mode 100755
+index c976d1871..8f41a118a
+--- a/rosen/modules/render_service/BUILD.gn
++++ b/rosen/modules/render_service/BUILD.gn
+@@ -44,6 +44,9 @@ ohos_shared_library("librender_service") {
+     defines += [ "USE_VIDEO_PROCESSING_ENGINE" ]
+   }
+   defines += gpu_defines
++  if (product_name == "xiaomi_sagit" || product_name == "rk3399" || product_name == "intelli_tvbox") {
++    defines += [ "OHOS_MESA3D" ]
++  }
+   if (is_ohos && is_clang && (target_cpu == "arm" || target_cpu == "arm64")) {
+     defines += [ "IS_OHOS" ]
+     cflags = [ "-flto=thin" ]
+diff --git a/rosen/modules/render_service/core/pipeline/parallel_render/rs_parallel_sub_thread.cpp b/rosen/modules/render_service/core/pipeline/parallel_render/rs_parallel_sub_thread.cpp
+old mode 100644
+new mode 100755
+index b523836c5..77f2e3f85
+--- a/rosen/modules/render_service/core/pipeline/parallel_render/rs_parallel_sub_thread.cpp
++++ b/rosen/modules/render_service/core/pipeline/parallel_render/rs_parallel_sub_thread.cpp
+@@ -40,6 +40,18 @@
+ 
+ namespace OHOS {
+ namespace Rosen {
++
++// Mesa3D
++#ifdef OHOS_MESA3D
++static PFNGLEGLIMAGETARGETTEXTURE2DOESPROC glEGLImageTargetTexture2DOES = (PFNGLEGLIMAGETARGETTEXTURE2DOESPROC)eglGetProcAddress("glEGLImageTargetTexture2DOES");
++static PFNEGLCREATESYNCKHRPROC eglCreateSyncKHR = (PFNEGLCREATESYNCKHRPROC)eglGetProcAddress("eglCreateSyncKHR");
++static PFNEGLDESTROYSYNCKHRPROC eglDestroySyncKHR = (PFNEGLDESTROYSYNCKHRPROC)eglGetProcAddress("eglDestroySyncKHR");
++static PFNEGLCLIENTWAITSYNCKHRPROC eglClientWaitSyncKHR = (PFNEGLCLIENTWAITSYNCKHRPROC)eglGetProcAddress("eglClientWaitSyncKHR");
++static PFNEGLWAITSYNCKHRPROC eglWaitSyncKHR = (PFNEGLWAITSYNCKHRPROC)eglGetProcAddress("eglWaitSyncKHR");
++static PFNEGLCREATEIMAGEKHRPROC eglCreateImageKHR = (PFNEGLCREATEIMAGEKHRPROC)eglGetProcAddress("eglCreateImageKHR");
++static PFNEGLDESTROYIMAGEKHRPROC eglDestroyImageKHR = (PFNEGLDESTROYIMAGEKHRPROC)eglGetProcAddress("eglDestroyImageKHR");
++#endif
++
+ RSParallelSubThread::RSParallelSubThread(int threadIndex)
+     : threadIndex_(threadIndex), subThread_(nullptr), renderType_(ParallelRenderType::DRAW_IMAGE) {}
+ #ifdef NEW_RENDER_CONTEXT
+diff --git a/rosen/modules/render_service/core/pipeline/parallel_render/rs_sub_thread.cpp b/rosen/modules/render_service/core/pipeline/parallel_render/rs_sub_thread.cpp
+old mode 100644
+new mode 100755
+index bb48819a3..5fe31d582
+--- a/rosen/modules/render_service/core/pipeline/parallel_render/rs_sub_thread.cpp
++++ b/rosen/modules/render_service/core/pipeline/parallel_render/rs_sub_thread.cpp
+@@ -39,6 +39,18 @@
+ 
+ namespace OHOS::Rosen {
+ namespace {
++
++// Mesa3D
++#ifdef OHOS_MESA3D
++static PFNGLEGLIMAGETARGETTEXTURE2DOESPROC glEGLImageTargetTexture2DOES = (PFNGLEGLIMAGETARGETTEXTURE2DOESPROC)eglGetProcAddress("glEGLImageTargetTexture2DOES");
++static PFNEGLCREATESYNCKHRPROC eglCreateSyncKHR = (PFNEGLCREATESYNCKHRPROC)eglGetProcAddress("eglCreateSyncKHR");
++static PFNEGLDESTROYSYNCKHRPROC eglDestroySyncKHR = (PFNEGLDESTROYSYNCKHRPROC)eglGetProcAddress("eglDestroySyncKHR");
++static PFNEGLCLIENTWAITSYNCKHRPROC eglClientWaitSyncKHR = (PFNEGLCLIENTWAITSYNCKHRPROC)eglGetProcAddress("eglClientWaitSyncKHR");
++static PFNEGLWAITSYNCKHRPROC eglWaitSyncKHR = (PFNEGLWAITSYNCKHRPROC)eglGetProcAddress("eglWaitSyncKHR");
++static PFNEGLCREATEIMAGEKHRPROC eglCreateImageKHR = (PFNEGLCREATEIMAGEKHRPROC)eglGetProcAddress("eglCreateImageKHR");
++static PFNEGLDESTROYIMAGEKHRPROC eglDestroyImageKHR = (PFNEGLDESTROYIMAGEKHRPROC)eglGetProcAddress("eglDestroyImageKHR");
++#endif
++
+ #ifdef RES_SCHED_ENABLE
+     const uint32_t RS_SUB_QOS_LEVEL = 7;
+     constexpr const char* RS_BUNDLE_NAME = "render_service";
+diff --git a/rosen/modules/render_service/core/pipeline/rs_hardware_thread.cpp b/rosen/modules/render_service/core/pipeline/rs_hardware_thread.cpp
+old mode 100644
+new mode 100755
+index 338e4426d..7ec2a1553
+--- a/rosen/modules/render_service/core/pipeline/rs_hardware_thread.cpp
++++ b/rosen/modules/render_service/core/pipeline/rs_hardware_thread.cpp
+@@ -256,7 +256,7 @@ void RSHardwareThread::ExecuteSwitchRefreshRate(uint32_t refreshRate)
+         RS_LOGD("RSHardwareThread::CommitAndReleaseLayers SetScreenRefreshRate = %{public}d", refreshRate);
+         int32_t status = hgmCore.SetScreenRefreshRate(id, 0, refreshRate);
+         if (status < EXEC_SUCCESS) {
+-            RS_LOGE("RSHardwareThread: failed to set refreshRate %{public}d, screenId %{public}llu", refreshRate, id);
++            // RS_LOGE("RSHardwareThread: failed to set refreshRate %{public}d, screenId %{public}llu", refreshRate, id);
+         }
+     }
+ }
+diff --git a/rosen/modules/render_service/core/pipeline/rs_surface_capture_task.cpp b/rosen/modules/render_service/core/pipeline/rs_surface_capture_task.cpp
+old mode 100644
+new mode 100755
+index 6cadf3fa4..dc64ad414
+--- a/rosen/modules/render_service/core/pipeline/rs_surface_capture_task.cpp
++++ b/rosen/modules/render_service/core/pipeline/rs_surface_capture_task.cpp
+@@ -50,6 +50,13 @@
+ 
+ namespace OHOS {
+ namespace Rosen {
++// Mesa3D
++#ifdef OHOS_MESA3D
++static PFNEGLCREATEIMAGEKHRPROC eglCreateImageKHR = (PFNEGLCREATEIMAGEKHRPROC)eglGetProcAddress("eglCreateImageKHR");
++static PFNEGLDESTROYIMAGEKHRPROC eglDestroyImageKHR = (PFNEGLDESTROYIMAGEKHRPROC)eglGetProcAddress("eglDestroyImageKHR");
++static PFNGLEGLIMAGETARGETTEXTURE2DOESPROC glEGLImageTargetTexture2DOES = (PFNGLEGLIMAGETARGETTEXTURE2DOESPROC)eglGetProcAddress("glEGLImageTargetTexture2DOES");
++#endif
++
+ bool RSSurfaceCaptureTask::Run(sptr<RSISurfaceCaptureCallback> callback)
+ {
+     if (ROSEN_EQ(scaleX_, 0.f) || ROSEN_EQ(scaleY_, 0.f) || scaleX_ < 0.f || scaleY_ < 0.f) {
+diff --git a/rosen/modules/render_service_base/BUILD.gn b/rosen/modules/render_service_base/BUILD.gn
+old mode 100644
+new mode 100755
+index c17768945..d0eb304ab
+--- a/rosen/modules/render_service_base/BUILD.gn
++++ b/rosen/modules/render_service_base/BUILD.gn
+@@ -260,6 +260,10 @@ ohos_source_set("render_service_base_src") {
+     "-fvisibility-inlines-hidden",
+   ]
+ 
++  if (product_name == "xiaomi_sagit" || product_name == "rk3399" || product_name == "intelli_tvbox") {
++    defines += [ "OHOS_MESA3D" ]
++  }
++
+   public_configs = [ ":export_config" ]
+   public_deps = [ "src/platform:platform" ]
+ 
+diff --git a/rosen/modules/render_service_base/src/pipeline/rs_draw_cmd.cpp b/rosen/modules/render_service_base/src/pipeline/rs_draw_cmd.cpp
+old mode 100644
+new mode 100755
+index 2cc371b29..6c850847c
+--- a/rosen/modules/render_service_base/src/pipeline/rs_draw_cmd.cpp
++++ b/rosen/modules/render_service_base/src/pipeline/rs_draw_cmd.cpp
+@@ -71,6 +71,21 @@ SkColorType GetSkColorTypeFromVkFormat(VkFormat vkFormat)
+ #endif
+ 
+ namespace {
++
++// Mesa3D
++#ifdef OHOS_MESA3D
++#ifdef ROSEN_OHOS
++#ifdef RS_ENABLE_GL
++static PFNGLEGLIMAGETARGETTEXTURE2DOESPROC glEGLImageTargetTexture2DOES = (PFNGLEGLIMAGETARGETTEXTURE2DOESPROC)eglGetProcAddress("glEGLImageTargetTexture2DOES");
++static PFNEGLCREATESYNCKHRPROC eglCreateSyncKHR = (PFNEGLCREATESYNCKHRPROC)eglGetProcAddress("eglCreateSyncKHR");
++static PFNEGLDESTROYSYNCKHRPROC eglDestroySyncKHR = (PFNEGLDESTROYSYNCKHRPROC)eglGetProcAddress("eglDestroySyncKHR");
++static PFNEGLCLIENTWAITSYNCKHRPROC eglClientWaitSyncKHR = (PFNEGLCLIENTWAITSYNCKHRPROC)eglGetProcAddress("eglClientWaitSyncKHR");
++static PFNEGLCREATEIMAGEKHRPROC eglCreateImageKHR = (PFNEGLCREATEIMAGEKHRPROC)eglGetProcAddress("eglCreateImageKHR");
++static PFNEGLDESTROYIMAGEKHRPROC eglDestroyImageKHR = (PFNEGLDESTROYIMAGEKHRPROC)eglGetProcAddress("eglDestroyImageKHR");
++#endif
++#endif
++#endif
++
+ constexpr int32_t CORNER_SIZE = 4;
+ void SimplifyPaint(uint32_t color, SkPaint* paint)
+ {
+diff --git a/rosen/modules/render_service_base/src/platform/ohos/BUILD.gn b/rosen/modules/render_service_base/src/platform/ohos/BUILD.gn
+old mode 100644
+new mode 100755
+index edaf79ecd..2f9083983
+--- a/rosen/modules/render_service_base/src/platform/ohos/BUILD.gn
++++ b/rosen/modules/render_service_base/src/platform/ohos/BUILD.gn
+@@ -40,6 +40,10 @@ ohos_source_set("rosen_ohos_sources") {
+   defines = [ "ROSEN_OHOS" ]
+   defines += gpu_defines
+ 
++  if (product_name == "xiaomi_sagit" || product_name == "rk3399" || product_name == "intelli_tvbox") {
++    defines += [ "OHOS_MESA3D" ]
++  }
++
+   sources = [
+     #backend
+     "rs_ashmem_helper.cpp",
+diff --git a/rosen/modules/render_service_base/src/render/rs_image.cpp b/rosen/modules/render_service_base/src/render/rs_image.cpp
+old mode 100644
+new mode 100755
+index 770fc1e8e..5d947d247
+--- a/rosen/modules/render_service_base/src/render/rs_image.cpp
++++ b/rosen/modules/render_service_base/src/render/rs_image.cpp
+@@ -34,9 +34,36 @@
+ #include "rs_trace.h"
+ #include "sandbox_utils.h"
+ 
++#ifdef OHOS_MESA3D
++#ifdef ROSEN_OHOS
++#include "EGL/egl.h"
++#include "EGL/eglext.h"
++#include "GLES2/gl2.h"
++#include "GLES2/gl2ext.h"
++
++#include "external_window.h"
++#include "surface_buffer.h"
++#include "window.h"
++#endif
++#endif
++
+ namespace OHOS {
+ namespace Rosen {
+ namespace {
++
++// Mesa3D
++#ifdef OHOS_MESA3D
++#ifdef ROSEN_OHOS
++static PFNGLEGLIMAGETARGETTEXTURE2DOESPROC glEGLImageTargetTexture2DOES = (PFNGLEGLIMAGETARGETTEXTURE2DOESPROC)eglGetProcAddress("glEGLImageTargetTexture2DOES");
++static PFNEGLCREATESYNCKHRPROC eglCreateSyncKHR = (PFNEGLCREATESYNCKHRPROC)eglGetProcAddress("eglCreateSyncKHR");
++static PFNEGLDESTROYSYNCKHRPROC eglDestroySyncKHR = (PFNEGLDESTROYSYNCKHRPROC)eglGetProcAddress("eglDestroySyncKHR");
++static PFNEGLCLIENTWAITSYNCKHRPROC eglClientWaitSyncKHR = (PFNEGLCLIENTWAITSYNCKHRPROC)eglGetProcAddress("eglClientWaitSyncKHR");
++static PFNEGLWAITSYNCKHRPROC eglWaitSyncKHR = (PFNEGLWAITSYNCKHRPROC)eglGetProcAddress("eglWaitSyncKHR");
++static PFNEGLCREATEIMAGEKHRPROC eglCreateImageKHR = (PFNEGLCREATEIMAGEKHRPROC)eglGetProcAddress("eglCreateImageKHR");
++static PFNEGLDESTROYIMAGEKHRPROC eglDestroyImageKHR = (PFNEGLDESTROYIMAGEKHRPROC)eglGetProcAddress("eglDestroyImageKHR");
++#endif
++#endif
++
+ constexpr int32_t CORNER_SIZE = 4;
+ }
+ 
+diff --git a/rosen/modules/render_service_base/src/render_backend/BUILD.gn b/rosen/modules/render_service_base/src/render_backend/BUILD.gn
+old mode 100644
+new mode 100755
+index 0495881bf..f428a01e2
+--- a/rosen/modules/render_service_base/src/render_backend/BUILD.gn
++++ b/rosen/modules/render_service_base/src/render_backend/BUILD.gn
+@@ -27,6 +27,10 @@ config("export_config") {
+ ohos_static_library("librender_backend") {
+   public_configs = [ ":export_config" ]
+ 
++  if (product_name == "xiaomi_sagit" || product_name == "rk3399" || product_name == "intelli_tvbox") {
++    defines += [ "OHOS_MESA3D" ]
++  }
++
+   include_dirs = [
+     "$graphic_2d_root/prebuilts/librarys/gpu/include",
+     "//drivers/peripheral/display/interfaces/include/",
+diff --git a/rosen/modules/render_service_base/src/render_backend/ohos/render_context_ohos_gl.cpp b/rosen/modules/render_service_base/src/render_backend/ohos/render_context_ohos_gl.cpp
+old mode 100644
+new mode 100755
+index b50bc8fd0..338f9b5e0
+--- a/rosen/modules/render_service_base/src/render_backend/ohos/render_context_ohos_gl.cpp
++++ b/rosen/modules/render_service_base/src/render_backend/ohos/render_context_ohos_gl.cpp
+@@ -35,6 +35,11 @@ constexpr const char* CHARACTER_STRING_WHITESPACE = " ";
+ constexpr const char* EGL_GET_PLATFORM_DISPLAY_EXT = "eglGetPlatformDisplayEXT";
+ constexpr const char* EGL_KHR_SURFACELESS_CONTEXT = "EGL_KHR_surfaceless_context";
+ 
++// Mesa3D
++#ifdef OHOS_MESA3D
++static PFNEGLQUERYSURFACEPROC eglQuerySurface = (PFNEGLQUERYSURFACEPROC)eglGetProcAddress("eglQuerySurface");
++#endif
++
+ // use functor to call gel*KHR API
+ static PFNEGLSETDAMAGEREGIONKHRPROC GetEGLSetDamageRegionKHRFunc()
+ {
+diff --git a/rosen/modules/render_service_client/core/ui/rs_surface_node.cpp b/rosen/modules/render_service_client/core/ui/rs_surface_node.cpp
+old mode 100644
+new mode 100755
+index e1bbc5475..f446ac6f3
+--- a/rosen/modules/render_service_client/core/ui/rs_surface_node.cpp
++++ b/rosen/modules/render_service_client/core/ui/rs_surface_node.cpp
+@@ -422,14 +422,14 @@ bool RSSurfaceNode::CreateNodeAndSurface(const RSSurfaceRenderNodeConfig& config
+ #ifndef ROSEN_CROSS_PLATFORM
+         sptr<Surface> surface = SurfaceUtils::GetInstance()->GetSurface(surfaceId);
+         if (surface == nullptr) {
+-            ROSEN_LOGE("RSSurfaceNode::CreateNodeAndSurface nodeId is %llu cannot find surface by surfaceId %llu",
+-                GetId(), surfaceId);
++            // ROSEN_LOGE("RSSurfaceNode::CreateNodeAndSurface nodeId is %llu cannot find surface by surfaceId %llu",
++            //    GetId(), surfaceId);
+             return false;
+         }
+         surface_ = std::static_pointer_cast<RSRenderServiceClient>(
+             RSIRenderClient::CreateRenderServiceClient())->CreateRSSurface(surface);
+         if (surface_ == nullptr) {
+-            ROSEN_LOGE("RSSurfaceNode::CreateNodeAndSurface nodeId is %llu creat RSSurface fail", GetId());
++            // ROSEN_LOGE("RSSurfaceNode::CreateNodeAndSurface nodeId is %llu creat RSSurface fail", GetId());
+             return false;
+         }
+ #endif

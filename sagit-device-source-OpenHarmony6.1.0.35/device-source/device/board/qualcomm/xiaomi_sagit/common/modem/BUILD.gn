@@ -1,0 +1,663 @@
+# Copyright (c) 2022 AlgoIdeas <https://gitee.com/algoideas>.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/ohos.gni")
+
+ohos_prebuilt_executable("ModemManager") {
+  source = "bin64/ModemManager"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("mmcli") {
+  source = "bin64/mmcli"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("nmcli") {
+  source = "bin64/nmcli"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("NetworkManager") {
+  source = "bin64/NetworkManager"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("dbus-binding-tool") {
+  source = "bin64/dbus-binding-tool"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("dbus-cleanup-sockets") {
+  source = "bin64/dbus-cleanup-sockets"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("dbus-daemon") {
+  source = "bin64/dbus-daemon"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("dbus-launch") {
+  source = "bin64/dbus-launch"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("dbus-monitor") {
+  source = "bin64/dbus-monitor"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("dbus-run-session") {
+  source = "bin64/dbus-run-session"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("dbus-send") {
+  source = "bin64/dbus-send"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("dbus-test-tool") {
+  source = "bin64/dbus-test-tool"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("dbus-update-activation-environment") {
+  source = "bin64/dbus-update-activation-environment"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("dbus-uuidgen") {
+  source = "bin64/dbus-uuidgen"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("ld-musl-aarch64.so.1") {
+  source = "lib64/ld-musl-aarch64.so.1"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("dbus-daemon.sh") {
+  source = "bin64/dbus-daemon.sh"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("msm-modem-uim-selection.sh") {
+  source = "bin64/msm-modem-uim-selection.sh"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+modem_manager_deps_lib = [
+  "libacl.so.1",
+  "libblkid.so.1",
+  "libbrotlicommon.so.1",
+  "libbrotlidec.so.1",
+  "libc.musl-aarch64.so.1",
+  "libcap.so.2",
+  "libcrypto.so.3",
+  "libcurl.so.4",
+  "libdbus-1.so.3",
+  "libelogind.so.0",
+  "libexpat.so.1",
+  "libffi.so.8",
+  "libgio-2.0.so.0",
+  "libglib-2.0.so.0",
+  "libgmodule-2.0.so.0",
+  "libgobject-2.0.so.0",
+  "libgudev-1.0.so.0",
+  "libidn2.so.0",
+  "libintl.so.8",
+  "libmbim-glib.so.4",
+  "libmm-glib.so.0",
+  "libmount.so.1",
+  "libncursesw.so.6",
+  "libndp.so.0",
+  "libnghttp2.so.14",
+  "libnl-3.so.200",
+  "libnl-genl-3.so.200",
+  "libnm.so.0",
+  "libnspr4.so",
+  "libnss3.so",
+  "libnssutil3.so",
+  "libpam.so.0",
+  "libpcre2-8.so.0",
+  "libpcsclite.so.1",
+  "libplc4.so",
+  "libplds4.so",
+  "libpolkit-gobject-1.so.0",
+  "libpsl.so.5",
+  "libqmi-glib.so.5",
+  "libqrtr-glib.so.0",
+  "libqrtr.so.1",
+  "libreadline.so.8",
+  "libsmime3.so",
+  "libssl.so.3",
+  "libudev.so.1",
+  "libunistring.so.5",
+  "libz.so.1",
+]
+
+foreach(name, modem_manager_deps_lib) {
+  ohos_prebuilt_shared_library("${name}") {
+    source = "lib64/${name}"
+    module_install_dir = "musl"
+    install_images = [ "vendor" ]
+    part_name = "qualcomm_products"
+    install_enable = true
+  }
+}
+
+modem_manager_deps = []
+foreach(name, modem_manager_deps_lib) {
+  modem_manager_deps += [ ":${name}" ]
+}
+
+ohos_prebuilt_etc("net.hadess.SensorProxy.conf") {
+  source = "etc/dbus-1/system.d/net.hadess.SensorProxy.conf"
+  module_install_dir = "etc/dbus-1/system.d"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("etc_session.conf") {
+  source = "etc/dbus-1/session.conf"
+  module_install_dir = "etc/dbus-1"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("etc_system.conf") {
+  source = "etc/dbus-1/system.conf"
+  module_install_dir = "etc/dbus-1"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("machine-id") {
+  source = "etc/machine-id"
+  module_install_dir = "etc"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("machine-info") {
+  source = "etc/machine-info"
+  module_install_dir = "etc"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qmi-proxy") {
+  source = "bin64/qmi-proxy"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qmicli") {
+  source = "bin64/qmicli"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("connection.d") {
+  source = "usr/lib/ModemManager/connection.d"
+  module_install_dir = "etc/usr/lib/ModemManager"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("fcc-unlock.d") {
+  source = "usr/lib/ModemManager/fcc-unlock.d"
+  module_install_dir = "etc/usr/lib/ModemManager"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+modem_plug_deps_lib = [
+  "libmm-plugin-fibocom.so",
+  "libmm-plugin-option.so",
+  "libmm-plugin-wavecom.so",
+  "libmm-plugin-dell.so",
+  "libmm-plugin-via.so",
+  "libmm-plugin-x22x.so",
+  "libmm-plugin-pantech.so",
+  "libmm-plugin-nokia.so",
+  "libmm-plugin-samsung.so",
+  "libmm-plugin-dlink.so",
+  "libmm-plugin-ublox.so",
+  "libmm-plugin-tplink.so",
+  "libmm-shared-telit.so",
+  "libmm-plugin-qcom-soc.so",
+  "libmm-plugin-quectel.so",
+  "libmm-shared-option.so",
+  "libmm-plugin-linktop.so",
+  "libmm-plugin-iridium.so",
+  "libmm-plugin-haier.so",
+  "libmm-plugin-sierra-legacy.so",
+  "libmm-plugin-cinterion.so",
+  "libmm-plugin-simtech.so",
+  "libmm-plugin-novatel-lte.so",
+  "libmm-plugin-sierra.so",
+  "libmm-plugin-broadmobi.so",
+  "libmm-shared-icera.so",
+  "libmm-plugin-generic.so",
+  "libmm-shared-xmm.so",
+  "libmm-plugin-intel.so",
+  "libmm-plugin-telit.so",
+  "libmm-plugin-mtk.so",
+  "libmm-plugin-motorola.so",
+  "libmm-shared-fibocom.so",
+  "libmm-plugin-zte.so",
+  "libmm-plugin-longcheer.so",
+  "libmm-plugin-altair-lte.so",
+  "libmm-plugin-novatel.so",
+  "libmm-shared-novatel.so",
+  "libmm-plugin-foxconn.so",
+  "libmm-plugin-anydata.so",
+  "libmm-plugin-option-hso.so",
+  "libmm-shared-foxconn.so",
+  "libmm-plugin-ericsson-mbm.so",
+  "libmm-shared-sierra.so",
+  "libmm-plugin-gosuncn.so",
+  "libmm-plugin-nokia-icera.so",
+  "libmm-plugin-thuraya.so",
+  "libmm-plugin-huawei.so",
+]
+
+foreach(name, modem_plug_deps_lib) {
+  ohos_prebuilt_shared_library("${name}") {
+    source = "usr/lib/ModemManager/${name}"
+    module_install_dir = "etc/usr/lib/ModemManager"
+    install_images = [ "system" ]
+    part_name = "qualcomm_products"
+    install_enable = true
+  }
+}
+
+modem_plug_deps = []
+foreach(name, modem_plug_deps_lib) {
+  modem_plug_deps += [ ":${name}" ]
+}
+
+ohos_prebuilt_etc("share_system.conf") {
+  source = "usr/share/dbus-1/system.conf"
+  module_install_dir = "etc/usr/share/dbus-1"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("share_session.conf") {
+  source = "usr/share/dbus-1/session.conf"
+  module_install_dir = "etc/usr/share/dbus-1"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+dbus_system_conf_deps_lib = [
+  "org.freedesktop.GeoClue2.Agent.conf",
+  "org.freedesktop.fwupd.conf",
+  "org.opensuse.CupsPkHelper.Mechanism.conf",
+  "org.freedesktop.NetworkManager.conf",
+  "org.freedesktop.ColorManager.conf",
+  "org.freedesktop.Accounts.conf",
+  "org.freedesktop.PolicyKit1.conf",
+  "org.freedesktop.UDisks2.conf",
+  "pulseaudio-system.conf",
+  "nm-priv-helper.conf",
+  "de.seath.Waked.conf",
+  "org.freedesktop.GeoClue2.conf",
+  "org.freedesktop.login1.conf",
+  "openrc-settingsd.conf",
+  "org.freedesktop.UPower.conf",
+  "wpa_supplicant.conf",
+  "bluetooth.conf",
+  "org.freedesktop.ModemManager1.conf",
+  "nm-dispatcher.conf",
+  "bluetooth-mesh.conf",
+  "dev.Cogitri.apkPolkit2.conf",
+]
+
+foreach(name, dbus_system_conf_deps_lib) {
+  ohos_prebuilt_shared_library("${name}") {
+    source = "usr/share/dbus-1/system.d/${name}"
+    module_install_dir = "etc/usr/share/dbus-1/system.d"
+    install_images = [ "system" ]
+    part_name = "qualcomm_products"
+    install_enable = true
+  }
+}
+
+dbus_system_conf_deps = []
+foreach(name, dbus_system_conf_deps_lib) {
+  dbus_system_conf_deps += [ ":${name}" ]
+}
+
+dbus_system_interfaces_deps_lib = [
+  "org.freedesktop.GeoClue2.xml",
+  "org.freedesktop.portal.Documents.xml",
+  "org.freedesktop.ColorManager.Device.xml",
+  "org.freedesktop.portal.MemoryMonitor.xml",
+  "org.freedesktop.UPower.KbdBacklight.xml",
+  "org.freedesktop.portal.PowerProfileMonitor.xml",
+  "org.freedesktop.hostname1.xml",
+  "org.freedesktop.impl.portal.Background.xml",
+  "org.freedesktop.ModemManager1.Sms.xml",
+  "org.freedesktop.GeoClue2.Location.xml",
+  "org.freedesktop.GeoClue2.Agent.xml",
+  "org.freedesktop.UPower.Device.xml",
+  "org.freedesktop.impl.portal.Secret.xml",
+  "org.freedesktop.ColorManager.Sensor.xml",
+  "org.freedesktop.portal.ProxyResolver.xml",
+  "org.freedesktop.impl.portal.Wallpaper.xml",
+  "org.freedesktop.impl.portal.Email.xml",
+  "org.freedesktop.ModemManager1.Modem.Modem3gpp.Ussd.xml",
+  "org.freedesktop.ModemManager1.Modem.Oma.xml",
+  "org.freedesktop.portal.Realtime.xml",
+  "org.freedesktop.portal.Camera.xml",
+  "org.freedesktop.impl.portal.FileChooser.xml",
+  "org.freedesktop.impl.portal.Inhibit.xml",
+  "org.freedesktop.ModemManager1.Modem.Simple.xml",
+  "org.freedesktop.ModemManager1.Modem.Modem3gpp.xml",
+  "org.freedesktop.impl.portal.ScreenCast.xml",
+  "org.mobian_project.CallAudio.xml",
+  "org.freedesktop.impl.portal.GlobalShortcuts.xml",
+  "org.freedesktop.portal.Device.xml",
+  "org.freedesktop.portal.RemoteDesktop.xml",
+  "org.freedesktop.impl.portal.AppChooser.xml",
+  "org.freedesktop.impl.portal.Lockdown.xml",
+  "org.freedesktop.impl.portal.Request.xml",
+  "org.freedesktop.portal.Request.xml",
+  "org.freedesktop.ModemManager1.Modem.Signal.xml",
+  "org.freedesktop.ModemManager1.Bearer.xml",
+  "org.freedesktop.portal.Settings.xml",
+  "org.freedesktop.portal.Account.xml",
+  "org.freedesktop.UPower.xml",
+  "org.sigxcpu.Feedback.xml",
+  "org.freedesktop.Accounts.User.xml",
+  "org.freedesktop.portal.GlobalShortcuts.xml",
+  "org.freedesktop.impl.portal.Print.xml",
+  "dev.cogitri.apkPolkit2.xml",
+  "org.freedesktop.portal.FileTransfer.xml",
+  "org.freedesktop.ModemManager1.Call.xml",
+  "org.freedesktop.portal.Location.xml",
+  "org.freedesktop.locale1.xml",
+  "org.freedesktop.ColorManager.xml",
+  "org.freedesktop.ModemManager1.Modem.Messaging.xml",
+  "org.freedesktop.portal.Notification.xml",
+  "org.freedesktop.portal.Screenshot.xml",
+  "org.freedesktop.portal.Trash.xml",
+  "org.freedesktop.ModemManager1.Modem.ModemCdma.xml",
+  "org.freedesktop.impl.portal.DynamicLauncher.xml",
+  "org.freedesktop.ModemManager1.Modem.Voice.xml",
+  "org.freedesktop.ModemManager1.Modem.Firmware.xml",
+  "org.freedesktop.impl.portal.Settings.xml",
+  "org.freedesktop.impl.portal.Notification.xml",
+  "org.freedesktop.portal.Secret.xml",
+  "org.freedesktop.portal.Inhibit.xml",
+  "org.freedesktop.ModemManager1.xml",
+  "org.freedesktop.ColorHelper.xml",
+  "org.freedesktop.portal.FileChooser.xml",
+  "org.freedesktop.portal.GameMode.xml",
+  "org.freedesktop.portal.Wallpaper.xml",
+  "org.freedesktop.ColorManager.Profile.xml",
+  "org.freedesktop.impl.portal.Session.xml",
+  "org.freedesktop.ModemManager1.Modem.Sar.xml",
+  "org.freedesktop.ModemManager1.Modem.Time.xml",
+  "org.freedesktop.fwupd.xml",
+  "org.freedesktop.impl.portal.PermissionStore.xml",
+  "org.freedesktop.impl.portal.Access.xml",
+  "org.freedesktop.portal.Session.xml",
+  "org.freedesktop.portal.DynamicLauncher.xml",
+  "org.freedesktop.GeoClue2.Manager.xml",
+  "org.freedesktop.portal.OpenURI.xml",
+  "org.freedesktop.impl.portal.Account.xml",
+  "org.freedesktop.timedate1.xml",
+  "org.freedesktop.ModemManager1.Modem.Location.xml",
+  "org.freedesktop.impl.portal.RemoteDesktop.xml",
+  "org.freedesktop.portal.Email.xml",
+  "org.freedesktop.portal.Print.xml",
+  "org.freedesktop.portal.Background.xml",
+  "org.freedesktop.ModemManager1.Sim.xml",
+  "org.freedesktop.impl.portal.Screenshot.xml",
+  "org.freedesktop.ModemManager1.Modem.xml",
+  "org.freedesktop.GeoClue2.Client.xml",
+  "org.freedesktop.portal.ScreenCast.xml",
+  "org.freedesktop.Accounts.xml",
+  "org.freedesktop.ModemManager1.Modem.Modem3gpp.ProfileManager.xml",
+  "org.freedesktop.portal.NetworkMonitor.xml",
+]
+
+foreach(name, dbus_system_interfaces_deps_lib) {
+  ohos_prebuilt_shared_library("${name}") {
+    source = "usr/share/dbus-1/interfaces/${name}"
+    module_install_dir = "etc/usr/share/dbus-1/interfaces"
+    install_images = [ "system" ]
+    part_name = "qualcomm_products"
+    install_enable = true
+  }
+}
+
+dbus_system_interfaces_deps = []
+foreach(name, dbus_system_interfaces_deps_lib) {
+  dbus_system_interfaces_deps += [ ":${name}" ]
+}
+
+ohos_prebuilt_etc("dbus_accessibility_services") {
+  source =
+      "usr/share/dbus-1/accessibility-services/org.a11y.atspi.Registry.service"
+  module_install_dir = "etc/usr/share/dbus-1/accessibility-services"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+dbus_system_conf_deps = []
+foreach(name, dbus_system_conf_deps_lib) {
+  dbus_system_conf_deps += [ ":${name}" ]
+}
+
+dbus_system_services_deps_lib = [
+  "fi.w1.wpa_supplicant1.service",
+  "org.freedesktop.nm_dispatcher.service",
+  "org.freedesktop.hostname1.service",
+  "org.freedesktop.UDisks2.service",
+  "org.freedesktop.PolicyKit1.service",
+  "org.freedesktop.UPower.service",
+  "dev.Cogitri.apkPolkit2.service",
+  "org.freedesktop.nm_priv_helper.service",
+  "org.freedesktop.Accounts.service",
+  "org.freedesktop.login1.service",
+  "org.freedesktop.ColorManager.service",
+  "org.freedesktop.fwupd.service",
+  "org.freedesktop.GeoClue2.service",
+  "org.opensuse.CupsPkHelper.Mechanism.service",
+  "org.freedesktop.locale1.service",
+  "org.freedesktop.timedate1.service",
+]
+
+foreach(name, dbus_system_services_deps_lib) {
+  ohos_prebuilt_shared_library("${name}") {
+    source = "usr/share/dbus-1/system-services/${name}"
+    module_install_dir = "etc/usr/share/dbus-1/system-services"
+    install_images = [ "system" ]
+    part_name = "qualcomm_products"
+    install_enable = true
+  }
+}
+
+dbus_system_services_deps = []
+foreach(name, dbus_system_services_deps_lib) {
+  dbus_system_services_deps += [ ":${name}" ]
+}
+
+dbus_services_deps_lib = [
+  "org.freedesktop.portal.Desktop.service",
+  "org.freedesktop.portal.Documents.service",
+  "org.a11y.Bus.service",
+  "org.gnome.keyring.PrivatePrompter.service",
+  "org.gnome.Console.service",
+  "org.gnome.evolution.dataserver.UserPrompter0.service",
+  "org.gnome.Lollypop.SearchProvider.service",
+  "org.gnome.Calls.service",
+  "org.freedesktop.ColorHelper.service",
+  "org.sigxcpu.Feedback.service",
+  "org.gnome.keyring.service",
+  "org.gnome.evolution.dataserver.Calendar8.service",
+  "org.gnome.TextEditor.service",
+  "org.gnome.Identity.service",
+  "org.freedesktop.impl.portal.desktop.gtk.service",
+  "org.bluez.obex.service",
+  "dev.tchx84.Portfolio.service",
+  "org.gnome.evolution.dataserver.Sources5.service",
+  "org.freedesktop.impl.portal.Secret.service",
+  "org.gnome.Contacts.SearchProvider.service",
+  "org.gnome.Calculator.SearchProvider.service",
+  "org.mobian_project.CallAudio.service",
+  "org.freedesktop.secrets.service",
+  "org.freedesktop.IBus.service",
+  "org.freedesktop.portal.IBus.service",
+  "org.freedesktop.impl.portal.PermissionStore.service",
+  "sm.puri.Phosh.CalendarServer.service",
+  "org.gnome.OnlineAccounts.service",
+  "org.gnome.evolution.dataserver.AddressBook10.service",
+  "org.gnome.keyring.SystemPrompter.service",
+  "org.gnome.Contacts.service",
+  "org.freedesktop.impl.portal.desktop.gnome.service",
+  "org.gnome.Settings.service",
+  "ca.desrt.dconf.service",
+  "org.gtk.GLib.PACRunner.service",
+  "org.gnome.Settings.SearchProvider.service",
+  "org.gnome.clocks.service",
+  "org.gnome.Software.service",
+]
+
+foreach(name, dbus_services_deps_lib) {
+  ohos_prebuilt_shared_library("${name}") {
+    source = "usr/share/dbus-1/services/${name}"
+    module_install_dir = "etc/usr/share/dbus-1/services"
+    install_images = [ "system" ]
+    part_name = "qualcomm_products"
+    install_enable = true
+  }
+}
+
+dbus_services_deps = []
+foreach(name, dbus_services_deps_lib) {
+  dbus_services_deps += [ ":${name}" ]
+}
+
+group("modem") {
+  deps = [
+    ":ModemManager",
+    ":mmcli",
+    ":NetworkManager",
+    ":dbus-binding-tool",
+    ":dbus-cleanup-sockets",
+    ":dbus-daemon",
+    ":dbus-daemon.sh",
+    ":dbus-launch",
+    ":dbus-monitor",
+    ":dbus-run-session",
+    ":dbus-send",
+    ":dbus-test-tool",
+    ":dbus-update-activation-environment",
+    ":dbus-uuidgen",
+    ":dbus_accessibility_services",
+    ":etc_session.conf",
+    ":etc_system.conf",
+    ":ld-musl-aarch64.so.1",
+    ":machine-id",
+    ":machine-info",
+    ":msm-modem-uim-selection.sh",
+    ":net.hadess.SensorProxy.conf",
+    ":nmcli",
+    ":qmi-proxy",
+    ":qmicli",
+    ":share_session.conf",
+
+    # ":connection.d",
+    # ":fcc-unlock.d",
+    ":share_system.conf",
+  ]
+  deps += modem_manager_deps
+  deps += modem_plug_deps
+  deps += dbus_system_conf_deps
+  deps += dbus_system_interfaces_deps
+  deps += dbus_system_services_deps
+  deps += dbus_services_deps
+}

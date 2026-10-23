@@ -1,0 +1,21 @@
+root {
+    platform {
+        led_config {
+            match_attr = "linux_led_adapter_0";
+            template led_device {
+                serviceName = "";
+                driver_led_name = "";
+                deviceNum = 0;
+                rate = 100;
+            }
+            device_led_0x0000 :: led_device {
+                driver_led_name = "/sys/class/leds/white:flash/brightness";
+                deviceNum = 0;
+            }
+            device_led_0x0001 :: led_device {
+                driver_led_name = "/sys/class/leds/yellow:flash/brightness";
+                deviceNum = 1;
+            }
+        }
+    }
+}

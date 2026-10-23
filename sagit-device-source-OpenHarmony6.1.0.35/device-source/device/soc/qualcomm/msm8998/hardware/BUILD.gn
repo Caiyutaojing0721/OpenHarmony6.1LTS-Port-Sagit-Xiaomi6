@@ -1,0 +1,10 @@
+# Copyright (C) 2022 AlgoIdeas <https://gitee.com/algoideas>. All rights reserved.
+
+import("//build/ohos.gni")
+
+group("hardware_group") {
+  deps = [
+    "firmware:firmware",
+    "gpu:gpu",
+  ]
+}

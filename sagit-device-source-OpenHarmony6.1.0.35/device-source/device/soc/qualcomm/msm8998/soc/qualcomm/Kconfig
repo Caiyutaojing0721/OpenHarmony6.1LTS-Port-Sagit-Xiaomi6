@@ -1,0 +1,16 @@
+#
+# Qualcomm driver configuration
+#
+config QCOM_DRIVER
+	bool "Qualcomm Peripheral drivers"
+	default n
+	help
+		this option is provided for control qualcomm
+		drivers, if you want to use amlogic driver
+		please open it
+
+if QCOM_DRIVER
+menu "Qualcomm Device Drivers"
+source "vendor/qualcomm/reboot/Kconfig"
+endmenu
+endif

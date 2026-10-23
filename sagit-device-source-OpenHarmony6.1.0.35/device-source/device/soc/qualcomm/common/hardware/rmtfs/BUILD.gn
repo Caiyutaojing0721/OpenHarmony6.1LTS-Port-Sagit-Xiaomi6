@@ -1,0 +1,57 @@
+# Copyright (C) 2023 AlgoIdeas <yu19881234@163.com>
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/ohos.gni")
+
+config("rmtfs_config") {
+  cflags = [
+    "-Wno-sign-compare",
+    "-Wno-implicit-function-declaration",
+    "-Wno-parentheses",
+    "-Wno-string-conversion",
+    "-Wno-string-plus-int",
+    "-Wno-asm-operand-widths",
+    "-Wno-pointer-sign",
+    "-Wno-deprecated-declarations",
+    "-Wno-implicit-int",
+    "-Wno-switch",
+    "-Wno-incompatible-pointer-types-discards-qualifiers",
+    "-Wno-int-conversion",
+    "-Wno-absolute-value",
+    "-Wno-unused-function",
+    "-Wno-unused-label",
+    "-Wno-unused-const-variable",
+    "-Wno-visibility",
+    "-Wno-incompatible-pointer-types",
+    "-Wno-sometimes-uninitialized",
+    "-Wno-format",
+    "-Wno-tautological-constant-out-of-range-compare",
+    "-Wno-implicit-fallthrough",
+  ]
+
+  if (use_musl) {
+    cflags += [ "-Wno-bool-operation" ]
+  }
+}
+
+ohos_prebuilt_executable("rmtfs") {
+  source = "bin/rmtfs"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+group("rmtfs_group") {
+  deps = [ ":rmtfs" ]
+}

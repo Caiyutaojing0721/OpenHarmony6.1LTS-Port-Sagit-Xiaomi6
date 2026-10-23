@@ -1,0 +1,6 @@
+# Qualcomm POWER OFF
+config QCOM_REBOOT
+	bool "Qualcomm Board level reboot or power off"
+	default n
+    help
+		This is the Qualcomm Board reboot or poweroff driver.

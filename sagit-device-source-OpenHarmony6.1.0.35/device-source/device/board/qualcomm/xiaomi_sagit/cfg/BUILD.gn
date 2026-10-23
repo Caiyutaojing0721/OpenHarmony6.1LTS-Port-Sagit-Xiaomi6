@@ -1,0 +1,537 @@
+# Copyright (c) 2022 AlgoIdeas <https://gitee.com/algoideas>.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/ohos.gni")
+
+ohos_prebuilt_etc("init.cfg") {
+  source = "init/init.cfg"
+  module_install_dir = "etc"
+  install_images = [ "system" ]
+  install_enable = true
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("init.reboot.cfg") {
+  source = "init/init.reboot.cfg"
+  module_install_dir = "etc/init"
+  install_images = [ "system" ]
+  install_enable = true
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("init.msm8998.cfg") {
+  source = "init/init.msm8998.cfg"
+  install_images = [ chipset_base_dir ]
+  install_enable = true
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("init.msm8998.usb.cfg") {
+  source = "init/init.msm8998.usb.cfg"
+  install_images = [ chipset_base_dir ]
+  install_enable = true
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("qrtr-ns.cfg") {
+  install_enable = true
+  source = "etc/qcom/qrtr-ns.cfg"
+  module_install_dir = "etc/init"
+  install_images = [ chipset_base_dir ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("tqftpserv.cfg") {
+  install_enable = true
+  source = "etc/qcom/tqftpserv.cfg"
+  module_install_dir = "etc/init"
+  install_images = [ chipset_base_dir ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("pd-mapper.cfg") {
+  install_enable = true
+  source = "etc/qcom/pd-mapper.cfg"
+  module_install_dir = "etc/init"
+  install_images = [ chipset_base_dir ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("rmtfs.cfg") {
+  install_enable = true
+  source = "etc/qcom/rmtfs.cfg"
+  module_install_dir = "etc/init"
+  install_images = [ chipset_base_dir ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("qmi-proxy.cfg") {
+  install_enable = true
+  source = "etc/qcom/qmi-proxy.cfg"
+  module_install_dir = "etc/init"
+  install_images = [ chipset_base_dir ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("dbus-daemon.cfg") {
+  install_enable = true
+  source = "etc/qcom/dbus-daemon.cfg"
+  module_install_dir = "etc/init"
+  install_images = [ chipset_base_dir ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("modem-manager.cfg") {
+  install_enable = true
+  source = "etc/qcom/modem-manager.cfg"
+  module_install_dir = "etc/init"
+  install_images = [ chipset_base_dir ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_executable("init.msm8998.sh") {
+  source = "init/init.msm8998.sh"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_executable("ttygs1_shell.sh") {
+  source = "ttygs1_shell.sh"
+  module_install_dir = "bin"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("window_manager_config") {
+  source = "etc/window_manager_config.xml"
+  install_enable = true
+  part_name = "qualcomm_products"
+  relative_install_dir = "window/resources"
+}
+
+ohos_prebuilt_etc("display_manager_config") {
+  source = "etc/display_manager_config.xml"
+  install_enable = true
+  part_name = "qualcomm_products"
+  relative_install_dir = "window/resources"
+}
+
+ohos_prebuilt_etc("bt_device_config") {
+  source = "etc/bt_device_config.xml"
+  install_enable = true
+  part_name = "qualcomm_products"
+  relative_install_dir = "bluetooth"
+}
+
+ohos_prebuilt_etc("90.feedbackd.rules") {
+  source = "udev/90-feedbackd.rules"
+  module_install_dir = "etc/udev/rules.d"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("50.usb.rules") {
+  source = "udev/50-usb.rules"
+  module_install_dir = "etc/udev/rules.d"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("77.mm-qcom-soc.rules") {
+  source = "udev/77-mm-qcom-soc.rules"
+  module_install_dir = "etc/udev/rules.d"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("77.mm-quectel-port-types.rules") {
+  source = "udev/77-mm-quectel-port-types.rules"
+  module_install_dir = "etc/udev/rules.d"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("77.mm-sierra.rules") {
+  source = "udev/77-mm-sierra.rules"
+  module_install_dir = "etc/udev/rules.d"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("80.mm-candidate.rules") {
+  source = "udev/80-mm-candidate.rules"
+  module_install_dir = "etc/udev/rules.d"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("udisk_mount.sh") {
+  source = "udisk_mount.sh"
+  module_install_dir = "bin"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("sdcard_mount.sh") {
+  source = "sdcard_mount.sh"
+  module_install_dir = "bin"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("fstab.msm8998") {
+  source = "fstab.msm8998"
+  part_name = "qualcomm_products"
+  install_images = [ vendor_base_dir ]
+  install_enable = true
+}
+
+ohos_prebuilt_etc("selinux_config") {
+  source = "selinux/config"
+  part_name = "qualcomm_products"
+  module_install_dir = "etc/selinux"
+  install_images = [ "system" ]
+  install_enable = true
+}
+
+ohos_prebuilt_etc("selinux_file_contexts") {
+  source = "selinux/file_contexts"
+  part_name = "qualcomm_products"
+  module_install_dir = "etc/selinux/targeted/contexts"
+  install_images = [ "system" ]
+  install_enable = true
+}
+
+ohos_copy("fstab.required") {
+  sources = [ "fstab.msm8998" ]
+  outputs = [ "$root_build_dir/fstab.required" ]
+}
+
+ohos_executable("composer_host") {
+  sources = [ "//drivers/hdf_core/adapter/uhdf2/host/devhost.c" ]
+  include_dirs = [
+    "//drivers/hdf_core/adapter/uhdf2/host/include",
+    "//drivers/hdf_core/framework/core/host/include",
+    "//drivers/hdf_core/adapter/uhdf2/include",
+    "//drivers/hdf_core/interfaces",
+    "//drivers/hdf_core/interfaces/inner_api/utils",
+    "//drivers/hdf_core/interfaces/inner_api/host/shared",
+    "//drivers/hdf_core/interfaces/inner_api/host/uhdf",
+    "//drivers/hdf_core/interfaces/inner_api/core/shared",
+    "//drivers/hdf_core/interfaces/inner_api/osal/shared",
+    "//drivers/hdf_core/interfaces/inner_api/osal/uhdf",
+    "//drivers/hdf_core/framework/utils/include",
+    "//base/startup/init/interfaces/innerkits/include/syspara",
+    "//third_party/bounds_checking_function/include",
+  ]
+  deps = [ "//drivers/hdf_core/adapter/uhdf2/host:libhdf_host" ]
+  external_deps = [
+    "bounds_checking_function:libsec_shared",
+    "c_utils:utils",
+    "hilog:libhilog",
+    "init:libbegetutil",
+  ]
+  output_name = "composer_host"
+  install_images = [ "vendor" ]
+  module_install_dir = "bin"
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_executable("allocator_host") {
+  sources = [ "//drivers/hdf_core/adapter/uhdf2/host/devhost.c" ]
+  include_dirs = [
+    "//drivers/hdf_core/adapter/uhdf2/host/include",
+    "//drivers/hdf_core/framework/core/host/include",
+    "//drivers/hdf_core/adapter/uhdf2/include",
+    "//drivers/hdf_core/interfaces",
+    "//drivers/hdf_core/interfaces/inner_api/utils",
+    "//drivers/hdf_core/interfaces/inner_api/host/shared",
+    "//drivers/hdf_core/interfaces/inner_api/host/uhdf",
+    "//drivers/hdf_core/interfaces/inner_api/core/shared",
+    "//drivers/hdf_core/interfaces/inner_api/osal/shared",
+    "//drivers/hdf_core/interfaces/inner_api/osal/uhdf",
+    "//drivers/hdf_core/framework/utils/include",
+    "//base/startup/init/interfaces/innerkits/include/syspara",
+    "//third_party/bounds_checking_function/include",
+  ]
+  deps = [ "//drivers/hdf_core/adapter/uhdf2/host:libhdf_host" ]
+  external_deps = [
+    "bounds_checking_function:libsec_shared",
+    "c_utils:utils",
+    "hilog:libhilog",
+    "init:libbegetutil",
+  ]
+  output_name = "allocator_host"
+  install_images = [ "vendor" ]
+  module_install_dir = "bin"
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_executable("hdf_devhost") {
+  sources = [ "//drivers/hdf_core/adapter/uhdf2/host/devhost.c" ]
+  include_dirs = [
+    "//drivers/hdf_core/adapter/uhdf2/host/include",
+    "//drivers/hdf_core/framework/core/host/include",
+    "//drivers/hdf_core/adapter/uhdf2/include",
+    "//drivers/hdf_core/interfaces",
+    "//drivers/hdf_core/interfaces/inner_api/utils",
+    "//drivers/hdf_core/interfaces/inner_api/host/shared",
+    "//drivers/hdf_core/interfaces/inner_api/host/uhdf",
+    "//drivers/hdf_core/interfaces/inner_api/core/shared",
+    "//drivers/hdf_core/interfaces/inner_api/osal/shared",
+    "//drivers/hdf_core/interfaces/inner_api/osal/uhdf",
+    "//drivers/hdf_core/framework/utils/include",
+    "//base/startup/init/interfaces/innerkits/include/syspara",
+    "//third_party/bounds_checking_function/include",
+  ]
+  deps = [ "//drivers/hdf_core/adapter/uhdf2/host:libhdf_host" ]
+  external_deps = [
+    "bounds_checking_function:libsec_shared",
+    "c_utils:utils",
+    "hilog:libhilog",
+    "init:libbegetutil",
+  ]
+  output_name = "hdf_devhost"
+  install_images = [ "vendor" ]
+  module_install_dir = "bin"
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("hdfdisplay_cfg") {
+  source = "etc/init/hdfdisplay.cfg"
+  module_install_dir = "etc/init"
+  install_images = [ "vendor" ]
+  part_name = "qualcomm_products"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("install_list_config") {
+  source = "preinstall/install_list.json"
+  relative_install_dir = "app"
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("uninstall_list_config") {
+  source = "preinstall/uninstall_list.json"
+  relative_install_dir = "app"
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("install_list_capability_config") {
+  source = "preinstall/install_list_capability.json"
+  relative_install_dir = "app"
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("install_list_permissions_config") {
+  source = "preinstall/install_list_permissions.json"
+  relative_install_dir = "app"
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("distributed_hardware_components_cfg.json") {
+  source = "distributedhardware/distributed_hardware_components_cfg.json"
+  install_enable = true
+  module_install_dir = "etc/distributedhardware"
+  install_images = [
+    chipset_base_dir,
+    chip_prod_base_dir
+  ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("dinput_business_event_whitelist.cfg") {
+  source = "distributedhardware/dinput_business_event_whitelist.cfg"
+  install_enable = true
+  module_install_dir = "etc/distributedhardware"
+  install_images = [
+    chipset_base_dir,
+    chip_prod_base_dir
+  ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("param_for_chip_prod") {
+  source = "etc/param/hardware_xiaomi_sagit.para"
+  install_images = [ chip_prod_base_dir ]
+  relative_install_dir = "para"
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("param_for_sys_prod") {
+  source = "etc/param/product_xiaomi_sagit.para"
+  install_images = [ sys_prod_base_dir ]
+  relative_install_dir = "para"
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("param_for_ohos") {
+  source = "etc/param/ohos.para"
+  install_images = [ "system" ]
+  relative_install_dir = "param"
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("sagit.conf") {
+  source = "etc/alsa-ucm-xiaomi/sagit/sagit.conf"
+  module_install_dir = "etc/audio/alsa/share/ucm2/xiaomi/sagit"
+  install_enable = true
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("sagit_HiFi.conf") {
+  source = "etc/alsa-ucm-xiaomi/sagit/HiFi.conf"
+  module_install_dir = "etc/audio/alsa/share/ucm2/xiaomi/sagit"
+  install_enable = true
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("sagit_VoiceCall.conf") {
+  source = "etc/alsa-ucm-xiaomi/sagit/VoiceCall.conf"
+  module_install_dir = "etc/audio/alsa/share/ucm2/xiaomi/sagit"
+  install_enable = true
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("enchilada.conf") {
+  source = "etc/alsa-ucm-xiaomi/enchilada/enchilada.conf"
+  module_install_dir = "etc/audio/alsa/share/ucm2/xiaomi/enchilada"
+  install_enable = true
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("enchilada_HiFi.conf") {
+  source = "etc/alsa-ucm-xiaomi/enchilada/HiFi.conf"
+  module_install_dir = "etc/audio/alsa/share/ucm2/xiaomi/enchilada"
+  install_enable = true
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("enchilada_VoiceCall.conf") {
+  source = "etc/alsa-ucm-xiaomi/enchilada/VoiceCall.conf"
+  module_install_dir = "etc/audio/alsa/share/ucm2/xiaomi/enchilada"
+  install_enable = true
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("xiaomi-6-sagit.conf") {
+  source = "etc/alsa-ucm-xiaomi/sagit/xiaomi 6.conf"
+  install_enable = true
+  module_install_dir = "etc/audio/alsa/share/ucm2/conf.d/msm8998"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+}
+
+ohos_prebuilt_etc("xiaomi-6.conf") {
+  source = "etc/alsa-ucm-xiaomi/enchilada/xiaomi 6.conf"
+  install_enable = true
+  module_install_dir = "etc/audio/alsa/share/ucm2/conf.d/msm8998"
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+}
+
+ohos_copy("all_image_conf") {
+  sources = [
+    "image/system_image_conf.txt",
+    "image/updater_image_conf.txt",
+    "image/userdata_image_conf.txt",
+    "image/vendor_image_conf.txt",
+    "image/sys_prod_image_conf.txt",
+    "image/chip_prod_image_conf.txt",
+  ]
+  outputs = [ "${product_output_dir}/imagesconf/{{source_file_part}}" ]
+}
+
+ohos_prebuilt_etc("bootanimation_custom_config") {
+  source = "etc/bootanimation_custom_config.json"
+  module_install_dir = "etc/bootanimation"
+  install_enable = true
+  install_images = [ "system" ]
+  part_name = "qualcomm_products"
+}
+
+group("cfg") {
+  deps = [
+    ":all_image_conf",
+    ":50.usb.rules",
+    ":90.feedbackd.rules",
+    ":77.mm-qcom-soc.rules",
+    ":77.mm-quectel-port-types.rules",
+    ":77.mm-sierra.rules",
+    ":80.mm-candidate.rules",
+    ":display_manager_config",
+    ":bt_device_config",
+    ":distributed_hardware_components_cfg.json",
+    ":dinput_business_event_whitelist.cfg",
+    ":fstab.msm8998",
+    ":fstab.required",
+    ":composer_host",
+    ":allocator_host",
+    ":hdf_devhost",
+    ":hdfdisplay_cfg",
+    ":init.msm8998.cfg",
+    ":init.msm8998.sh",
+    ":init.msm8998.usb.cfg",
+    ":ttygs1_shell.sh",
+    ":init.cfg",
+    ":init.reboot.cfg",
+    ":qrtr-ns.cfg",
+    ":tqftpserv.cfg",
+    ":pd-mapper.cfg",
+    ":rmtfs.cfg",
+    ":qmi-proxy.cfg",
+    # ":dbus-daemon.cfg",
+    # ":modem-manager.cfg",
+    ":install_list_capability_config",
+    ":install_list_config",
+    ":install_list_permissions_config",
+    ":param_for_chip_prod",
+    ":param_for_sys_prod",
+    ":param_for_ohos",
+    ":sdcard_mount.sh",
+    ":selinux_config",
+    ":selinux_file_contexts",
+    ":udisk_mount.sh",
+    ":uninstall_list_config",
+    ":window_manager_config",
+    ":sagit.conf",
+    ":sagit_HiFi.conf",
+    ":sagit_VoiceCall.conf",
+    ":enchilada.conf",
+    ":enchilada_HiFi.conf",
+    ":enchilada_VoiceCall.conf",
+    ":xiaomi-6-sagit.conf",
+    ":xiaomi-6.conf",
+    ":bootanimation_custom_config",
+  ]
+}

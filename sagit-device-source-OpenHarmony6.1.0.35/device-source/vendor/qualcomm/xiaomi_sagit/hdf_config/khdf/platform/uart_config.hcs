@@ -1,0 +1,17 @@
+root {
+    platform {
+        uart_config {
+            template uart_device {
+                serviceName = "";
+                match_attr = "";
+                driver_name = "ttyMSM0";
+                num = 0;
+            }
+
+            device_uart_0x0000 :: uart_device {
+                num = 0;
+                match_attr = "qcom_msm8998_uart_0";
+            }
+        }
+    }
+}

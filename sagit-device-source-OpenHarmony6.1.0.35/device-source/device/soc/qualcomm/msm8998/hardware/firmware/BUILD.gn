@@ -1,0 +1,211 @@
+# Copyright (c) 2022 Diemit <598757652@qq.com>
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/ohos.gni")
+
+ohos_prebuilt_etc("qcom.a530_pfp") {
+  source = "qcom/a530_pfp.fw"
+  part_name = "qualcomm_products"
+  install_images = [ 
+    ramdisk_base_dir,
+    system_base_dir
+  ]
+  module_install_dir = "lib/firmware/qcom"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qcom.a530_pm4") {
+  source = "qcom/a530_pm4.fw"
+  part_name = "qualcomm_products"
+  install_images = [ 
+    ramdisk_base_dir,
+    system_base_dir
+  ]
+  module_install_dir = "lib/firmware/qcom"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qcom.a540_gpmu") {
+  source = "qcom/a540_gpmu.fw2"
+  part_name = "qualcomm_products"
+  install_images = [ 
+    ramdisk_base_dir,
+    system_base_dir
+  ]
+  module_install_dir = "lib/firmware/qcom"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qcom.a540_zap") {
+  source = "qcom/msm8998/xiaomi/a540_zap.mbn"
+  part_name = "qualcomm_products"
+  install_images = [ 
+    ramdisk_base_dir,
+    system_base_dir
+  ]
+  module_install_dir = "lib/firmware/qcom/msm8998/xiaomi"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("regulatory.db") {
+  source = "regulatory.db"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("regulatory.db.p7s") {
+  source = "regulatory.db.p7s"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qcom.a530v3_gpmu") {
+  source = "qcom/a530v3_gpmu.fw2"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware/qcom"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qcom.adsp") {
+  source = "qcom/msm8998/xiaomi/adsp.mbn"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware/qcom/msm8998/xiaomi"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qcom.adspua") {
+  source = "qcom/msm8998/xiaomi/adspua.jsn"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware/qcom/msm8998/xiaomi"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qcom.ipa_fws") {
+  source = "qcom/msm8998/xiaomi/ipa_fws.mbn"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware/qcom/msm8998/xiaomi"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qcom.mba") {
+  source = "qcom/msm8998/xiaomi/mba.mbn"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware/qcom/msm8998/xiaomi"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qcom.modem") {
+  source = "qcom/msm8998/xiaomi/modem.mbn"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware/qcom/msm8998/xiaomi"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qcom.modemuw") {
+  source = "qcom/msm8998/xiaomi/modemuw.jsn"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware/qcom/msm8998/xiaomi"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qcom.slpi_v2") {
+  source = "qcom/msm8998/xiaomi/slpi_v2.mbn"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware/qcom/msm8998/xiaomi"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qcom.slpius") {
+  source = "qcom/msm8998/xiaomi/slpius.jsn"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware/qcom/msm8998/xiaomi"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qcom.wlanmdsp") {
+  source = "qcom/msm8998/xiaomi/wlanmdsp.mbn"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware/qcom/msm8998/xiaomi"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("ath10k.board-2.bin") {
+  source = "ath10k/WCN3990/hw1.0/board-2.bin"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware/ath10k/WCN3990/hw1.0"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("ath10k.firmware-5.bin") {
+  source = "ath10k/WCN3990/hw1.0/firmware-5.bin"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware/ath10k/WCN3990/hw1.0"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qca.crbtfw21.tlv") {
+  source = "qca/crbtfw21.tlv"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware/qca/crbtfw21.tlv"
+  install_enable = true
+}
+
+ohos_prebuilt_etc("qca.crnv21.bin") {
+  source = "qca/crnv21.bin"
+  part_name = "qualcomm_products"
+  install_images = [ system_base_dir ]
+  module_install_dir = "lib/firmware/qca/crnv21.bin"
+  install_enable = true
+}
+
+group("firmware") {
+  deps = [
+    ":qcom.a530_pfp",
+    ":qcom.a530_pm4",
+    ":qcom.a540_gpmu",
+    ":qcom.a540_zap",
+    ":regulatory.db",
+    ":regulatory.db.p7s",
+    ":qcom.a530v3_gpmu",
+    ":qcom.adsp",
+    ":qcom.adspua",
+    ":qcom.ipa_fws",
+    ":qcom.mba",
+    ":qcom.modem",
+    ":qcom.modemuw",
+    ":qcom.slpi_v2",
+    ":qcom.slpius",
+    ":qcom.wlanmdsp",
+    ":ath10k.board-2.bin",
+    ":ath10k.firmware-5.bin",
+    ":qca.crbtfw21.tlv",
+    ":qca.crnv21.bin",
+  ]
+}

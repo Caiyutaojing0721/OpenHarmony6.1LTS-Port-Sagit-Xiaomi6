@@ -1,0 +1,14 @@
+# Copyright (C) 2021 AlgoIdeas <https://gitee.com/algoideas>. All rights reserved.
+
+import("//build/ohos.gni")
+
+group("common") {
+  deps = [
+    "reboot:reboot_mode",
+    "swclock:swclock",
+    "v4l2-ctl:v4l2-ctl",
+    "q6voiced:q6voiced",
+    "tinyalsa:tinyalsa",
+    "hciconfig:hciconfig",
+  ]
+}

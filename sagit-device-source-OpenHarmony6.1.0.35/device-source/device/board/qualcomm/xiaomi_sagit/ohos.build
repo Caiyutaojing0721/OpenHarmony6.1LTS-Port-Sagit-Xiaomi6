@@ -1,0 +1,43 @@
+{
+    "subsystem": "device_xiaomi_sagit",
+    "parts": {
+        "device_xiaomi_sagit": {
+            "module_list": [
+                "//device/board/qualcomm/xiaomi_sagit:xiaomi_sagit_group",
+                "//third_party/alsa-lib:libasound"
+            ]
+        },
+        "qualcomm_products": {
+            "module_list": [
+                "//device/board/qualcomm/xiaomi_sagit/common:common",
+                "//device/board/qualcomm/xiaomi_sagit/cfg:cfg",
+                "//device/board/qualcomm/xiaomi_sagit/hardware:hardware",
+                "//device/board/qualcomm/xiaomi_sagit/resource:resource",
+                "//device/board/qualcomm/xiaomi_sagit/updater:updater_files",
+                "//device/board/qualcomm/xiaomi_sagit/modules:modules_group",
+                "//vendor/qualcomm/xiaomi_sagit/sample:sample_group",
+                "//vendor/qualcomm/xiaomi_sagit/hals/audio:hdf_audio_config",
+                "//device/soc/qualcomm/msm8998/hardware/firmware:firmware",
+                "//device/soc/qualcomm/msm8998/hardware/gpu:gpu",
+                "//device/soc/qualcomm/msm8998/hardware/display:display_composer_model",
+                "//device/soc/qualcomm/msm8998/hardware/display:display_buffer_model",
+                "//device/soc/qualcomm/common/hardware:hardware_group"
+            ],
+            "part_deps": {
+                "components": [
+                    "c_utils",
+                    "hilog",
+                    "init",
+                    "bounds_checking_function",
+                    "drivers_interface_camera",
+                    "drivers_interface_audio",
+                    "hdf_core"
+                ],
+                "third_party": [
+                    "alsa-lib",
+                    "zlib"
+                ]
+            }
+        }
+    }
+}
